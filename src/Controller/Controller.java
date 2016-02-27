@@ -13,7 +13,7 @@ public class Controller {
     private View v;
     private Model m;
 
-    public Controller() {
+    public Controller(View v) {
 
     }
 

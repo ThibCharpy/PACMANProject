@@ -1,7 +1,21 @@
 package Controller;
 
+import View.*;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+
 /**
  * Created by thibault on 26/02/16.
  */
-public class HomeController {
+public class HomeController extends Controller{
+
+    public HomeController(HomeView v){
+        super(v);
+    }
+
+    public void btn_Action(Stage s, View v){
+        v.start(s);
+    }
 }

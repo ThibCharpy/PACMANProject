@@ -1,5 +1,6 @@
 package View;
 
+import Controller.HomeController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -18,6 +19,8 @@ import javafx.stage.Stage;
  */
 public class HomeView extends View{
 
+    HomeController hCtrl;
+
     private Button btn_Score;
     private Button btn_Game;
     private Button btn_Quit;
@@ -33,6 +36,7 @@ public class HomeView extends View{
         btn_Score = new Button("Score");
         btn_Game = new Button("Game");
         btn_Quit = new Button("Quit");
+        hCtrl = new HomeController(this);
     }
 
     @Override
@@ -40,16 +44,15 @@ public class HomeView extends View{
         stage.setWidth(getWindow_Width());
         stage.setHeight(getWindow_Height());
 
-        final GameView gv = new GameView();
+        final View gv = new GameView();
+        final View sv = new ScoreView();
 
 
         btn_Game.setMaxSize(btn_Width, btn_Heigth);
         btn_Game.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Jouer");
-                gv.start(stage);
+                hCtrl.btn_Action(stage,gv);
             }
         });
 
@@ -58,8 +61,7 @@ public class HomeView extends View{
 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Score");
-
+                hCtrl.btn_Action(stage,sv);
             }
         });
 
