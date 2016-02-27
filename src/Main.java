@@ -14,7 +14,8 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        View v = new HomeView("PACMAN",600,400);
+        primaryStage.setTitle("PACMAN");
+        View v = new HomeView();
         v.start(primaryStage);
     }
 }
