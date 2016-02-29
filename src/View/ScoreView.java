@@ -1,9 +1,6 @@
 package View;
 
 import Controller.ScoreController;
-import Model.NoMoreScoreException;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,13 +24,8 @@ public class ScoreView extends View{
 
     private ScoreController sCtrl;
 
-    private String path_For_Save="src/Model/";
-    private String name_For_Save="score.txt";
-
     private Button btn_Menu;
     private Button btn_Quit;
-
-    private final int score_To_Show = 10;
 
     public ScoreView(){
         super();
@@ -44,18 +36,19 @@ public class ScoreView extends View{
 
     @Override
     public void start(Stage stage) {
-        //récupération des scores sur le fichier des scores..
 
         final HomeView hv = new HomeView();
 
-        //zone ou sont affiché les scores
         StackPane middle = new StackPane();
         Rectangle background_middle = new Rectangle(menu_Width, menu_Height);
         background_middle.setFill(Color.GREY);
         VBox score = new VBox();
         score.setAlignment(Pos.CENTER);
-        Text score_display = null;
+
+        Text score_display;
         int cpt = 0;
+        int score_To_Show = 10;
+
         while (cpt < score_To_Show) {
             int n = sCtrl.getSt(cpt);
             if(n<0){
@@ -73,22 +66,9 @@ public class ScoreView extends View{
         middle.getChildren().add(background_middle);
         middle.getChildren().add(score);
 
-        btn_Menu.setOnAction(new EventHandler<ActionEvent>() {
+        btn_Menu.setOnAction(event -> sCtrl.btn_Action(stage,hv));
 
-            @Override
-            public void handle(ActionEvent event) {
-                sCtrl.btn_Action(stage,hv);
-            }
-        });
-
-        btn_Quit.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                stage.close();
-            }
-
-        });
+        btn_Quit.setOnAction(event -> stage.close());
 
         StackPane top = new StackPane();
         Text title_top = new Text("HIGHSCORE");

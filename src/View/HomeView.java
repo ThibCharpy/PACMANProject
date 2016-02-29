@@ -1,8 +1,6 @@
 package View;
 
 import Controller.HomeController;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,9 +23,6 @@ public class HomeView extends View{
     private Button btn_Game;
     private Button btn_Quit;
 
-    private final double btn_Width=250;
-    private final double btn_Heigth=475;
-
     final public static double menu_Width = 300;
     final public static double menu_Height = 475;
 
@@ -48,32 +43,17 @@ public class HomeView extends View{
         final View sv = new ScoreView();
 
 
-        btn_Game.setMaxSize(btn_Width, btn_Heigth);
-        btn_Game.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                hCtrl.btn_Action(stage,gv);
-            }
-        });
+        double btn_Width = 250;
+        double btn_Height = 475;
 
-        btn_Score.setMaxSize(btn_Width, btn_Heigth);
-        btn_Score.setOnAction(new EventHandler<ActionEvent>() {
+        btn_Game.setMaxSize(btn_Width, btn_Height);
+        btn_Game.setOnAction(event -> hCtrl.btn_Action(stage,gv));
 
-            @Override
-            public void handle(ActionEvent event) {
-                hCtrl.btn_Action(stage,sv);
-            }
-        });
+        btn_Score.setMaxSize(btn_Width, btn_Height);
+        btn_Score.setOnAction(event -> hCtrl.btn_Action(stage,sv));
 
-        btn_Quit.setMaxSize(btn_Width, btn_Heigth);
-        btn_Quit.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Quitter");
-                stage.close();
-            }
-        });
+        btn_Quit.setMaxSize(btn_Width, btn_Height);
+        btn_Quit.setOnAction(event -> stage.close());
 
         //box pour placer les bouttons dans la stackpane
         VBox box_btn = new VBox(50);
