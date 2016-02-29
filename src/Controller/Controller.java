@@ -10,11 +10,10 @@ import javafx.scene.input.KeyCode;
  * Created by thibault on 25/02/16.
  */
 public class Controller {
-    private View v;
-    private Model m;
+    protected View v;
 
     public Controller(View v) {
-
+        this.v = v;
     }
 
     public static void movement(KeyCode k , Monster m ) {
@@ -31,5 +30,6 @@ public class Controller {
             m.newDirection = 4;
         }
     }
+
 
 }

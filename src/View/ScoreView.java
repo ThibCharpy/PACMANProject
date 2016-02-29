@@ -1,8 +1,7 @@
 package View;
 
+import Controller.ScoreController;
 import Model.NoMoreScoreException;
-import Model.Score;
-import Model.Score_Tab;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -18,9 +17,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.*;
-import java.util.ArrayList;
-
 /**
  * Created by thibault on 25/02/16.
  */
@@ -28,6 +24,11 @@ public class ScoreView extends View{
 
     final public static double menu_Width = 300;
     final public static double menu_Height = 475;
+
+    private ScoreController sCtrl;
+
+    private String path_For_Save="src/Model/";
+    private String name_For_Save="score.txt";
 
     private Button btn_Menu;
     private Button btn_Quit;
@@ -38,35 +39,14 @@ public class ScoreView extends View{
         super();
         btn_Menu = new Button("Menu");
         btn_Quit = new Button("Quit");
+        sCtrl = new ScoreController(this);
     }
 
     @Override
     public void start(Stage stage) {
         //récupération des scores sur le fichier des scores..
-        Score_Tab st = new Score_Tab();
-        boolean is_new = false;
-        try {
-            FileInputStream fis = new FileInputStream("score.txt");
-            ObjectInputStream o = new ObjectInputStream(fis);
-            st.setScore_Tab_tab((ArrayList<Score>) o.readObject());
-            fis.close();
-        } catch (FileNotFoundException e) {
-            System.out.print("Fichier non trouvé..  ");
-            System.out.println("=> Creation score.txt..");
-            File f = new File("score.txt");
-            try {
-                if (f.createNewFile()) {
-                    System.out.println("score.txt is created..");
-                    is_new = true;
-                } else {
-                    System.out.println("score.txt creation failed..");
-                }
-            } catch (IOException e2) {
-                e2.printStackTrace();
-            }
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
+        final HomeView hv = new HomeView();
 
         //zone ou sont affiché les scores
         StackPane middle = new StackPane();
@@ -74,59 +54,37 @@ public class ScoreView extends View{
         background_middle.setFill(Color.GREY);
         VBox score = new VBox();
         score.setAlignment(Pos.CENTER);
-        if (is_new) {
-            st = new Score_Tab();
-        }
         Text score_display = null;
         int cpt = 0;
         while (cpt < score_To_Show) {
-            score_display = null;
-            if (is_new) {
+            int n = sCtrl.getSt(cpt);
+            if(n<0){
                 score_display = new Text((cpt + 1) + ". ..........");
-            } else {
-                try {
-                    score_display = new Text((cpt + 1) + ". " + st.getScore(cpt));
-                } catch (NoMoreScoreException n) {
-                    score_display = new Text((cpt + 1) + ". ..........");
-                }
+            }else{
+                score_display = new Text((cpt + 1) + ". " + n);
             }
             score_display.setFont(new Font(25));
             score.getChildren().add(score_display);
             cpt++;
         }
 
-        //gerer l'écriture ..
-        try {
-            FileOutputStream fos = new FileOutputStream("score.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(st.getScore_Tab_tab());
-        } catch (FileNotFoundException e) {
-            System.out.println("Fichier non trouvé pour sauvegarde..");
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        sCtrl.saveScore();
 
         middle.getChildren().add(background_middle);
         middle.getChildren().add(score);
 
-        btn_Menu.setText("Menu");
         btn_Menu.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Back to Menu");
-                start(stage);
+                sCtrl.btn_Action(stage,hv);
             }
         });
 
-
-        btn_Quit.setText("Quit");
         btn_Quit.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Quit");
                 stage.close();
             }
 
@@ -151,7 +109,7 @@ public class ScoreView extends View{
         organisation.setCenter(middle);
 
         StackPane root = new StackPane();
-        Rectangle background_root = new Rectangle(menu_Width, menu_Height);
+        Rectangle background_root = new Rectangle(getWindow_Width(), getWindow_Height());
         background_root.setFill(Color.BLACK);
         root.getChildren().add(background_root);
         root.getChildren().add(organisation);
