@@ -28,8 +28,8 @@
       <file leaf-file-name="ScoreView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/ScoreView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5574043">
-              <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+            <state vertical-scroll-proportion="1.1797005">
+              <caret line="60" column="18" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -770,7 +770,7 @@
       <workItem from="1456491004944" duration="783000" />
       <workItem from="1456561915606" duration="107000" />
       <workItem from="1456580810266" duration="14763000" />
-      <workItem from="1456764451984" duration="567000" />
+      <workItem from="1456764451984" duration="677000" />
     </task>
     <task id="LOCAL-00001" summary="test 2">
       <created>1456561967254</created>
@@ -802,11 +802,17 @@
       <option name="project" value="LOCAL" />
       <updated>1456764972239</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="enlevage des warnings">
+      <created>1456765028708</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1456765028708</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22777000" />
+    <option name="totallyTimeSpent" value="22887000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1051" extended-state="6" />
@@ -1313,8 +1319,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/ScoreView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5574043">
-          <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+        <state vertical-scroll-proportion="1.1797005">
+          <caret line="60" column="18" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
