@@ -12,7 +12,7 @@ public class Pacman extends Monster {
     private int score;
 
 
-    protected Pacman(double x, double y, double size, double speed, int direction) {
+    public Pacman(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
     }
 

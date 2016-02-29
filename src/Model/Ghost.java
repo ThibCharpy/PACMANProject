@@ -10,7 +10,7 @@ public class Ghost extends Monster{
     String state;
 
 
-    protected Ghost(double x, double y, double size, double speed, int direction) {
+    public Ghost(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
     }
 

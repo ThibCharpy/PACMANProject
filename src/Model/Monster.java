@@ -15,7 +15,7 @@ public abstract class Monster extends Model{
 
 
     protected Monster(double x, double y, double size, double speed, int direction) {
-        //super(x, y, size);
+        super();
         this.x = x;
         this.y = y;
         this.speed = speed;
