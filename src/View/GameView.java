@@ -118,80 +118,76 @@ public class GameView extends View{
         return grid;
     }
     private Pane GetWallPane(int i, int x) {
-        Pane pictureRegion = new Pane();
         if (isSquare(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/Corner.png");
+            return getPictureRegion("/Sprites/Corner.png");
         }
         if (isCorner(i, x)) {
-            return pictureRegion = GetCornerPane(i, x);
+            return GetCornerPane(i, x);
         }
         if (isIntersection3(i, x)) {
-            return pictureRegion = GetInter3Pane(i, x);
+            return GetInter3Pane(i, x);
         }
         if (isIntersection4(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/Inter4.png");
+            return getPictureRegion("/Sprites/Inter4.png");
         }
         if (isEndLine(i, x)) {
-            return pictureRegion = GetEndLinePane(i, x);
+            return GetEndLinePane(i, x);
         }
         if (isLineH(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/LineHorizontal.png");
+            return getPictureRegion("/Sprites/LineHorizontal.png");
         }
         if (isLineV(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/LineVertical.png");
+            return getPictureRegion("/Sprites/LineVertical.png");
         }
-        return pictureRegion = getPictureRegion("/Sprites/empty.png");
+        return getPictureRegion("/Sprites/empty.png");
     }
 
     private Pane GetCornerPane(int i, int x) {
-        Pane pictureRegion = new Pane();
         if (isCornerBD(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/CornerBD.png");
+            return getPictureRegion("/Sprites/CornerBD.png");
         }
         if (isCornerHD(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/CornerHD.png");
+            return getPictureRegion("/Sprites/CornerHD.png");
         }
         if (isCornerBG(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/CornerBG.png");
+            return getPictureRegion("/Sprites/CornerBG.png");
         }
         if (isCornerHG(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/CornerHG.png");
+            return getPictureRegion("/Sprites/CornerHG.png");
         }
-        return pictureRegion = getPictureRegion("/Sprites/empty.png");
+        return getPictureRegion("/Sprites/empty.png");
     }
 
     private Pane GetInter3Pane(int i, int x) {
-        Pane pictureRegion = new Pane();
         if (isCornerHG(i, x) && isLineV(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/Inter3VerticalD.png");
+            return getPictureRegion("/Sprites/Inter3VerticalD.png");
         }
         if (isCornerBD(i, x) && isLineV(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/Inter3VerticalG.png");
+            return getPictureRegion("/Sprites/Inter3VerticalG.png");
         }
         if (isCornerHG(i, x) && isLineH(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/Inter3HorizontalB.png");
+            return getPictureRegion("/Sprites/Inter3HorizontalB.png");
         }
         if (isCornerBD(i, x) && isLineH(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/Inter3HorizontalH.png");
+            return getPictureRegion("/Sprites/Inter3HorizontalH.png");
         }
-        return pictureRegion = getPictureRegion("/Sprites/empty.png");
+        return getPictureRegion("/Sprites/empty.png");
     }
 
     private Pane GetEndLinePane(int i, int x) {
-        Pane pictureRegion = new Pane();
         if (isEndLineB(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/EndLineB.png");
+            return getPictureRegion("/Sprites/EndLineB.png");
         }
         if (isEndLineH(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/EndLineH.png");
+            return getPictureRegion("/Sprites/EndLineH.png");
         }
         if (isEndLineD(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/EndLineD.png");
+            return getPictureRegion("/Sprites/EndLineD.png");
         }
         if (isEndLineG(i, x)) {
-            return pictureRegion = getPictureRegion("/Sprites/EndLineG.png");
+            return getPictureRegion("/Sprites/EndLineG.png");
         }
-        return pictureRegion = getPictureRegion("/Sprites/empty.png");
+        return getPictureRegion("/Sprites/empty.png");
     }
 
     /**
@@ -255,7 +251,7 @@ public class GameView extends View{
     private boolean isCornerBG(int i, int j) {
         boolean CornerBG = false;
         if (((i - 1 > -1) && (j + 1 < GameController.getMaze_Width()))) {
-            if ((Maze.plateau[i - 1][j] == 1) && (Maze.plateau[i][j + 1] == 1)) {
+            if ((GameController.getMaze_Box(i - 1,j) == 1) && (GameController.getMaze_Box(i,j + 1) == 1)) {
                 CornerBG = true;
             }
         }
@@ -263,16 +259,16 @@ public class GameView extends View{
     }
 
     /**
-     * Teste si la case de coordonnée i,x dois etre une "Line Horizontal"
+     * Teste si la case de coordonnée i,j dois etre une "Line Horizontal"
      *
      * @param i coordonnée rangée
-     * @param x coordonnée colonne
+     * @param j coordonnée colonne
      * @return vrai si Line Horizontal, faux sinon
      */
-    private boolean isLineH(int i, int x) {
+    private boolean isLineH(int i, int j) {
         boolean LineHorizontal = false;
-        if (((x - 1 > -1) && (x + 1 < Maze.plateau[0].length))) {
-            if ((Maze.plateau[i][x - 1] == 1) && (Maze.plateau[i][x + 1] == 1)) {
+        if (((j - 1 > -1) && (j + 1 < GameController.getMaze_Width()))) {
+            if ((GameController.getMaze_Box(i,j -1) == 1) && (GameController.getMaze_Box(i,j + 1) == 1)) {
                 LineHorizontal = true;
             }
         }
@@ -280,16 +276,16 @@ public class GameView extends View{
     }
 
     /**
-     * Teste si la case de coordonnée i,x dois etre une "Line Vertical"
+     * Teste si la case de coordonnée i,j dois etre une "Line Vertical"
      *
      * @param i coordonnée rangée
-     * @param x coordonnée colonne
+     * @param j coordonnée colonne
      * @return vrai si Line Vertical, faux sinon
      */
-    private boolean isLineV(int i, int x) {
+    private boolean isLineV(int i, int j) {
         boolean LineVertical = false;
-        if (((i - 1 > -1) && (i + 1 < Maze.plateau.length))) {
-            if ((Maze.plateau[i - 1][x] == 1) && (Maze.plateau[i + 1][x] == 1)) {
+        if (((i - 1 > -1) && (i + 1 < GameController.getMaze_Heigth()))) {
+            if ((GameController.getMaze_Box(i -1,j) == 1) && (GameController.getMaze_Box(i + 1,j) == 1)) {
                 LineVertical = true;
             }
         }
@@ -297,16 +293,16 @@ public class GameView extends View{
     }
 
     /**
-     * Teste si la case de coordonnée i,x est une fin de ligne direction haut"
+     * Teste si la case de coordonnée i,j est une fin de ligne direction haut"
      *
      * @param i coordonnée rangée
-     * @param x coordonnée colonne
+     * @param j coordonnée colonne
      * @return vrai si fin de ligne haut, faux sinon
      */
-    private boolean isEndLineH(int i, int x) {
+    private boolean isEndLineH(int i, int j) {
         boolean EndLineH = false;
-        if (i + 1 < Maze.plateau.length) {
-            if (Maze.plateau[i + 1][x] == 1) {
+        if (i + 1 < GameController.getMaze_Heigth()) {
+            if (GameController.getMaze_Box(i + 1,j) == 1) {
                 EndLineH = true;
             }
         }
@@ -314,16 +310,16 @@ public class GameView extends View{
     }
 
     /**
-     * Teste si la case de coordonnée i,x est une fin de ligne direction bas"
+     * Teste si la case de coordonnée i,j est une fin de ligne direction bas"
      *
      * @param i coordonnée rangée
-     * @param x coordonnée colonne
+     * @param j coordonnée colonne
      * @return vrai si fin de ligne bas, faux sinon
      */
-    private boolean isEndLineB(int i, int x) {
+    private boolean isEndLineB(int i, int j) {
         boolean EndLineB = false;
         if (i - 1 > -1) {
-            if (Maze.plateau[i - 1][x] == 1) {
+            if (GameController.getMaze_Box(i - 1,j) == 1) {
                 EndLineB = true;
             }
         }
@@ -331,16 +327,16 @@ public class GameView extends View{
     }
 
     /**
-     * Teste si la case de coordonnée i,x est une fin de ligne direction gauche"
+     * Teste si la case de coordonnée i,j est une fin de ligne direction gauche"
      *
      * @param i coordonnée rangée
-     * @param x coordonnée colonne
+     * @param j coordonnée colonne
      * @return vrai si fin de ligne gauche, faux sinon
      */
-    private boolean isEndLineG(int i, int x) {
+    private boolean isEndLineG(int i, int j) {
         boolean EndLineG = false;
-        if (x - 1 > -1) {
-            if (Maze.plateau[i][x - 1] == 1) {
+        if (j - 1 > -1) {
+            if (GameController.getMaze_Box(i,j - 1) == 1) {
                 EndLineG = true;
             }
         }
@@ -348,16 +344,16 @@ public class GameView extends View{
     }
 
     /**
-     * Teste si la case de coordonnée i,x est une fin de ligne direction droite"
+     * Teste si la case de coordonnée i,j est une fin de ligne direction droite"
      *
      * @param i coordonnée rangée
-     * @param x coordonnée colonne
+     * @param j coordonnée colonne
      * @return vrai si fin de ligne droite, faux sinon
      */
-    private boolean isEndLineD(int i, int x) {
+    private boolean isEndLineD(int i, int j) {
         boolean EndLineD = false;
-        if (x + 1 < Maze.plateau[0].length) {
-            if (Maze.plateau[i][x + 1] == 1) {
+        if (j + 1 < GameController.getMaze_Width()) {
+            if (GameController.getMaze_Box(i,j + 1) == 1) {
                 EndLineD = true;
             }
         }
@@ -372,7 +368,7 @@ public class GameView extends View{
      * @return vrai si Coin, faux sinon
      */
     public boolean isCorner(int i, int x) {
-        return (Maze.checkWall(i, x, 1) == 2 && !isLineV(i, x) && !isLineH(i, x));
+        return (GameController.getMaze_CountNeighbour(i, x, 1) == 2 && !isLineV(i, x) && !isLineH(i, x));
 
     }
 
@@ -386,7 +382,7 @@ public class GameView extends View{
      * @return vrai si Intersection 3, faux sinon
      */
     public boolean isIntersection3(int i, int x) {
-        return (Maze.checkWall(i, x, 1) == 3);
+        return (GameController.getMaze_CountNeighbour(i, x, 1) == 3);
     }
 
     /**
@@ -398,7 +394,7 @@ public class GameView extends View{
      * @return vrai si intersection 4, faux sinon
      */
     public boolean isIntersection4(int i, int x) {
-        return (Maze.checkWall(i, x, 1) == 4);
+        return (GameController.getMaze_CountNeighbour(i, x, 1) == 4);
     }
 
     /**
@@ -410,11 +406,11 @@ public class GameView extends View{
      * @return vrai si "fin de ligne", faux sinon
      */
     public boolean isEndLine(int i, int x) {
-        return (Maze.checkWall(i, x, 1) == 1);
+        return (GameController.getMaze_CountNeighbour(i, x, 1) == 1);
     }
 
     public boolean isSquare(int i, int x) {
-        return (Maze.checkWall(i, x, 1) == 0);
+        return (GameController.getMaze_CountNeighbour(i, x, 1) == 0);
     }
 
     /**

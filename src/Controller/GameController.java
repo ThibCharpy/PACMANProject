@@ -56,4 +56,8 @@ public class GameController extends  Controller {
     public static int getMaze_Box(int i, int j){
         return Maze.plateau[i][j];
     }
+
+    public static int getMaze_CountNeighbour(int i , int j, int value){
+        return Maze.checkWall(i,j,value);
+    }
 }
