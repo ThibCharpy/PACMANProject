@@ -40,7 +40,7 @@ public class HomeView extends View{
         stage.setHeight(getWindow_Height());
 
         final View gv = new GameView();
-        final View sv = new ScoreView();
+        final View sv = new ScoreView("src/Model/score.txt");
 
 
         double btn_Width = 250;

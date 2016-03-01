@@ -27,11 +27,11 @@ public class ScoreView extends View{
     private Button btn_Menu;
     private Button btn_Quit;
 
-    public ScoreView(){
+    public ScoreView(String path){
         super();
         btn_Menu = new Button("Menu");
         btn_Quit = new Button("Quit");
-        sCtrl = new ScoreController(this);
+        sCtrl = new ScoreController(this,path);
     }
 
     @Override

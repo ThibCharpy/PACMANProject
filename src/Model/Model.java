@@ -7,11 +7,6 @@ import java.util.Observable;
  * Created by thibault on 25/02/16.
  */
 public class Model extends Observable{
-    final public static double LF = 400;
-    final public static double HF = 600;
-    //dimension menu
-    final public static double LM = 300;
-    final public static double HM = 475;
 
     final public static double HG = 525;
     final public static double LG = 380;

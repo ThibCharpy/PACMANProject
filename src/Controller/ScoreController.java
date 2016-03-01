@@ -8,36 +8,33 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 /**
  * Created by thibault on 27/02/16.
  */
 public class ScoreController extends Controller {
 
-    private String path_For_Save="src/Model/";
-    private String name_For_Save="score.txt";
+    private String path_Field;
 
     private Score_Tab st;
 
-    public ScoreController(View v){
+    public ScoreController(View v, String path){
         super(v);
-        try{
-            st = new Score_Tab(path_For_Save+name_For_Save);
-        }catch(FileNotFoundException fe){
-            st = new Score_Tab();
-            System.out.print("Fichier non trouvé..  ");
-            System.out.println("=> Creation score.txt..");
-            Path myFile = Paths.get(path_For_Save+name_For_Save);
+        File f = new File(path);
+        if(f.exists()){
             try {
-                Path file = Files.createFile(myFile);
-            } catch (IOException e1) {
-                e1.printStackTrace();
+                System.out.println("Fichier trouvé => ouverture fichier");
+                st = new Score_Tab(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }else{
+            st = new Score_Tab();
         }
+        path_Field = path;
     }
 
     public void btn_Action(Stage s, View v){
@@ -45,11 +42,19 @@ public class ScoreController extends Controller {
     }
 
     public void saveScore(){
+        File f = new File(path_Field);
+        if(!(f.exists())){
+            System.out.println("Fichier non trouvé pour sauvegarde => Creation score.txt");
+            Path myFile = Paths.get(path_Field);
+            try {
+                Path file = Files.createFile(myFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Sauvegarde Liste dans score.txt");
         try {
-            st.writeScore_Tab(path_For_Save+name_For_Save);
-        } catch (FileNotFoundException e) {
-            System.out.println("Fichier non trouvé pour sauvegarde..");
-            e.printStackTrace();
+            st.writeScore_Tab(path_Field);
         } catch (IOException e) {
             e.printStackTrace();
         }
