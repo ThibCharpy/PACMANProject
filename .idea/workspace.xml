@@ -2,235 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="549a2a01-627d-49b3-bc2c-d74060d1644f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/Controller.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/GameController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/HomeController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/ScoreController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Main.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Couple.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Ghost.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/ListOfIntersection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/MapChangeRequest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Maze.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Model.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Monster.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/NoMoreScoreException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Node.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/NoeudGraphe.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Pacman.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/RechercheChemin.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Score.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Score_Tab.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/Corner.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/CornerBD.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/CornerBG.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/CornerHD.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/CornerHG.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/EndLineB.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/EndLineD.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/EndLineG.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/EndLineH.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/Inter3HorizontalB.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/Inter3HorizontalH.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/Inter3VerticalD.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/Inter3VerticalG.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/Inter4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/LineHorizontal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/LineVertical.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/PacmanTest.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/backgroung.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/blue-down-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/blue-down-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/blue-left-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/blue-left-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/blue-right-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/blue-right-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/blue-up-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/blue-up-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/bonus_apple.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/bonus_cherry.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/bonus_demon_fruit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/bonus_orange.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/bonus_strawberry.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/dead_ghost_down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/dead_ghost_left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/dead_ghost_right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/dead_ghost_up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/empty.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/jail_0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/jail_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/jail_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/jail_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/jail_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/orange-down-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/orange-down-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/orange-left-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/orange-left-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/orange-right-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/orange-right-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/orange-up-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/orange-up-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacgome1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacgome2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman0.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman6.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman7.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman8.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pacman8.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pink-down-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pink-down-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pink-left-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pink-left-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pink-right-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pink-right-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pink-up-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/pink-up-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/red-down-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/red-down-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/red-left-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/red-left-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/red-right-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/red-right-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/red-up-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/red-up-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/scared_blue_ghost_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/scared_blue_ghost_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/scared_white_ghost_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/scared_white_ghost_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/wall_0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/wall_1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/wall_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/wall_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/wall_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/GameView.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/HomeView$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/HomeView$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/HomeView$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/HomeView.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/ScoreView$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/ScoreView$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/ScoreView.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/View.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/Corner.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/CornerBD.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/CornerBG.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/CornerHD.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/CornerHG.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/EndLineB.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/EndLineD.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/EndLineG.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/EndLineH.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/Inter3HorizontalB.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/Inter3HorizontalH.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/Inter3VerticalD.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/Inter3VerticalG.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/Inter4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/LineHorizontal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/LineVertical.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/PacmanTest.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/backgroung.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/blue-down-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/blue-down-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/blue-left-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/blue-left-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/blue-right-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/blue-right-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/blue-up-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/blue-up-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/bonus_apple.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/bonus_cherry.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/bonus_demon_fruit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/bonus_orange.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/bonus_strawberry.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/dead_ghost_down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/dead_ghost_left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/dead_ghost_right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/dead_ghost_up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/empty.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/jail_0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/jail_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/jail_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/jail_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/jail_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/orange-down-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/orange-down-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/orange-left-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/orange-left-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/orange-right-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/orange-right-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/orange-up-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/orange-up-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacgome1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacgome2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman0.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman6.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman7.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman8.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pacman8.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pink-down-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pink-down-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pink-left-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pink-left-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pink-right-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pink-right-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pink-up-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/pink-up-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/red-down-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/red-down-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/red-left-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/red-left-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/red-right-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/red-right-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/red-up-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/red-up-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/scared_blue_ghost_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/scared_blue_ghost_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/scared_white_ghost_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/scared_white_ghost_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/wall_0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/wall_1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/wall_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/wall_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/wall_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/terrain.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/BlueGhost.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/OrangeGhost.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/PinkGhost.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/RedGhost.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/terrain.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/View/SpriteMonster.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Controller/Controller.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/Controller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Controller/GameController.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/GameController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Controller/ScoreController.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/ScoreController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Ghost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Ghost.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Model.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Model.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Pacman.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Pacman.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Score_Tab.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Score_Tab.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/View/GameView.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/GameView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/View/HomeView.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/HomeView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/View/ScoreView.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/ScoreView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/GameController.java" afterPath="$PROJECT_DIR$/src/Controller/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Ghost.java" afterPath="$PROJECT_DIR$/src/Model/Ghost.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Model.java" afterPath="$PROJECT_DIR$/src/Model/Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Monster.java" afterPath="$PROJECT_DIR$/src/Model/Monster.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Pacman.java" afterPath="$PROJECT_DIR$/src/Model/Pacman.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/GameView.java" afterPath="$PROJECT_DIR$/src/View/GameView.java" />
     </list>
     <ignored path="PACMANProject.iws" />
@@ -253,142 +37,122 @@
     <favorites_list name="PACMANProject" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Pacman.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-                  <folding>
-                    <element signature="e#287#288#0" expanded="true" />
-                    <element signature="e#338#339#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Controller/Controller.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RedGhost.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Model/RedGhost.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BlueGhost.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Model/BlueGhost.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="OrangeGhost.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Model/OrangeGhost.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PinkGhost.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Model/PinkGhost.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Ghost.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Model/Ghost.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-                  <folding>
-                    <element signature="e#264#265#0" expanded="true" />
-                    <element signature="e#315#316#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="GameView.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.71393037">
-                  <caret line="133" column="11" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SpriteMonster.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/View/SpriteMonster.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="85" column="10" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Controller/GameController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="GameController.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/Controller/GameController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5410448">
-                  <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Model.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5074627">
+              <caret line="46" column="105" selection-start-line="46" selection-start-column="105" selection-end-line="46" selection-end-column="105" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#744#745#0" expanded="true" />
+                <element signature="e#767#768#0" expanded="true" />
+                <element signature="e#12820#12821#0" expanded="true" />
+                <element signature="e#12873#12874#0" expanded="true" />
+                <element signature="e#13184#13185#0" expanded="true" />
+                <element signature="e#13237#13238#0" expanded="true" />
+                <element signature="e#13566#13567#0" expanded="true" />
+                <element signature="e#13619#13620#0" expanded="true" />
+                <element signature="e#13664#13665#0" expanded="true" />
+                <element signature="e#13717#13718#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpriteMonster.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/SpriteMonster.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="85" column="10" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/GameController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#335#336#0" expanded="true" />
+                <element signature="e#359#360#0" expanded="true" />
+                <element signature="e#1287#1288#0" expanded="true" />
+                <element signature="e#1332#1333#0" expanded="true" />
+                <element signature="e#1373#1374#0" expanded="true" />
+                <element signature="e#1415#1416#0" expanded="true" />
+                <element signature="e#1465#1466#0" expanded="true" />
+                <element signature="e#1506#1507#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/HomeView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Maze.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Maze.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/View.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScoreController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/ScoreController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -419,15 +183,15 @@
         <option value="$PROJECT_DIR$/src/Controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/Model/Monster.java" />
         <option value="$PROJECT_DIR$/src/View/View.java" />
-        <option value="$PROJECT_DIR$/src/Model/Model.java" />
         <option value="$PROJECT_DIR$/src/Model/Pacman.java" />
         <option value="$PROJECT_DIR$/src/Model/Ghost.java" />
         <option value="$PROJECT_DIR$/src/Model/RedGhost.java" />
         <option value="$PROJECT_DIR$/src/Model/BlueGhost.java" />
         <option value="$PROJECT_DIR$/src/Model/OrangeGhost.java" />
         <option value="$PROJECT_DIR$/src/Model/PinkGhost.java" />
-        <option value="$PROJECT_DIR$/src/Controller/GameController.java" />
         <option value="$PROJECT_DIR$/src/View/SpriteMonster.java" />
+        <option value="$PROJECT_DIR$/src/Model/Model.java" />
+        <option value="$PROJECT_DIR$/src/Controller/GameController.java" />
         <option value="$PROJECT_DIR$/src/View/GameView.java" />
       </list>
     </option>
@@ -438,8 +202,9 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="-1" />
+    <option name="width" value="1922" />
+    <option name="height" value="1051" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -466,8 +231,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -483,7 +248,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PACMANProject" />
+              <option name="myItemId" value="PTDR" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -493,7 +258,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PACMANProject" />
+              <option name="myItemId" value="PTDR" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -507,7 +272,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PACMANProject" />
+              <option name="myItemId" value="PTDR" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -525,7 +290,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PACMANProject" />
+              <option name="myItemId" value="PTDR" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -543,7 +308,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PACMANProject" />
+              <option name="myItemId" value="PTDR" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -552,20 +317,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PACMANProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PACMANProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -581,6 +332,22 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="225" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="234" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="240" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="225" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="234" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="240" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -674,65 +441,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
       <method />
     </configuration>
     <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
@@ -908,12 +616,57 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -992,10 +745,37 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
       <method />
     </configuration>
     <configuration default="false" name="Unnamed" type="Application" factoryName="Application">
@@ -1017,6 +797,11 @@
       <item index="0" class="java.lang.String" itemvalue="Application.Unnamed" />
     </list>
   </component>
+  <component name="SbtLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
     <configuration />
@@ -1034,39 +819,41 @@
       <workItem from="1456673788563" duration="1526000" />
       <workItem from="1456757581153" duration="5352000" />
       <workItem from="1456765423816" duration="8000" />
+      <workItem from="1456840280096" duration="850000" />
+      <workItem from="1456846469702" duration="5770000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14964000" />
+    <option name="totallyTimeSpent" value="21584000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="-1" y="0" width="1922" height="1051" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33012047" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299595" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32692307" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15379113" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.157082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33012047" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1077,13 +864,13 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299595" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32692307" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15379113" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.157082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1114,49 +901,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/HomeView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-          <folding>
-            <element signature="e#287#288#0" expanded="true" />
-            <element signature="e#338#339#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/NoeudGraphe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1170,8 +914,6 @@
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#830#831#0" expanded="true" />
-            <element signature="e#861#862#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1258,8 +1000,6 @@
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#830#831#0" expanded="true" />
-            <element signature="e#861#862#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1383,19 +1123,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1403,50 +1134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="284" column="37" selection-start-line="284" selection-start-column="37" selection-end-line="284" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/HomeView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#830#831#0" expanded="true" />
-            <element signature="e#861#862#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Maze.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1460,7 +1147,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Ghost.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.018691588">
           <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
           <folding>
             <element signature="e#264#265#0" expanded="true" />
@@ -1469,17 +1156,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/RedGhost.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/PinkGhost.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/BlueGhost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.11214953">
           <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding />
         </state>
@@ -1487,23 +1166,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/OrangeGhost.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.11214953">
           <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/PinkGhost.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/BlueGhost.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.11214953">
           <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/RedGhost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11214953">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20560747">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.018691588">
           <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
           <folding>
             <element signature="e#287#288#0" expanded="true" />
@@ -1512,23 +1209,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Score_Tab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6268657">
+          <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/GameController.java">
+    <entry file="file://$PROJECT_DIR$/src/View/ScoreView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4059406">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Maze.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ScoreController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/HomeView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1536,6 +1272,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="85" column="10" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sprites/Corner.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sprites/Inter3HorizontalB.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#359#360#0" expanded="true" />
+            <element signature="e#1287#1288#0" expanded="true" />
+            <element signature="e#1332#1333#0" expanded="true" />
+            <element signature="e#1373#1374#0" expanded="true" />
+            <element signature="e#1415#1416#0" expanded="true" />
+            <element signature="e#1465#1466#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1544,10 +1324,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71393037">
-          <caret line="133" column="11" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.5074627">
+          <caret line="46" column="105" selection-start-line="46" selection-start-column="105" selection-end-line="46" selection-end-column="105" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#744#745#0" expanded="true" />
+            <element signature="e#767#768#0" expanded="true" />
+            <element signature="e#12820#12821#0" expanded="true" />
+            <element signature="e#12873#12874#0" expanded="true" />
+            <element signature="e#13184#13185#0" expanded="true" />
+            <element signature="e#13237#13238#0" expanded="true" />
+            <element signature="e#13566#13567#0" expanded="true" />
+            <element signature="e#13619#13620#0" expanded="true" />
+            <element signature="e#13664#13665#0" expanded="true" />
+            <element signature="e#13717#13718#0" expanded="true" />
           </folding>
         </state>
       </provider>

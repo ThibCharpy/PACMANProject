@@ -25,35 +25,39 @@ import java.util.logging.Logger;
  */
 public class GameView extends View{
 
+    private final double game_Width = 380;
+    private final double game_Heigth = 525;
+
     public GameView() {
         super();
     }
 
     @Override
     public void start(Stage stage) {
-        BorderPane root = new BorderPane();
-        StackPane stack = new StackPane();
-        Label top_info = new Label("Get_score                                               Get_A_Life");
         try {
             //TODO #1 gérer le controlleur de la création de Maze
-            Maze.initMapArray("/Sprites/terrain.txt");
+            GameController.initialize_Game("/Sprites/terrain.txt");
+            //Maze.initMapArray("/Sprites/terrain.txt");
         } catch (IOException ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        BorderPane root = new BorderPane();
+        StackPane stack = new StackPane();
+        Label top_info = new Label("Get_score                                               Get_A_Life");
 
         GridPane g = new GridPane();
         GridPane grid = getGrid();
         stack.getChildren().add(grid);
         root.setTop(top_info);
         root.setCenter(stack);
-        GameController.startGame();
-        root = addMonster(root);
+        //GameController.startGame();
+        //root = addMonster(root);
 
 
 
         Scene scene = new Scene(root, 300, 250);
 
-        stage.setTitle("Hello World!");
         stage.setScene(scene);
         stage.show();
     }
@@ -71,46 +75,46 @@ public class GameView extends View{
         grid.setVgap(0);
         grid.setHgap(0);
         grid.setGridLinesVisible(false);
-        for (int i = 0; i < Maze.plateau.length; i++) {
+
+        int maze_Height = GameController.getMaze_Heigth();
+        int maze_Width = GameController.getMaze_Width();
+
+        for (int i = 0; i < maze_Height; i++) {
             RowConstraints con = new RowConstraints();
-            con.setPercentHeight(GameController.getHG() / Maze.plateau.length);
+            con.setPercentHeight(game_Heigth / maze_Height);
             grid.getRowConstraints().add(con);
         }
-        for (int x = 0; x < Maze.plateau[0].length; x++) {
+        for (int x = 0; x < maze_Width; x++) {
             ColumnConstraints col = new ColumnConstraints();
-            col.setPercentWidth(GameController.getLG() / Maze.plateau[0].length);
+            col.setPercentWidth(game_Width / maze_Width);
             grid.getColumnConstraints().add(col);
         }
 
-        for (int i = 0; i < Maze.plateau.length; i++) {
-            for (int x = 0; x < Maze.plateau[0].length; x++) {
-                if (Maze.plateau[i][x] == 0 || Maze.plateau[i][x] == 4) {
+        for (int i = 0; i < maze_Height; i++) {
+            for (int j = 0; j < maze_Width; j++) {
+                int maze_box = GameController.getMaze_Box(i,j);
+                if (maze_box == 0 || maze_box == 4) {
                     Pane pictureRegion = getPictureRegion("/Sprites/empty.png");
-                    grid.setConstraints(pictureRegion, x, i);
-                    grid.add(pictureRegion, x, i);
+                    grid.setConstraints(pictureRegion, j, i);
+                    grid.add(pictureRegion, j, i);
                 }
-                if (Maze.plateau[i][x] == 2) {
+                if (maze_box == 2) {
                     Pane pictureRegion = getPictureRegion("/Sprites/pacgome1.png");
-                    grid.setConstraints(pictureRegion, x, i);
-                    grid.add(pictureRegion, x, i);
+                    grid.setConstraints(pictureRegion, j, i);
+                    grid.add(pictureRegion, j, i);
                 }
-                if (Maze.plateau[i][x] == 3) {
+                if (maze_box == 3) {
                     Pane pictureRegion = getPictureRegion("/Sprites/pacgome2.png");
-                    grid.setConstraints(pictureRegion, x, i);
-                    grid.add(pictureRegion, x, i);
+                    grid.setConstraints(pictureRegion, j, i);
+                    grid.add(pictureRegion, j, i);
                 }
-                if (Maze.plateau[i][x] == 1) {
-                    Pane pictureRegion = GetWallPane(i, x);
-                    /*Rectangle pictureRegion = new Rectangle();
-                    pictureRegion.setFill(Color.BLUE);*/
-                    grid.setConstraints(pictureRegion, x, i);
-                    grid.add(pictureRegion, x, i);
+                if (maze_box == 1) {
+                    Pane pictureRegion = GetWallPane(i, j);
+                    grid.setConstraints(pictureRegion, j, i);
+                    grid.add(pictureRegion, j, i);
                 }
             }
         }
-        /*Jeu.setGRID_SIZE_X(LG);
-        Jeu.setGRID_SIZE_Y(HG);*/
-        //Model.ListOfIntersection.initialiseList();
         return grid;
     }
     private Pane GetWallPane(int i, int x) {
@@ -191,16 +195,16 @@ public class GameView extends View{
     }
 
     /**
-     * Teste si la case de coordonnée i,x dois etre un "Coin Haut Gauche"
+     * Teste si la case de coordonnée i,j dois etre un "Coin Haut Gauche"
      *
      * @param i coordonnée rangée
-     * @param x coordonnée colonne
+     * @param j coordonnée colonne
      * @return vrai si Coin Haut Gauche, faux sinon
      */
-    private boolean isCornerHG(int i, int x) {
+    private boolean isCornerHG(int i, int j) {
         boolean CornerHG = false;
-        if (((i + 1 < Maze.plateau.length) && (x + 1 < Maze.plateau[0].length))) {
-            if ((Maze.plateau[i + 1][x] == 1) && (Maze.plateau[i][x + 1] == 1)) {
+        if (((i + 1 < GameController.getMaze_Heigth()) && (j + 1 < GameController.getMaze_Width()))) {
+            if ((GameController.getMaze_Box(i + 1,j) == 1) && (GameController.getMaze_Box(i,j + 1) == 1)) {
                 CornerHG = true;
             }
         }
@@ -208,16 +212,16 @@ public class GameView extends View{
     }
 
     /**
-     * Teste si la case de coordonnée i,x dois etre un "Coin Haut Droit"
+     * Teste si la case de coordonnée i,j dois etre un "Coin Haut Droit"
      *
      * @param i coordonnée rangée
-     * @param x coordonnée colonne
+     * @param j coordonnée colonne
      * @return vrai si Coin Haut Droit, faux sinon
      */
-    private boolean isCornerHD(int i, int x) {
+    private boolean isCornerHD(int i, int j) {
         boolean CornerHD = false;
-        if (((i + 1 < Maze.plateau.length) && (x - 1 > -1))) {
-            if ((Maze.plateau[i + 1][x] == 1) && (Maze.plateau[i][x - 1] == 1)) {
+        if (((i + 1 < GameController.getMaze_Heigth()) && (j - 1 > -1))) {
+            if ((GameController.getMaze_Box(i + 1,j) == 1) && (GameController.getMaze_Box(i,j - 1) == 1)) {
                 CornerHD = true;
             }
         }
@@ -225,16 +229,16 @@ public class GameView extends View{
     }
 
     /**
-     * Teste si la case de coordonnée i,x dois etre un "Coin Bas Droit"
+     * Teste si la case de coordonnée i,j dois etre un "Coin Bas Droit"
      *
      * @param i coordonnée rangée
-     * @param x coordonnée colonne
+     * @param j coordonnée colonne
      * @return vrai si Coin Bas Droit, faux sinon
      */
-    private boolean isCornerBD(int i, int x) {
+    private boolean isCornerBD(int i, int j) {
         boolean CornerBD = false;
-        if (((i - 1 > -1) && (x - 1 > -1))) {
-            if ((Maze.plateau[i - 1][x] == 1) && (Maze.plateau[i][x - 1] == 1)) {
+        if (((i - 1 > -1) && (j - 1 > -1))) {
+            if ((GameController.getMaze_Box(i - 1,j) == 1) && (GameController.getMaze_Box(i,j - 1) == 1)) {
                 CornerBD = true;
             }
         }
@@ -242,16 +246,16 @@ public class GameView extends View{
     }
 
     /**
-     * Teste si la case de coordonnée i,x dois etre un "Coin Bas Gauche"
+     * Teste si la case de coordonnée i,j dois etre un "Coin Bas Gauche"
      *
      * @param i coordonnée rangée
-     * @param x coordonnée colonne
+     * @param j coordonnée colonne
      * @return vrai si Coin Bas Gauche, faux sinon
      */
-    private boolean isCornerBG(int i, int x) {
+    private boolean isCornerBG(int i, int j) {
         boolean CornerBG = false;
-        if (((i - 1 > -1) && (x + 1 < Maze.plateau[0].length))) {
-            if ((Maze.plateau[i - 1][x] == 1) && (Maze.plateau[i][x + 1] == 1)) {
+        if (((i - 1 > -1) && (j + 1 < GameController.getMaze_Width()))) {
+            if ((Maze.plateau[i - 1][j] == 1) && (Maze.plateau[i][j + 1] == 1)) {
                 CornerBG = true;
             }
         }
@@ -453,4 +457,5 @@ public class GameView extends View{
             }
         }
     }
+
 }

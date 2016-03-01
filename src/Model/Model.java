@@ -29,7 +29,7 @@ public class Model extends Observable{
     public static List<Model> liste;
 
     public Model(){
-        liste.add(this);
+        //liste.add(this);
     }
     public static void setGRID_SIZE_X(double x){
         Model.GRID_SIZE_X = x;

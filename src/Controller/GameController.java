@@ -7,20 +7,15 @@ import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
+
 /**
  * Created by thibault on 27/02/16.
  */
 public class GameController extends  Controller {
+
     public GameController(View v) {
         super(v);
-    }
-
-    public static double getHG() {
-        return Model.HG;
-    }
-
-    public static double getLG() {
-        return Model.LG;
     }
 
     public static void startGame() {
@@ -35,7 +30,6 @@ public class GameController extends  Controller {
         return Model.liste.size();
     }
 
-    
 
     public static int getMonster(int i) {
         Model m = Model.liste.get(i);
@@ -45,5 +39,21 @@ public class GameController extends  Controller {
         if(m instanceof BlueGhost) return 3;
         if(m instanceof OrangeGhost) return 4;
         else return -1;
+    }
+
+    public static void initialize_Game(String path_field) throws IOException {
+        Maze.initMapArray(path_field);
+    }
+
+    public static int getMaze_Width(){
+        return Maze.plateau[0].length;
+    }
+
+    public static int getMaze_Heigth(){
+        return Maze.plateau.length;
+    }
+
+    public static int getMaze_Box(int i, int j){
+        return Maze.plateau[i][j];
     }
 }
