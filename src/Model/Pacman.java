@@ -14,6 +14,7 @@ public class Pacman extends Monster {
 
     public Pacman(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
+        ChangeQueue = new LinkedList();
     }
 
     @Override
@@ -54,12 +55,12 @@ public class Pacman extends Monster {
             this.direction = 0;
             return false;
         }
-        if (getInfoCase(pos_X, pos_Y) == 3){ //|| getInfoCase(pos_X2 , pos_Y2) == 3){
-            EatBigGomme(pos_X,pos_Y);
+        if (getInfoCase(x, y) == 3){ //|| getInfoCase(pos_X2 , pos_Y2) == 3){
+            EatBigGomme(x,y);
             return true;
         }
-        if (getInfoCase(pos_X, pos_Y) == 2){//getInfoCase(pos_X, pos_Y) == 2 || getInfoCase(pos_X2 , pos_Y2) == 2){
-            EatGomme(pos_X,pos_Y);
+        if (getInfoCase(x, y) == 2){//getInfoCase(pos_X, pos_Y) == 2 || getInfoCase(pos_X2 , pos_Y2) == 2){
+            EatGomme(x,y);
             return true;
         }
         return true;

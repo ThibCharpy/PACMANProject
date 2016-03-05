@@ -5,13 +5,13 @@ package Model;
  */
 public abstract class Monster extends Model{
     double speed;
-    int direction;
+    public int direction;
     public int newDirection = 5;
-    double height;
-    double width;
+    public double height;
+    public double width;
     int timing = 0;
-    double x;
-    double y;
+    public double x;
+    public double y;
 
 
     protected Monster(double x, double y, double size, double speed, int direction) {

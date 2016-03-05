@@ -3,20 +3,27 @@ package View;
 import Controller.GameController;
 import Model.MapChangeRequest;
 import Model.Maze;
-import Model.Model;
 import Model.Pacman;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,8 +35,10 @@ public class GameView extends View{
     private final double game_Width = 380;
     private final double game_Heigth = 525;
 
+    GameController c;
     public GameView() {
         super();
+        c = new GameController(this);
     }
 
     @Override
@@ -46,29 +55,58 @@ public class GameView extends View{
         StackPane stack = new StackPane();
         Label top_info = new Label("Get_score                                               Get_A_Life");
 
+        Button b1 = new Button("<");
         GridPane g = new GridPane();
+        root.setBottom(g);
+        g.setAlignment(Pos.CENTER);
+        g.add(b1, 0, 1);
         GridPane grid = getGrid();
+        stack.setMinWidth(game_Width);
+        stack.setMinHeight(game_Heigth);
+        stack.setMaxWidth(game_Width);
+        stack.setMaxHeight(game_Heigth);
+
         stack.getChildren().add(grid);
         root.setTop(top_info);
         root.setCenter(stack);
-        //GameController.startGame();
-        //root = addMonster(root);
+        c.startGame();
 
+        stack = c.implementPane(stack);
+        System.out.println(stack.getChildren().size());
+        c.getMonsterPosition(stack);
 
+        root.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent event) {
+                System.out.println("keyPressed");
+                c.pacmanMovement(event.getCode());
+            }
+        });
 
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(12),
+                ae -> {
+                    c.movement();
+                    c.getMonsterPosition();
+                    updateMap(grid);
+                    //top_info.setText("Score :" + pacman.getStringScore());
+                }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
+        Timeline timeline2 = new Timeline(new KeyFrame(
+                Duration.millis(150),
+                ae -> {
+                   // c.updateImage();
+                }));
+        timeline2.setCycleCount(Animation.INDEFINITE);
+        timeline2.play();
         Scene scene = new Scene(root, 300, 250);
 
         stage.setScene(scene);
         stage.show();
+
     }
 
-    private BorderPane addMonster(BorderPane root) {
-        for(int i = 0; i< Model.liste.size() ; i++){
-           /* Pane p = SpriteMonster.getMonster(i);
-            root.getChildren().add();*/
-        }
-        return null;
-    }
 
     private GridPane getGrid() {
         GridPane grid = new GridPane();
@@ -115,6 +153,8 @@ public class GameView extends View{
                 }
             }
         }
+        c.setGRID_SIZE_X(game_Width);
+        c.setGRID_SIZE_Y(game_Heigth);
         return grid;
     }
     private Pane GetWallPane(int i, int x) {

@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 
@@ -18,13 +19,11 @@ public class Model extends Observable{
     public final static double MAX_PIXEL = 13.75;
     public final static double MIN_PIXEL = 13.75;
     public final static double PREF_PIXEL = 13.75;
-    public static double GRID_SIZE_X = LG;
-    public static double GRID_SIZE_Y = HG;
+    public static double GRID_SIZE_X ;
+    public static double GRID_SIZE_Y;
 
-    public static List<Model> liste;
 
     public Model(){
-        //liste.add(this);
     }
     public static void setGRID_SIZE_X(double x){
         Model.GRID_SIZE_X = x;
