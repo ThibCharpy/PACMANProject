@@ -19,6 +19,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -51,35 +53,35 @@ public class GameView extends View{
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        BorderPane root = new BorderPane();
+        BorderPane maze = new BorderPane();
         StackPane stack = new StackPane();
-        Label top_info = new Label("Get_score                                               Get_A_Life");
-
-        Button b1 = new Button("<");
-        GridPane g = new GridPane();
-        root.setBottom(g);
-        g.setAlignment(Pos.CENTER);
-        g.add(b1, 0, 1);
-        GridPane grid = getGrid();
         stack.setMinWidth(game_Width);
         stack.setMinHeight(game_Heigth);
         stack.setMaxWidth(game_Width);
         stack.setMaxHeight(game_Heigth);
+        Label top_info = new Label("Get_score                                               Get_A_Life");
 
+        GridPane grid = getGrid();
         stack.getChildren().add(grid);
-        root.setTop(top_info);
-        root.setCenter(stack);
-        c.startGame();
+        maze.setTop(top_info);
+        maze.setCenter(stack);
 
+        c.startGame();
         stack = c.implementPane(stack);
         System.out.println(stack.getChildren().size());
         c.getMonsterPosition(stack);
 
-        root.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent event) {
-                System.out.println("keyPressed");
-                c.pacmanMovement(event.getCode());
-            }
+        StackPane root = new StackPane();
+        Rectangle background_root = new Rectangle(getWindow_Width(), getWindow_Height());
+        background_root.setFill(Color.BLACK);
+        root.getChildren().add(background_root);
+        root.getChildren().add(maze);
+
+        Scene scene = new Scene(root, 300, 250);
+
+        scene.setOnKeyPressed(event -> {
+            System.out.println("keyPressed");
+            c.pacmanMovement(event.getCode());
         });
 
         Timeline timeline = new Timeline(new KeyFrame(
@@ -96,11 +98,10 @@ public class GameView extends View{
         Timeline timeline2 = new Timeline(new KeyFrame(
                 Duration.millis(150),
                 ae -> {
-                   // c.updateImage();
+                    // c.updateImage();
                 }));
         timeline2.setCycleCount(Animation.INDEFINITE);
         timeline2.play();
-        Scene scene = new Scene(root, 300, 250);
 
         stage.setScene(scene);
         stage.show();
@@ -495,3 +496,49 @@ public class GameView extends View{
     }
 
 }
+
+
+/*    GridPane g = new GridPane();
+root.setBottom(g);
+        g.setAlignment(Pos.CENTER);
+        g.add(b1, 0, 1);
+        GridPane grid = getGrid();
+        stack.setMinWidth(game_Width);
+        stack.setMinHeight(game_Heigth);
+        stack.setMaxWidth(game_Width);
+        stack.setMaxHeight(game_Heigth);
+
+        stack.getChildren().add(grid);
+        root.setTop(top_info);
+        root.setCenter(stack);
+        c.startGame();
+
+        stack = c.implementPane(stack);
+        System.out.println(stack.getChildren().size());
+        c.getMonsterPosition(stack);
+
+        root.setOnKeyPressed(new EventHandler<KeyEvent>() {
+public void handle(KeyEvent event) {
+        System.out.println("keyPressed");
+        c.pacmanMovement(event.getCode());
+        }
+        });
+
+        Timeline timeline = new Timeline(new KeyFrame(
+        Duration.millis(12),
+        ae -> {
+        c.movement();
+        c.getMonsterPosition();
+        updateMap(grid);
+        //top_info.setText("Score :" + pacman.getStringScore());
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
+        Timeline timeline2 = new Timeline(new KeyFrame(
+        Duration.millis(150),
+        ae -> {
+        // c.updateImage();
+        }));
+        timeline2.setCycleCount(Animation.INDEFINITE);
+        timeline2.play();*/
