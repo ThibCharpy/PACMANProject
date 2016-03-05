@@ -1,11 +1,16 @@
 package Model;
 
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 /**
- * Created by thibaultgeoffroy on 25/02/2016.
+ * Classe contenant une methode static pour la recherche du plus court chemin
+ * entre deux intersections
+ *
+ * @author Antoine
  */
 public class RechercheChemin {
+
     static int nbNodeParcouru = 0; // outils de test
     static int nbCheminAlt = 0;
 
@@ -35,7 +40,6 @@ public class RechercheChemin {
      */
     private static void Explore(Node n) {
         n.noeud.closed = true;
-        nbNodeParcouru++;
         for (Node voisin : n.noeud.getVoisin()) {
             if (voisin.noeud.isEnd) {
                 if (!voisin.noeud.closed) {
@@ -44,7 +48,7 @@ public class RechercheChemin {
                     voisin.noeud.closed = true;
                     return;
                 } else if (voisin.noeud.Heuristiccost > n.noeud.Heuristiccost + voisin.distance) {
-                    nbCheminAlt++; // Nombre de chemin different menant a la solution, pas tous optimaux
+
                     voisin.noeud.bestHeuristicParent = n.noeud;
                     voisin.noeud.Heuristiccost = n.noeud.Heuristiccost + voisin.distance;
                     return;
@@ -69,14 +73,32 @@ public class RechercheChemin {
      * @param objectif node d'arrivée de l'algorithme de recherche
      * @return Une liste contenant le chemin a suivre pour arriver à l'objectif
      */
-    private static LinkedList<NoeudGraphe> ExtractPath(Node depart, Node objectif) {
+    private static NoeudGraphe ExtractPath(Node depart, Node objectif) {
         LinkedList<NoeudGraphe> chemin = new LinkedList<>();
         NoeudGraphe n = objectif.noeud;
-        while (n != depart.noeud) {
+        while (n != depart.noeud && n.bestHeuristicParent != null) {
             chemin.addFirst(n);
             n = n.bestHeuristicParent;
         }
-        return chemin;
+        if(chemin.size() != 0){
+        return chemin.getFirst();
+        }else{
+            return depart.noeud;
+        }
+    }
+
+    private static Node setDepart(Node depart, Ghost actual) {
+        Node remember = null;
+        if (actual.lastVisited != null && depart.noeud.getVoisin().size() > 1) {
+            for (int i = 0; i < depart.noeud.getVoisin().size(); i++) {
+                if (depart.noeud.getVoisin().get(i).compare(actual.lastVisited)) {
+                    remember = depart.noeud.getVoisin().get(i);
+                    depart.noeud.getVoisin().remove(i);
+                    return remember;
+                }
+            }
+        }
+        return remember;
     }
 
     /**
@@ -87,17 +109,24 @@ public class RechercheChemin {
      * @param objectif node d'arrivée pour de l'algorithme de recherche
      * @return
      */
-    public static LinkedList<NoeudGraphe> DiscoverPath(Node depart, Node objectif, Ghost actual) {
+    public static NoeudGraphe DiscoverPath(Node depart, Node objectif, Ghost actual) {
         resetInfoGraphe();
         depart.noeud.isStart = true;
         objectif.noeud.isEnd = true;
-        Node remember = ExploreFirstIt(depart, actual);
-        Explore(depart);
-        LinkedList<NoeudGraphe> solution = ExtractPath(depart, objectif);
-        if (remember != null) {
-            depart.noeud.getVoisin().add(remember);
+        if (depart.compare(objectif)) {
+            actual.lastVisited = depart;
+            return depart.noeud.getVoisin().getFirst().noeud;
+        } else {
+            Node memory = setDepart(depart, actual);
+            Explore(depart);
+
+            NoeudGraphe solution = ExtractPath(depart, objectif);
+            if (memory != null) {
+                depart.noeud.getVoisin().add(memory);
+            }
+            actual.lastVisited = depart;
+            return solution;
         }
-        return solution;
     }
 
     /**
@@ -111,23 +140,6 @@ public class RechercheChemin {
                 voisin.noeud.resetGrapheInfo();
             }
         }
-    }
-
-    private static Node ExploreFirstIt(Node depart, Ghost actual) {
-        int cmpt = 0;
-        Node remember = null;
-        if (actual.lastVisited != null) {
-            for (Node element : depart.noeud.getVoisin()) {
-                if (element.compare(actual.lastVisited)) {
-                    remember = element;
-                    depart.noeud.getVoisin().remove(cmpt);
-                    return remember;
-                }
-                cmpt++;
-            }
-        }
-
-        return remember;
     }
 
 }

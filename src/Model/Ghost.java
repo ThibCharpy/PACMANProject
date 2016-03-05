@@ -72,162 +72,7 @@ public class Ghost extends Monster{
     }
 
 
-    public void redBehavior(Pacman pac) {
-       /* int Pos_X_pac = getMonster_Case_X(pac.c.getLayoutX());
-        int Pos_Y_pac = getMonster_Case_Y(pac.c.getLayoutY());*/
-        int Pos_X_Gho = getMonster_Case_X(x);
-        int Pos_Y_Gho = getMonster_Case_Y(y);
-        Node GhostPos = ListOfIntersection.getIntersection(Pos_X_Gho, Pos_Y_Gho);
-        LinkedList<NoeudGraphe> result;
-        if (GhostPos != this.lastVisited) {
-            switch (this.state) {
-                case "idle":
-                    Node BlinkyPos = ListOfIntersection.getIntersection(20, 4);
-                    if (!GhostPos.compare(BlinkyPos)) {
-                        result = RechercheChemin.DiscoverPath(GhostPos, BlinkyPos, this);
-                        this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                        this.lastVisited = GhostPos;
-                    }
-                    break;
-                case "chase":
-                    int Pos_X_pac = getMonster_Case_X(pac.x);
-                    int Pos_Y_pac = getMonster_Case_Y(pac.y);
-                    Node PacPos = ListOfIntersection.getIntersection(Pos_X_pac, Pos_Y_pac);
-                    if (ListOfIntersection.testIntersection(Pos_X_Gho, Pos_Y_Gho) != null) {
-                        result = RechercheChemin.DiscoverPath(GhostPos, PacPos, this);
-                        if (!result.isEmpty()) {
-                            this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                            this.lastVisited = GhostPos;
-                        }
-
-                    }
-                    break;
-                case "fear":
-                    break;
-            }
-        }
-
-    }
-
-    public void orangeBehavior(Pacman pac) {
-        int Pos_X_Gho = getMonster_Case_X(this.x);
-        int Pos_Y_Gho = getMonster_Case_Y(this.y);
-        Node GhostPos = ListOfIntersection.getIntersection(Pos_X_Gho, Pos_Y_Gho);
-        Node ClydePos1 = ListOfIntersection.getIntersection(3, 24);
-        Node ClydePos2 = ListOfIntersection.getIntersection(3, 22);
-        LinkedList<NoeudGraphe> result;
-        if (GhostPos != this.lastVisited) {
-            switch (this.state) {
-                case "idle":
-                    if (!GhostPos.compare(ClydePos1)) {
-                        result = RechercheChemin.DiscoverPath(GhostPos, ClydePos1, this);
-                        this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                        this.lastVisited = GhostPos;
-                    } else if (!GhostPos.compare(ClydePos2)) {
-                        result = RechercheChemin.DiscoverPath(GhostPos, ClydePos1, this);
-                        this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                        this.lastVisited = GhostPos;
-                    }
-                    break;
-                case "chase":
-                    int Pos_X_pac = getMonster_Case_X(pac.x);
-                    int Pos_Y_pac = getMonster_Case_Y(pac.y);
-                    Node PacPos = ListOfIntersection.getIntersection(Pos_X_pac, Pos_Y_pac);
-                    if (ListOfIntersection.testIntersection(Pos_X_Gho, Pos_Y_Gho) != null) {
-                        result = RechercheChemin.DiscoverPath(GhostPos, PacPos, this);
-                        if (!result.isEmpty() && result.size() > 3) {
-                            this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                            this.lastVisited = GhostPos;
-                        } else if ((!result.isEmpty() && result.size() <= 2)) {
-                            if (!GhostPos.compare(ClydePos1)) {
-                                result = RechercheChemin.DiscoverPath(GhostPos, ClydePos1, this);
-                                this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                                this.lastVisited = GhostPos;
-                            } else if (!GhostPos.compare(ClydePos2)) {
-                                result = RechercheChemin.DiscoverPath(GhostPos, ClydePos1, this);
-                                this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                                this.lastVisited = GhostPos;
-                            }
-                        }
-                    }
-                    break;
-                case "fear":
-
-                    break;
-            }
-        }
-    }
-
-    public void pinkBehavior(Pacman pac) {
-        int Pos_X_Gho = getMonster_Case_X(this.x);
-        int Pos_Y_Gho = getMonster_Case_Y(this.y);
-        Node GhostPos = ListOfIntersection.getIntersection(Pos_X_Gho, Pos_Y_Gho);
-        LinkedList<NoeudGraphe> result;
-        if (GhostPos != this.lastVisited) {
-            switch (this.state) {
-                case "idle":
-                    Node PinkyPos = ListOfIntersection.getIntersection(3, 4);
-                    if (!GhostPos.compare(PinkyPos)) {
-                        result = RechercheChemin.DiscoverPath(GhostPos, PinkyPos, this);
-                        this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                        this.lastVisited = GhostPos;
-                    }
-                    break;
-                case "chase":
-                    int Pos_X_pac = getMonster_Case_X(pac.x);
-                    int Pos_Y_pac = getMonster_Case_Y(pac.y);
-                    Node PacPos = ListOfIntersection.getIntersection(Pos_X_pac, Pos_Y_pac);
-                    Node Pacp = PacPos.noeud.getVoisin().get((int) (Math.random() * PacPos.noeud.getVoisin().size()));
-                    if (ListOfIntersection.testIntersection(Pos_X_Gho, Pos_Y_Gho) != null) {
-                        result = RechercheChemin.DiscoverPath(GhostPos, Pacp, this);
-                        if (!result.isEmpty()) {
-                            this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                            this.lastVisited = GhostPos;
-                        }
-                    }
-                    break;
-                case "fear":
-
-                    break;
-            }
-        }
-    }
-
-    public void blueBehavior(Pacman pac) {
-        int Pos_X_Gho = getMonster_Case_X(pac.x);
-        int Pos_Y_Gho = getMonster_Case_Y(pac.y);
-        Node GhostPos = ListOfIntersection.getIntersection(Pos_X_Gho, Pos_Y_Gho);
-        LinkedList<NoeudGraphe> result;
-        if (GhostPos != this.lastVisited) {
-            switch (this.state) {
-                case "idle":
-                    Node InkyPos = ListOfIntersection.getIntersection(20, 24);
-                    if (!GhostPos.compare(InkyPos)) {
-                        result = RechercheChemin.DiscoverPath(GhostPos, InkyPos, this);
-                        this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                        this.lastVisited = GhostPos;
-                    }
-                    break;
-                case "chase":
-                    int Pos_X_pac = getMonster_Case_X(pac.x);
-                    int Pos_Y_pac = getMonster_Case_Y(pac.y);
-                    Node PacPos = ListOfIntersection.getIntersection(Pos_X_pac, Pos_Y_pac);
-                    if (ListOfIntersection.testIntersection(Pos_X_Gho, Pos_Y_Gho) != null) {
-                        result = RechercheChemin.DiscoverPath(GhostPos, PacPos, this);
-                        if (!result.isEmpty()) {
-                            this.newDirection = determineDirection(GhostPos.noeud, result.getFirst());
-                            this.lastVisited = GhostPos;
-                        }
-                    }
-                    break;
-                case "fear":
-
-                    break;
-            }
-        }
-    }
-
-    private int determineDirection(NoeudGraphe start, NoeudGraphe goal) {
+    public int determineDirection(NoeudGraphe start, NoeudGraphe goal) {
         if (start.getCoordX() < goal.getCoordX() && start.getCoordY() == goal.getCoordY()) {
             return 4; // Droite
         }
@@ -242,5 +87,11 @@ public class Ghost extends Monster{
         }
         return this.direction;
     }
+
+    public int mesureDistance(Node GhostPos, Node PacPos) {
+        return (Math.abs(PacPos.noeud.getCoordX() - GhostPos.noeud.getCoordX()) + Math.abs(PacPos.noeud.getCoordY() - GhostPos.noeud.getCoordY()));
+    }
+
+  
 
 }
