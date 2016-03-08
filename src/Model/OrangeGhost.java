@@ -8,6 +8,17 @@ public class OrangeGhost extends Ghost {
         super(x, y, size, speed, direction);
     }
     
+    
+    /**
+     * Détermine la cible du fantome en fonction de son etat actuel, lorsqu'il arrive a une intersection il effectue les choix suivant :
+     *      - En mode idle, il va se diriger vers le coin inférieur gauche et effectuer une ronde
+     *      - En mode chase, il va utilisé la méthode mesure distance entre sa position et celle du pacman, si il est trop proche ( moins de 8 case ) il va retourner vers le coin inférieur gauche, sinon il va suivre pacman.
+     *      - En mode fear, il choisi aléatoirement une direction.
+     * 
+     * Cette fonction retourne la direction a prendre a l'intersection actuelle du fantome, elle est lancée seulement si le fantome est sur une intersection.
+     * @param pac Instance de pacman 
+     * 
+     */
     public void orangeBehavior(Pacman pac) {
         int Pos_X_Gho = getMonster_Case_X(this.x);
         int Pos_Y_Gho = getMonster_Case_Y(this.y);

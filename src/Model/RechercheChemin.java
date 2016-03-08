@@ -71,7 +71,7 @@ public class RechercheChemin {
      *
      * @param depart node de départ de l'algorithme de recherche
      * @param objectif node d'arrivée de l'algorithme de recherche
-     * @return Une liste contenant le chemin a suivre pour arriver à l'objectif
+     * @return Renvoi la prochaine intersection à atteindre pour arriver à cet objectif
      */
     private static NoeudGraphe ExtractPath(Node depart, Node objectif) {
         LinkedList<NoeudGraphe> chemin = new LinkedList<>();
@@ -87,6 +87,13 @@ public class RechercheChemin {
         }
     }
 
+    
+    /**
+     * Change le noeud de départ de l'algorithme en supprimant la node précédement visitée par une entité ( pour évité un retour sur ses pas )
+     * @param depart noeud de départ de l'algorithme.
+     * @param actual Insance de l'entité utilisant l'algorithme.
+     * @return le noeud retiré au noeud de départ ( pour pouvoir le réintégré a la fin de l'exécution de l'algorithme )
+     */
     private static Node setDepart(Node depart, Ghost actual) {
         Node remember = null;
         if (actual.lastVisited != null && depart.noeud.getVoisin().size() > 1) {
@@ -107,7 +114,7 @@ public class RechercheChemin {
      *
      * @param depart node de départ pour de l'algorithme de recherche
      * @param objectif node d'arrivée pour de l'algorithme de recherche
-     * @return
+     * @return la prochaine intersection a atteindre pour arrivée a l'objectif ( progression pas a pas vers la solution )
      */
     public static NoeudGraphe DiscoverPath(Node depart, Node objectif, Ghost actual) {
         resetInfoGraphe();

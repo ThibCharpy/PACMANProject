@@ -66,13 +66,27 @@ public class Pacman extends Monster {
         return true;
     }
 
+    /**
+     * Fonction utilisée pour l'ingestion des gommes par pacman, lorsqu'il est sur une case avec une gomme
+     * on utilise un MapChangeRequest pour demander un changement de sprite de cette case.
+     * On l'ajoute a la changeQueue qui représente les changements a apporté a la view et on change le score.
+     * @param Pos_X coordonnée X du pacman
+     * @param Pos_Y coordonnée Y du pacman 
+     */
     public void EatGomme(double Pos_X, double Pos_Y){
         setInfoCase(Pos_X, Pos_Y, 0);
         MapChangeRequest gommeEated = new MapChangeRequest(getMonster_Case_Y(Pos_Y), getMonster_Case_X(Pos_X), "/Sprites/empty.png");
         ChangeQueue.add(gommeEated);
         updateScore(10);
     }
-
+    
+     /**
+     * Fonction utilisée pour l'ingestion des gommes par pacman, lorsqu'il est sur une case avec une gomme
+     * on utilise un MapChangeRequest pour demander un changement de sprite de cette case.
+     * On l'ajoute a la changeQueue qui représente les changements a apporté a la view et on change le score.
+     * @param Pos_X coordonnée X du pacman
+     * @param Pos_Y coordonnée Y du pacman 
+     */
     public void EatBigGomme(double Pos_X, double Pos_Y){
         setInfoCase(Pos_X, Pos_Y, 0);
         MapChangeRequest BiggommeEated = new MapChangeRequest(getMonster_Case_Y(Pos_Y), getMonster_Case_X(Pos_X), "/Sprites/empty.png");

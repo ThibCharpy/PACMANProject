@@ -71,7 +71,12 @@ public class Ghost extends Monster{
         return true;
     }
 
-
+    /**
+     * Méthode utilisé pour déterminé la direction entre deux intersections( une de depart et une d'arrivé ) situées sur la même ligne ou colonne 
+     * @param start Intersection de depart
+     * @param goal Intersection d'arrivée
+     * @return un entier relatif (meme que pour la direction des monstres) à la direction a prendre pour aller de start a goal.
+     */
     public int determineDirection(NoeudGraphe start, NoeudGraphe goal) {
         if (start.getCoordX() < goal.getCoordX() && start.getCoordY() == goal.getCoordY()) {
             return 4; // Droite
@@ -88,6 +93,12 @@ public class Ghost extends Monster{
         return this.direction;
     }
 
+    /**
+     * Mesure la distance entre deux intersections 
+     * @param GhostPos intersection de depart
+     * @param PacPos intersection d'arrivée
+     * @return un entier représentant la distance entre deux intersection ( en nombre de case du tableau )
+     */
     public int mesureDistance(Node GhostPos, Node PacPos) {
         return (Math.abs(PacPos.noeud.getCoordX() - GhostPos.noeud.getCoordX()) + Math.abs(PacPos.noeud.getCoordY() - GhostPos.noeud.getCoordY()));
     }

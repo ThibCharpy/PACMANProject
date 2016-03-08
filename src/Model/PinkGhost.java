@@ -8,6 +8,14 @@ public class PinkGhost extends Ghost {
         super(x, y, size, speed, direction);
     }
     
+    /**
+     * Méthode utilisée pour essayer de prédir la destination du pacman.
+     *      En fonction de la direction actuelle du pacman, on trouve la prochaine intersection dans cette direction.
+     *      En itérant dans le tableau dans la direction fournie par pacman, on retourne la premiere intersection trouvée.
+     * @param PacPos posiion du pacman, ou intersection la plus proche si il n'est pas sur une intersection.
+     * @param direction direction actuelle du pacman
+     * @return la prochaine intersection sur le chemin du pacman, ou sa position actuelle si il n'y en a pas.
+     */
     public Node findPacmanDestination(Node PacPos, int direction) {
         NoeudGraphe found = null;
         int cmpt = 1;
@@ -48,6 +56,16 @@ public class PinkGhost extends Ghost {
         }
     }
     
+   /**
+     * Détermine la cible du fantome en fonction de son etat actuel, lorsqu'il arrive a une intersection il effectue les choix suivant :
+     *      - En mode idle, il va se diriger vers le coin supérieur gauche et effectuer une ronde
+     *      - En mode chase, il va utilisé la findPacmanDestination pour détérminer sa cible, une fois en partant de la position du pacman, puis de la position déterminée précédement. Si celle ci est null, on utilise la précedente, si elle est null également, il retourne vers le coin supérieur gauche.
+     *      - En mode fear, il choisi aléatoirement une direction.
+     * 
+     * Cette fonction retourne la direction a prendre a l'intersection actuelle du fantome, elle est lancée seulement si le fantome est sur une intersection.
+     * @param pac Instance de pacman 
+     * 
+     */
     public void pinkBehavior(Pacman pac) {
         int Pos_X_Gho = getMonster_Case_X(this.x);
         int Pos_Y_Gho = getMonster_Case_Y(this.y);
