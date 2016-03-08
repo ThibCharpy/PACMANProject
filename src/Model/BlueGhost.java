@@ -42,7 +42,6 @@ public class BlueGhost extends Ghost {
         return null;
     }
     
-    
     /**
      * Détermine la cible du fantome en fonction de son etat actuel, lorsqu'il arrive a une intersection il effectue les choix suivant :
      *      - En mode idle, il va se diriger vers le coin inférieur droit et effectuer une ronde
@@ -53,7 +52,8 @@ public class BlueGhost extends Ghost {
      * @param pac Instance de pacman
      * @param red Instance du fantome rouge
      */
-    public void blueBehavior(Pacman pac, Ghost red) {
+
+    public void behavior(Pacman pac, Ghost red) {
         int Pos_X_Gho = getMonster_Case_X(this.x);
         int Pos_Y_Gho = getMonster_Case_Y(this.y);
         Node GhostPos = ListOfIntersection.getIntersection(Pos_X_Gho, Pos_Y_Gho);

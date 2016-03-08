@@ -18,7 +18,7 @@ public class RedGhost extends Ghost {
      * @param pac Instance de pacman 
      * 
      */
-    public void redBehavior(Pacman pac) {
+    public void behavior(Pacman pac, Ghost red) {
         int Pos_X_Gho = getMonster_Case_X(this.x);
         int Pos_Y_Gho = getMonster_Case_Y(this.y);
         Node GhostPos = ListOfIntersection.getIntersection(Pos_X_Gho, Pos_Y_Gho);

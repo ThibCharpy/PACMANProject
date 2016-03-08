@@ -204,80 +204,30 @@ public class GameController extends  Controller {
         }
     }
 
-    /*public void updateImage() {
-        ImageView imgv = new ImageView();
+    public void updateImage() {
+        ImageView imgv;
+        timing++;
         for( int i = 0; i<5 ; i++){
-            switch (getMonsterType(list.get(p[i]))) {
-                case 0:
-                    p[i].getChildren().remove(0);
-                    p[i].getChildren().add(changePac);
-                    break;
-                case 1:
-                    changeRed();
-                    break;
-                case 2:
-                    changePink();
-                    break;
-                case 3:
-                    changeBlue();
-                    break;
-                case 4:
-                    changeOrange();
-                    break;
-                default:
-                    return null;
-            }
+            imgv = new ImageView();
+            imgv.setImage(SpriteMonster.getPicture(getMonsterType(list.get(p[i])) , list.get(p[i]).direction, timing));
+
+            imgv.setManaged(true);
+            imgv.fitWidthProperty().bind(p[i].widthProperty());
+            imgv.fitHeightProperty().bind(p[i].heightProperty());
+            System.out.println(p[i].getChildren().size());
+            p[i].getChildren().remove(0);
+            System.out.println(p[i].getChildren().size());
+            p[i].getChildren().add(imgv);
         }
     }
 
-    private void changePac(Monster m) {
-        switch (m.direction) {
-            case 0:
-                return changeImage(0);
-                break;
-            case 1:
-                switch (timing % 2) {
-                    case 0:
-                        changeImage(6);
-                        break;
-                    case 1:
-                        changeImage(7);
-                        break;
-
-                }
-                break;
-            case 2:
-                switch (timing % 2) {
-                    case 0:
-                        changeImage(0);
-                        break;
-                    case 1:
-                        changeImage(1);
-                        break;
-                }
-                break;
-            case 3:
-                switch (timing % 2) {
-                    case 0:
-                        changeImage(2);
-                        break;
-                    case 1:
-                        changeImage(3);
-                        break;
-                }
-                break;
-            case 4:
-                switch (timing % 2) {
-                    case 0:
-                        changeImage(4);
-                        break;
-                    case 1:
-                        changeImage(5);
-                        break;
-                }
-                break;
-
+    public void ghostBehavior() {
+        for( int i = 1; i<5 ; i++){
+            list.get(p[i]).behavior((Pacman)list.get(p[0]) , (Ghost)list.get(p[1]));
         }
-        timing++;
-    }*/
+    }
+
+    public void initialize_list() {
+        ListOfIntersection.initialiseList();
+    }
 }

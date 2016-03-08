@@ -98,7 +98,8 @@ public class GameView extends View{
         Timeline timeline2 = new Timeline(new KeyFrame(
                 Duration.millis(150),
                 ae -> {
-                    // c.updateImage();
+                    c.updateImage();
+                    c.ghostBehavior();
                 }));
         timeline2.setCycleCount(Animation.INDEFINITE);
         timeline2.play();
@@ -156,6 +157,7 @@ public class GameView extends View{
         }
         c.setGRID_SIZE_X(game_Width);
         c.setGRID_SIZE_Y(game_Heigth);
+        c.initialize_list();
         return grid;
     }
     private Pane GetWallPane(int i, int x) {

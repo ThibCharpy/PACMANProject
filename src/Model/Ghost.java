@@ -1,82 +1,38 @@
 package Model;
 
+import Controller.GameController;
+
 import java.util.LinkedList;
 
 /**
  * Created by thibaultgeoffroy on 25/02/2016.
  */
-public class Ghost extends Monster{
+public abstract class Ghost extends Monster{
     public Node lastVisited;
     String state;
 
 
     public Ghost(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
+        state = "chase";
+        this.lastVisited = ListOfIntersection.getIntersection(10, 18);
     }
 
     @Override
-    boolean move_is_possible() {
-        int pos_X = (int) x;
-        int pos_Y = (int) y;
-        int pos_X2 = pos_X;
-        int pos_Y2 = pos_Y;
-        switch (direction) {
-            case 1:
-                pos_Y -= this.speed;
-                pos_Y2 -= this.speed;
-                pos_X2 += width;
-
-                break;
-            case 2:
-
-                pos_Y += this.speed + height;
-                pos_Y2 += this.speed + height;
-                pos_X2 += width;
-
-                break;
-            case 3:
-
-                pos_X -= this.speed;
-                pos_X2 -= this.speed;
-                pos_Y2 += height;
-
-                break;
-            case 4:
-
-                pos_X += this.speed + width;
-                pos_X2 += this.speed + width;
-                pos_Y2 += height;
-
-                break;
-            case 5:
-                return false;
-            default:
-                break;
-        }
-
-        /*hitzone.setX(c.getLayoutX());
-        hitzone.setY(c.getLayoutY());*/
-
-        /*System.out.println( x+" " + y);
-        System.out.println(hitzone.getHeight() + "   " + hitzone.getWidth());
-        System.out.println(hitzone.getX() + "    " + hitzone.getY());*/
-        /*if (hitzone.contains(x, y)) {
-
-        }*/
-        if (getInfoCase(pos_X, pos_Y) == 1 || getInfoCase(pos_X2, pos_Y2) == 1) {
-            this.direction = 0;
-            return false;
-        }
-
-        return true;
+    public void interact() {
+        return;
     }
 
+
+    public abstract void behavior(Pacman pac, Ghost red);
+
     /**
-     * Méthode utilisé pour déterminé la direction entre deux intersections( une de depart et une d'arrivé ) situées sur la même ligne ou colonne 
+     * Méthode utilisé pour déterminé la direction entre deux intersections( une de depart et une d'arrivé ) situées sur la même ligne ou colonne
      * @param start Intersection de depart
      * @param goal Intersection d'arrivée
      * @return un entier relatif (meme que pour la direction des monstres) à la direction a prendre pour aller de start a goal.
      */
+
     public int determineDirection(NoeudGraphe start, NoeudGraphe goal) {
         if (start.getCoordX() < goal.getCoordX() && start.getCoordY() == goal.getCoordY()) {
             return 4; // Droite

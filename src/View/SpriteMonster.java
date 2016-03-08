@@ -86,4 +86,63 @@ public class SpriteMonster {
         pacsprites[8] =  new Image("/Sprites/pacman6.png");
         return pacsprites;
     }
+
+    public static  Image getPicture(int i , int direction , int timing){
+        switch  (i){
+            case 0:
+                return getSprite(pacsprites , direction , timing);
+            case 1:
+                return getSprite(redsprites , direction , timing);
+            case 2:
+                return getSprite(bluesprites , direction , timing);
+            case 3:
+                return getSprite(pinksprites , direction , timing);
+            case 4:
+                return getSprite(orangesprites , direction , timing);
+        }
+
+        return null;
+    }
+
+    private static Image getSprite(Image[] sprites , int direction, int timing) {
+        switch (direction){
+            case 0:
+                return sprites[0];
+            case 1:
+                switch(timing%2){
+                    case 0:
+                        return sprites[0];
+                    case 1:
+                        return sprites[2];
+
+                }
+                break;
+            case 2:
+                switch(timing%2){
+                    case 0:
+                        return sprites[0];
+                    case 1:
+                        return sprites[4];
+                }
+                break;
+            case 3:
+                switch(timing%2){
+                    case 0:
+                        return sprites[0];
+                    case 1:
+                        return sprites[6];
+                }
+                break;
+            case 4:
+                switch(timing%2) {
+                    case 0:
+                        return sprites[0];
+                    case 1:
+                        return sprites[8];
+                }
+                break;
+
+        }
+        return null;
+    }
 }

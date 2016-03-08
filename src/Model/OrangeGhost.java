@@ -8,7 +8,6 @@ public class OrangeGhost extends Ghost {
         super(x, y, size, speed, direction);
     }
     
-    
     /**
      * Détermine la cible du fantome en fonction de son etat actuel, lorsqu'il arrive a une intersection il effectue les choix suivant :
      *      - En mode idle, il va se diriger vers le coin inférieur gauche et effectuer une ronde
@@ -19,7 +18,7 @@ public class OrangeGhost extends Ghost {
      * @param pac Instance de pacman 
      * 
      */
-    public void orangeBehavior(Pacman pac) {
+    public void behavior(Pacman pac, Ghost red) {
         int Pos_X_Gho = getMonster_Case_X(this.x);
         int Pos_Y_Gho = getMonster_Case_Y(this.y);
         Node GhostPos = ListOfIntersection.getIntersection(Pos_X_Gho, Pos_Y_Gho);

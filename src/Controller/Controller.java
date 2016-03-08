@@ -15,7 +15,4 @@ public class Controller {
     public Controller(View v) {
         this.v = v;
     }
-
-
-
 }
