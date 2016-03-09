@@ -53,6 +53,7 @@ public class BlueGhost extends Ghost {
      * @param red Instance du fantome rouge
      */
 
+    @Override
     public void behavior(Pacman pac, Ghost red) {
         int Pos_X_Gho = getMonster_Case_X(this.x);
         int Pos_Y_Gho = getMonster_Case_Y(this.y);
@@ -71,11 +72,10 @@ public class BlueGhost extends Ghost {
                         int Pos_X_pac = getMonster_Case_X(pac.x);
                         int Pos_Y_pac = getMonster_Case_Y(pac.y);
                         Node PacPos = ListOfIntersection.getIntersection(Pos_X_pac, Pos_Y_pac);
-                        if (ListOfIntersection.testIntersection(Pos_X_Gho, Pos_Y_Gho) != null) {
                             if (PacPos.noeud != null) {
                                 int Pos_X_red = getMonster_Case_X(red.x);
                                 int Pos_Y_red = getMonster_Case_Y(red.y);
-                                Node Objectif = getInkyTarget(Pos_X_pac, Pos_Y_pac, Pos_X_red, Pos_Y_red);
+                                Node Objectif = getInkyTarget(Pos_X_red, Pos_Y_red, Pos_X_pac, Pos_Y_pac);
                                 if (Objectif != null) {
                                     if (Objectif.noeud != null) {
                                         result = RechercheChemin.DiscoverPath(GhostPos, Objectif, this);
@@ -86,9 +86,23 @@ public class BlueGhost extends Ghost {
                                     this.newDirection = determineDirection(GhostPos.noeud, result);
                                 }
                             }
-                        }
+                        
                         break;
                     case "fear":
+                        int x;
+                        Node randomNode;
+                        if(GhostPos.noeud.voisins.size() > 1){                          
+                            x = (int) (Math.random()*GhostPos.noeud.voisins.size());
+                            randomNode = GhostPos.noeud.voisins.get(x);
+                        }else{
+                            randomNode = GhostPos.noeud.voisins.get(0);
+                        }
+                        result = RechercheChemin.DiscoverPath(GhostPos, randomNode, this);
+                        this.newDirection = determineDirection(GhostPos.noeud, result);
+                        break;
+                     case "eated" :
+                        result = RechercheChemin.DiscoverPath(GhostPos, this.PrisonCenter, this);
+                        this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                 }
             }

@@ -481,22 +481,14 @@ public class GameView extends View{
      * @param grid GridPane to change
      */
     private void updateMap(GridPane grid) {
-        while (!(Pacman.ChangeQueue.isEmpty())) {
-            MapChangeRequest change = (MapChangeRequest) Pacman.ChangeQueue.pop();
+        LinkedList ChangeQueue = c.getChangeQueue();
+        while (!(ChangeQueue.isEmpty())) {
+            MapChangeRequest change = (MapChangeRequest) ChangeQueue.pop();
             Pane pictureRegion = getPictureRegion(change.getSprite_change());
             grid.setConstraints(pictureRegion, change.getCase_col(), change.getCase_row());
             grid.add(pictureRegion, change.getCase_col(), change.getCase_row());
         }
     }
-
-    private void deleteNodeFromGridPane(GridPane gridPane, int col, int row) {
-        for (Node node : gridPane.getChildren()) {
-            if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
-                gridPane.getChildren().remove(node);
-            }
-        }
-    }
-
 }
 
 

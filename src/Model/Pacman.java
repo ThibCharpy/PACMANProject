@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class Pacman extends Monster {
 
 
-    public static LinkedList ChangeQueue;
+    public LinkedList ChangeQueue;
     private int score;
 
 

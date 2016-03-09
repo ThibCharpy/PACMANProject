@@ -42,6 +42,7 @@ public class ListOfIntersection {
     private static void addSpecialElements() { // Trouver une méthode de remplacement générique pour tout type de carte
         IntersectionList.add(new Node(new NoeudGraphe(2,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(9,14,"excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(11,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(13,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(20,14,"excpetion")));
     }
@@ -247,7 +248,7 @@ public class ListOfIntersection {
                     }
                     return new Node(found, cmpt);
                 case 3: // Cas Bas
-                    while (found == null && CoordX - cmpt > 0 && (Maze.plateau[CoordY - cmpt][CoordX]) != 1) {
+                    while (found == null && CoordY - cmpt > 0 && (Maze.plateau[CoordY - cmpt][CoordX]) != 1) {
                         found = testIntersection(CoordX, CoordY - cmpt);
                         cmpt++;
                     }

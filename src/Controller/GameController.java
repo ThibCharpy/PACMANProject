@@ -32,6 +32,12 @@ public class GameController extends  Controller {
          p = new Pane[5];
     }
 
+    public LinkedList getChangeQueue() {
+        Model m = list.get(p[0]);
+        return ((Pacman) m).ChangeQueue;
+
+    }
+	
     public static double getHG() {
         return Model.HG;
     }
@@ -43,13 +49,13 @@ public class GameController extends  Controller {
     public void startGame() {
         Pacman pacman = new Pacman(185, 363, 13, 1, 0);
         Pane pPacman = getMonsterPane(pacman);
-        RedGhost ghost = new RedGhost(200, 145, 12, 1, 0);
+        RedGhost ghost = new RedGhost(183, 240, 12, 1, 0);
         Pane pGhost = getMonsterPane(ghost);
-        OrangeGhost ghost2 = new OrangeGhost(140, 145, 12, 1, 0);
+        OrangeGhost ghost2 = new OrangeGhost(165, 254, 12, 1, 0);
         Pane pGhost2 = getMonsterPane(ghost2);
-        PinkGhost ghost3 = new PinkGhost(170, 145, 12, 1, 0);
+        PinkGhost ghost3 = new PinkGhost(220, 254, 12, 1, 0);
         Pane pGhost3 = getMonsterPane(ghost3);
-        BlueGhost ghost4 = new BlueGhost(190, 145, 12, 1, 0);
+        BlueGhost ghost4 = new BlueGhost(183, 254, 12, 1, 0);
         Pane pGhost4 = getMonsterPane(ghost4);
         list.put(pPacman , pacman);
         list.put(pGhost, ghost);

@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public abstract class Ghost extends Monster{
     public Node lastVisited;
     String state;
-
+    Node PrisonCenter = ListOfIntersection.getIntersection(11, 14);
 
     public Ghost(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);

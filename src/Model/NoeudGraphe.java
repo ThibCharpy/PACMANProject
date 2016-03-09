@@ -51,7 +51,7 @@ public class NoeudGraphe {
     /**
      * Liste de voisin de l'intersection
      */
-    private LinkedList<Node> voisins;
+    public LinkedList<Node> voisins;
 
     /**
      * Constructeur de NoeudGraphe, principalement utilisé pour crée des nodes principales
