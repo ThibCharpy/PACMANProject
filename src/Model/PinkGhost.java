@@ -85,18 +85,13 @@ public class PinkGhost extends Ghost {
                         Node PacPos = ListOfIntersection.getIntersection(Pos_X_pac, Pos_Y_pac);
                         if (PacPos.noeud != null) {
                             Node PP = findPacmanDestination(PacPos, pac.direction);
-                            Node PP1 = findPacmanDestination(PP, pac.direction);
-                            if (PP1.noeud != null) {
-                                result = RechercheChemin.DiscoverPath(GhostPos, PP1, this);
-                                this.newDirection = determineDirection(GhostPos.noeud, result);
-                            } else if (PP.noeud != null) {
+                            if (PP.noeud != null) {
                                 result = RechercheChemin.DiscoverPath(GhostPos, PP, this);
                                 this.newDirection = determineDirection(GhostPos.noeud, result);
                             } else {
                                 result = RechercheChemin.DiscoverPath(GhostPos, PacPos, this);
                                 this.newDirection = determineDirection(GhostPos.noeud, result);
-                            }
-                           
+                            }                         
                         }
                         break;
                     case "fear":

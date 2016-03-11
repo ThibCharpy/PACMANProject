@@ -3,6 +3,7 @@ package View;
 import Controller.GameController;
 import Model.MapChangeRequest;
 import Model.Maze;
+import Model.Model;
 import Model.Pacman;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -36,13 +37,32 @@ public class GameView extends View{
 
     private final double game_Width = 380;
     private final double game_Heigth = 525;
-
+    private Timeline timeline2;
+    private Timeline timeline;
+    private Stage stage_save;
     GameController c;
     public GameView() {
         super();
         c = new GameController(this);
     }
-
+    
+    public void checkRestartNeed(){
+        if(GameController.restartNeeded){
+            GameController.restartNeeded = false;
+            
+            for(int i = 0; i < 5; i ++){
+                Model m = c.list.get(c.p[i]);
+                m = null;
+                c.p[i] = null;
+                
+            }
+            c.list.clear();
+            timeline.stop();
+            timeline2.stop();
+            start(stage_save);
+        }
+    }
+    
     @Override
     public void start(Stage stage) {
         try {
@@ -52,7 +72,7 @@ public class GameView extends View{
         } catch (IOException ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        this.stage_save = stage;
         BorderPane maze = new BorderPane();
         StackPane stack = new StackPane();
         stack.setMinWidth(game_Width);
@@ -84,20 +104,21 @@ public class GameView extends View{
             c.pacmanMovement(event.getCode());
         });
 
-        Timeline timeline = new Timeline(new KeyFrame(
+        timeline = new Timeline(new KeyFrame(
                 Duration.millis(12),
                 ae -> {
                     c.movement();
                     c.getMonsterPosition();
-                    updateMap(grid);
+                    updateMap(grid);                  
                     //top_info.setText("Score :" + pacman.getStringScore());
                 }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
-        Timeline timeline2 = new Timeline(new KeyFrame(
+        timeline2 = new Timeline(new KeyFrame(
                 Duration.millis(150),
                 ae -> {
+                    this.checkRestartNeed();
                     c.updateImage();
                     c.ghostBehavior();
                 }));

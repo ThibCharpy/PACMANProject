@@ -16,7 +16,6 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         primaryStage.setTitle("PACMAN");
         View v = new HomeView();
         v.start(primaryStage);

@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 public class Maze {
 
     public static int[][] plateau;
+    public static int[][] save_plateau;
 
     /**
      * Compte le nombre de 1 qui se situe sur les cases voisines (non située en
@@ -70,6 +71,7 @@ public class Maze {
                 br.close();
             }
         }
+        save_plateau = plateau.clone();
     }
 
     /**

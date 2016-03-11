@@ -24,6 +24,7 @@ import java.util.Map;
  */
 public class GameController extends  Controller {
     public Map<Pane , Monster> list;
+    public static boolean restartNeeded = false;
     public Pane[] p;
     int timing = 0;
     public GameController(View v) {
@@ -35,7 +36,6 @@ public class GameController extends  Controller {
     public LinkedList getChangeQueue() {
         Model m = list.get(p[0]);
         return ((Pacman) m).ChangeQueue;
-
     }
 	
     public static double getHG() {
@@ -46,6 +46,7 @@ public class GameController extends  Controller {
         return Model.LG;
     }
 
+    
     public void startGame() {
         Pacman pacman = new Pacman(185, 363, 13, 1, 0);
         Pane pPacman = getMonsterPane(pacman);

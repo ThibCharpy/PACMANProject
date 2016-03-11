@@ -1,12 +1,12 @@
 package Model;
 
+import Controller.GameController;
 import java.util.LinkedList;
 
 /**
  * Created by thibaultgeoffroy on 25/02/2016.
  */
 public class Pacman extends Monster {
-
 
     public LinkedList ChangeQueue;
     private int score;
@@ -16,13 +16,19 @@ public class Pacman extends Monster {
         super(x, y, size, speed, direction);
         ChangeQueue = new LinkedList();
     }
-
+    
+    
+    @Override
     public void interact(){
-        if (getInfoCase(x+(width/2), y +(height/2)) == 3){ //|| getInfoCase(pos_X2 , pos_Y2) == 3){
-            EatBigGomme(x,y);
-        }
-        if (getInfoCase(x+(width/2), y +(height/2)) == 2){//getInfoCase(pos_X, pos_Y) == 2 || getInfoCase(pos_X2 , pos_Y2) == 2){
-            EatGomme(x,y);
+        if (FindNumberOfGomme() != 0) {
+            if (getInfoCase(x + (width / 2), y + (height / 2)) == 3) { //|| getInfoCase(pos_X2 , pos_Y2) == 3){
+                EatBigGomme(x, y);
+            }
+            if (getInfoCase(x + (width / 2), y + (height / 2)) == 2) {//getInfoCase(pos_X, pos_Y) == 2 || getInfoCase(pos_X2 , pos_Y2) == 2){
+                EatGomme(x, y);
+            }
+        } else {
+            GameController.restartNeeded = true;
         }
     }
 
@@ -30,7 +36,19 @@ public class Pacman extends Monster {
     public void behavior(Pacman pac, Ghost red) {
         return;
     }
-
+    
+    private int FindNumberOfGomme(){
+        int cmpt = 0;
+        for(int x = 0; x < Maze.plateau.length; x ++){
+            for (int i = 0; i < Maze.plateau[0].length; i++){
+                if(Maze.plateau[x][i] == 2 || Maze.plateau[x][i] == 3){
+                    cmpt++;
+                }
+            }
+        }
+        return cmpt;
+    }
+    
     /**
      * Fonction utilisée pour l'ingestion des gommes par pacman, lorsqu'il est sur une case avec une gomme
      * on utilise un MapChangeRequest pour demander un changement de sprite de cette case.
@@ -38,11 +56,12 @@ public class Pacman extends Monster {
      * @param Pos_X coordonnée X du pacman
      * @param Pos_Y coordonnée Y du pacman 
      */
-    public void EatGomme(double Pos_X, double Pos_Y){
+    private void EatGomme(double Pos_X, double Pos_Y){
         setInfoCase(Pos_X, Pos_Y, 0);
         MapChangeRequest gommeEated = new MapChangeRequest(getMonster_Case_Y(Pos_Y), getMonster_Case_X(Pos_X), "/Sprites/empty.png");
         ChangeQueue.add(gommeEated);
         updateScore(10);
+        
     }
     
      /**
@@ -52,7 +71,7 @@ public class Pacman extends Monster {
      * @param Pos_X coordonnée X du pacman
      * @param Pos_Y coordonnée Y du pacman 
      */
-    public void EatBigGomme(double Pos_X, double Pos_Y){
+    private void EatBigGomme(double Pos_X, double Pos_Y){
         setInfoCase(Pos_X, Pos_Y, 0);
         MapChangeRequest BiggommeEated = new MapChangeRequest(getMonster_Case_Y(Pos_Y), getMonster_Case_X(Pos_X), "/Sprites/empty.png");
         ChangeQueue.add(BiggommeEated);

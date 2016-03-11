@@ -25,7 +25,7 @@ public class HomeView extends View{
 
     final public static double menu_Width = 300;
     final public static double menu_Height = 475;
-
+    
     public HomeView(){
         super();
         btn_Score = new Button("Score");
@@ -34,18 +34,19 @@ public class HomeView extends View{
         hCtrl = new HomeController(this);
     }
 
+
+    
     @Override
     public void start(final Stage stage) {
         stage.setWidth(getWindow_Width());
         stage.setHeight(getWindow_Height());
-
-        final View gv = new GameView();
-        final View sv = new ScoreView("src/Model/score.txt");
-
-
+        
         double btn_Width = 250;
         double btn_Height = 475;
 
+        final View gv = new GameView();
+        final View sv = new ScoreView("src/Model/score.txt");
+        
         btn_Game.setMaxSize(btn_Width, btn_Height);
         btn_Game.setOnAction(event -> hCtrl.btn_Action(stage,gv));
 
