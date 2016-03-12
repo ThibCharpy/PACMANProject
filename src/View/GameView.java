@@ -2,23 +2,14 @@ package View;
 
 import Controller.GameController;
 import Model.MapChangeRequest;
-import Model.Maze;
 import Model.Model;
-import Model.Pacman;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -29,6 +20,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 
 /**
  * Created by thibault on 25/02/16.
@@ -39,6 +33,7 @@ public class GameView extends View{
     private final double game_Heigth = 525;
     private Timeline timeline2;
     private Timeline timeline;
+    private Timeline timeline3;
     private Stage stage_save;
     GameController c;
     public GameView() {
@@ -49,7 +44,7 @@ public class GameView extends View{
     public void checkRestartNeed(){
         if(GameController.restartNeeded){
             GameController.restartNeeded = false;
-            
+            c.soundLibrary.bool_background3 = false;
             for(int i = 0; i < 5; i ++){
                 Model m = c.list.get(c.p[i]);
                 m = null;
@@ -59,6 +54,8 @@ public class GameView extends View{
             c.list.clear();
             timeline.stop();
             timeline2.stop();
+            timeline3.stop();
+            c.soundLibrary.audio_background5.stop();
             start(stage_save);
         }
     }
@@ -72,6 +69,7 @@ public class GameView extends View{
         } catch (IOException ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
+        c.soundLibrary.play(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
         this.stage_save = stage;
         BorderPane maze = new BorderPane();
         StackPane stack = new StackPane();
@@ -109,8 +107,12 @@ public class GameView extends View{
                 ae -> {
                     c.movement();
                     c.getMonsterPosition();
-                    updateMap(grid);                  
-                    //top_info.setText("Score :" + pacman.getStringScore());
+            try {
+                updateMap(grid);
+                //top_info.setText("Score :" + pacman.getStringScore());
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
@@ -121,10 +123,18 @@ public class GameView extends View{
                     this.checkRestartNeed();
                     c.updateImage();
                     c.ghostBehavior();
+                    
                 }));
         timeline2.setCycleCount(Animation.INDEFINITE);
         timeline2.play();
 
+        timeline3 = new Timeline(new KeyFrame(
+                Duration.millis(290000),
+                ae -> {
+                    c.soundLibrary.playOverride(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
+                }));
+        timeline3.setCycleCount(Animation.INDEFINITE);
+        timeline3.play();
         stage.setScene(scene);
         stage.show();
 
@@ -501,10 +511,16 @@ public class GameView extends View{
      *
      * @param grid GridPane to change
      */
-    private void updateMap(GridPane grid) {
+    private void updateMap(GridPane grid) throws LineUnavailableException {
         LinkedList ChangeQueue = c.getChangeQueue();
-        while (!(ChangeQueue.isEmpty())) {
-            MapChangeRequest change = (MapChangeRequest) ChangeQueue.pop();
+        while (!(ChangeQueue.isEmpty())) {          
+            MapChangeRequest change = (MapChangeRequest) ChangeQueue.pop();  
+            if("Gomme".equals(change.getType())){
+                c.soundLibrary.play(c.soundLibrary.bool_eat_gomme, c.soundLibrary.audio_eat_gomme, 0.6);
+            }else if("BigGomme".equals(change.getType())){
+                c.soundLibrary.play(c.soundLibrary.bool_eat_gomme, c.soundLibrary.audio_eat_gomme, 0.6);
+                c.soundLibrary.stopAndPlay(c.soundLibrary.bool_alt_powermode, c.soundLibrary.audio_alt_powermode, 0.8);             
+            }
             Pane pictureRegion = getPictureRegion(change.getSprite_change());
             grid.setConstraints(pictureRegion, change.getCase_col(), change.getCase_row());
             grid.add(pictureRegion, change.getCase_col(), change.getCase_row());

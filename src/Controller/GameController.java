@@ -2,19 +2,13 @@ package Controller;
 
 import Model.*;
 import View.*;
-import javafx.scene.*;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -27,9 +21,11 @@ public class GameController extends  Controller {
     public static boolean restartNeeded = false;
     public Pane[] p;
     int timing = 0;
+    public SoundLibrary soundLibrary;
     public GameController(View v) {
         super(v);
         list = new HashMap<>();
+        soundLibrary = new SoundLibrary();
          p = new Pane[5];
     }
 
@@ -68,7 +64,7 @@ public class GameController extends  Controller {
         p[2] = pGhost2;
         p[3] = pGhost3;
         p[4] = pGhost4;
-
+        
     }
     public int sizeOfList() {
         return list.size();
