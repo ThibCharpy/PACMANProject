@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -34,6 +36,7 @@ public class GameView extends View{
     private Timeline timeline2;
     private Timeline timeline;
     private Timeline timeline3;
+    private Timeline timeline4;
     private Stage stage_save;
     GameController c;
     public GameView() {
@@ -60,6 +63,7 @@ public class GameView extends View{
         }
     }
     
+    
     @Override
     public void start(Stage stage) {
         try {
@@ -69,7 +73,7 @@ public class GameView extends View{
         } catch (IOException ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
-        c.soundLibrary.play(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
+        c.soundLibrary.play(c.soundLibrary.bool_introsong ,c.soundLibrary.audio_introsong, 0.65);
         this.stage_save = stage;
         BorderPane maze = new BorderPane();
         StackPane stack = new StackPane();
@@ -115,7 +119,7 @@ public class GameView extends View{
             }
                 }));
         timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+       
 
         timeline2 = new Timeline(new KeyFrame(
                 Duration.millis(150),
@@ -126,7 +130,7 @@ public class GameView extends View{
                     
                 }));
         timeline2.setCycleCount(Animation.INDEFINITE);
-        timeline2.play();
+        
 
         timeline3 = new Timeline(new KeyFrame(
                 Duration.millis(290000),
@@ -134,7 +138,18 @@ public class GameView extends View{
                     c.soundLibrary.playOverride(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
                 }));
         timeline3.setCycleCount(Animation.INDEFINITE);
-        timeline3.play();
+        
+        
+        timeline4 = new Timeline(new KeyFrame(
+                Duration.millis(4700),
+                ae -> {
+                    timeline3.play();
+                    timeline2.play();
+                    timeline.play();
+                    c.soundLibrary.playOverride(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
+                }));
+        timeline4.setCycleCount(0);
+        timeline4.play();
         stage.setScene(scene);
         stage.show();
 

@@ -48,9 +48,9 @@ public class GameController extends  Controller {
         Pane pPacman = getMonsterPane(pacman);
         RedGhost ghost = new RedGhost(183, 240, 12, 1, 0);
         Pane pGhost = getMonsterPane(ghost);
-        OrangeGhost ghost2 = new OrangeGhost(165, 254, 12, 1, 0);
+        OrangeGhost ghost2 = new OrangeGhost(155, 254, 12, 1, 0);
         Pane pGhost2 = getMonsterPane(ghost2);
-        PinkGhost ghost3 = new PinkGhost(220, 254, 12, 1, 0);
+        PinkGhost ghost3 = new PinkGhost(215, 254, 12, 1, 0);
         Pane pGhost3 = getMonsterPane(ghost3);
         BlueGhost ghost4 = new BlueGhost(183, 254, 12, 1, 0);
         Pane pGhost4 = getMonsterPane(ghost4);
