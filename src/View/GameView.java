@@ -90,7 +90,6 @@ public class GameView extends View{
 
         c.startGame();
         stack = c.implementPane(stack);
-        System.out.println(stack.getChildren().size());
         c.getMonsterPosition(stack);
 
         StackPane root = new StackPane();
@@ -111,9 +110,9 @@ public class GameView extends View{
                 ae -> {
                     c.movement();
                     c.getMonsterPosition();
+                    c.findContact();
             try {
                 updateMap(grid);
-                //top_info.setText("Score :" + pacman.getStringScore());
             } catch (LineUnavailableException ex) {
                 Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
             }

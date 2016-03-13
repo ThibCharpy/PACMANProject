@@ -16,7 +16,27 @@ public class Pacman extends Monster {
         super(x, y, size, speed, direction);
         ChangeQueue = new LinkedList();
     }
-    
+    @Override
+    public void startFear() {
+    }
+
+    @Override
+    public void startChase() {
+    }
+
+    @Override
+    public boolean afraid() {
+        return false;
+    }
+
+    @Override
+    public void startEaten() {
+    }
+
+    @Override
+    public boolean eaten() {
+        return false;
+    }
     
     @Override
     public void interact(){
@@ -74,6 +94,7 @@ public class Pacman extends Monster {
         setInfoCase(Pos_X, Pos_Y, 0);
         MapChangeRequest BiggommeEated = new MapChangeRequest(getMonster_Case_Y(Pos_Y), getMonster_Case_X(Pos_X), "/Sprites/empty.png", "BigGomme");
         ChangeQueue.add(BiggommeEated);
+        controller.beginFear();
         updateScore(25);
     }
     private void updateScore(int points){

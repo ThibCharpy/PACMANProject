@@ -2,13 +2,19 @@ package Controller;
 
 import Model.*;
 import View.*;
+import javafx.scene.*;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -22,18 +28,24 @@ public class GameController extends  Controller {
     public Pane[] p;
     int timing = 0;
     public SoundLibrary soundLibrary;
+    String state = "idle";
+    int timerFear = 0;
+
+
     public GameController(View v) {
         super(v);
         list = new HashMap<>();
         soundLibrary = new SoundLibrary();
-         p = new Pane[5];
+        p = new Pane[5];
+        Model.controller = this;
     }
 
     public LinkedList getChangeQueue() {
         Model m = list.get(p[0]);
         return ((Pacman) m).ChangeQueue;
+
     }
-	
+
     public static double getHG() {
         return Model.HG;
     }
@@ -42,15 +54,15 @@ public class GameController extends  Controller {
         return Model.LG;
     }
 
-    
+
     public void startGame() {
         Pacman pacman = new Pacman(185, 363, 13, 1, 0);
         Pane pPacman = getMonsterPane(pacman);
         RedGhost ghost = new RedGhost(183, 240, 12, 1, 0);
         Pane pGhost = getMonsterPane(ghost);
-        OrangeGhost ghost2 = new OrangeGhost(155, 254, 12, 1, 0);
+        OrangeGhost ghost2 = new OrangeGhost(165, 254, 12, 1, 0);
         Pane pGhost2 = getMonsterPane(ghost2);
-        PinkGhost ghost3 = new PinkGhost(215, 254, 12, 1, 0);
+        PinkGhost ghost3 = new PinkGhost(220, 254, 12, 1, 0);
         Pane pGhost3 = getMonsterPane(ghost3);
         BlueGhost ghost4 = new BlueGhost(183, 254, 12, 1, 0);
         Pane pGhost4 = getMonsterPane(ghost4);
@@ -64,7 +76,8 @@ public class GameController extends  Controller {
         p[2] = pGhost2;
         p[3] = pGhost3;
         p[4] = pGhost4;
-        
+
+
     }
     public int sizeOfList() {
         return list.size();
@@ -72,6 +85,12 @@ public class GameController extends  Controller {
 
 
     public int getMonsterType(Monster m) {
+        if(m.afraid()){
+            return 5;
+        }
+        if(m.eaten()){
+            return 6;
+        }
         if(m instanceof Pacman) return 0;
         if(m instanceof RedGhost) return 1;
         if(m instanceof PinkGhost) return 2;
@@ -208,19 +227,33 @@ public class GameController extends  Controller {
     }
 
     public void updateImage() {
+        timerFear--;
+        if(timerFear == 0){
+            beginChase();
+        }
         ImageView imgv;
         timing++;
         for( int i = 0; i<5 ; i++){
+
+            list.get(p[i]).timerDeath --;
+            if (list.get(p[i]).timerDeath == 0){
+               list.get(p[i]).startChase();
+            }
             imgv = new ImageView();
             imgv.setImage(SpriteMonster.getPicture(getMonsterType(list.get(p[i])) , list.get(p[i]).direction, timing));
 
             imgv.setManaged(true);
             imgv.fitWidthProperty().bind(p[i].widthProperty());
             imgv.fitHeightProperty().bind(p[i].heightProperty());
-            System.out.println(p[i].getChildren().size());
             p[i].getChildren().remove(0);
-            System.out.println(p[i].getChildren().size());
             p[i].getChildren().add(imgv);
+        }
+    }
+
+    private void beginChase() {
+        state = "chase";
+        for(int i = 1; i< 5; i++){
+            list.get(p[i]).startChase();
         }
     }
 
@@ -233,4 +266,31 @@ public class GameController extends  Controller {
     public void initialize_list() {
         ListOfIntersection.initialiseList();
     }
+
+
+    public void beginFear() {
+        state = "fear";
+        timerFear = 50;
+        for(int i = 1; i< 5; i++){
+            list.get(p[i]).startFear();
+        }
+    }
+
+    public void findContact(){
+        double x = list.get(p[0]).x + ((list.get(p[0]).width)/2);
+        double y = list.get(p[0]).y + ((list.get(p[0]).height)/2);
+        for (int i = 1; i<5; i++){
+            if(list.get(p[i]).hitbox.contains(x,y)){
+                contact(i);
+            }
+        }
+    }
+
+
+    private void contact(int i) {
+        if((list.get(p[i])).afraid()){
+            list.get(p[i]).startEaten();
+        }
+    }
 }
+

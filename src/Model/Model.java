@@ -1,5 +1,7 @@
 package Model;
 
+import Controller.GameController;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
@@ -21,6 +23,7 @@ public class Model extends Observable{
     public final static double PREF_PIXEL = 13.75;
     public static double GRID_SIZE_X ;
     public static double GRID_SIZE_Y;
+    public static GameController controller;
 
 
     public Model(){

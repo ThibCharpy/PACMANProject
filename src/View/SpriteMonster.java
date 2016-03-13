@@ -86,11 +86,33 @@ public class SpriteMonster {
         pacsprites[8] =  new Image("/Sprites/pacman6.png");
         return pacsprites;
     }
+    public static Image[] scaredsprites = createScared();
+
+    private static Image[] createScared() {
+        scaredsprites = new Image[4];
+        scaredsprites[0] = new Image("/Sprites/scared_blue_ghost_1.png");
+        scaredsprites[1] = new Image("/Sprites/scared_blue_ghost_2.png");
+        scaredsprites[2] = new Image("/Sprites/scared_white_ghost_1.png");
+        scaredsprites[3] = new Image("/Sprites/scared_white_ghost_2.png");
+        return scaredsprites;
+    }
+
+    public static Image[] deadsprites = createDead();
+
+    private static Image[] createDead() {
+        deadsprites = new Image[4];
+        deadsprites[0] = new Image("/Sprites/dead_ghost_up.png");
+        deadsprites[1] = new Image("/Sprites/dead_ghost_down.png");
+        deadsprites[2] = new Image("/Sprites/dead_ghost_left.png");
+        deadsprites[3] = new Image("/Sprites/dead_ghost_right.png");
+        return deadsprites;
+    }
+
 
     public static  Image getPicture(int i , int direction , int timing){
         switch  (i){
             case 0:
-                return getSprite(pacsprites , direction , timing);
+                return getPacSprite(pacsprites , direction , timing);
             case 1:
                 return getSprite(redsprites , direction , timing);
             case 2:
@@ -99,12 +121,83 @@ public class SpriteMonster {
                 return getSprite(pinksprites , direction , timing);
             case 4:
                 return getSprite(orangesprites , direction , timing);
+            case 5:
+                return getScared(timing);
+            case 6:
+                return  getEaten(direction, timing);
         }
 
         return null;
     }
 
+    private static Image getEaten(int direction, int timing) {
+        switch(direction){
+            case 0:
+                return deadsprites[1];
+            case 1:
+                return deadsprites[0];
+            case 2:
+                return deadsprites[1];
+            case 3:
+                return deadsprites[2];
+            case 4:
+                return deadsprites[3];
+        }
+        return null;
+    }
+
+    private static Image getScared(int timing) {
+        switch(timing%2) {
+            case 0:
+                return scaredsprites[0];
+            case 1:
+                return scaredsprites[1];
+        }
+        return null;
+    }
+
     private static Image getSprite(Image[] sprites , int direction, int timing) {
+        switch (direction){
+            case 0:
+                return sprites[0];
+            case 1:
+                switch(timing%2){
+                    case 0:
+                        return sprites[6];
+                    case 1:
+                        return sprites[7];
+
+                }
+                break;
+            case 2:
+                switch(timing%2){
+                    case 0:
+                        return sprites[0];
+                    case 1:
+                        return sprites[1];
+                }
+                break;
+            case 3:
+                switch(timing%2){
+                    case 0:
+                        return sprites[2];
+                    case 1:
+                        return sprites[3];
+                }
+                break;
+            case 4:
+                switch(timing%2) {
+                    case 0:
+                        return sprites[4];
+                    case 1:
+                        return sprites[5];
+                }
+                break;
+
+        }
+        return null;
+    }
+    private static Image getPacSprite(Image[] sprites , int direction, int timing) {
         switch (direction){
             case 0:
                 return sprites[0];

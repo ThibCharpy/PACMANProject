@@ -9,17 +9,17 @@ public class NoeudGraphe {
     /**
      * coordonnée X, correspond à la deuxieme dimension du tableau
      */
-    private int coordX;
+    public int coordX;
 
     /**
      * coordonnée Y, correspond à la premiere dimension du tableau
      */
-    private int coordY;
+    public int coordY;
 
     /**
      * String contenant le type d'intersection où pointe les coordonnées
      */
-    private String TypeOf;
+    public String TypeOf;
 
     /**
      * Cout necessaire pour atteindre cette intersection par rapport a une intersecion de depart

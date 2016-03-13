@@ -9,7 +9,7 @@ import java.util.LinkedList;
  */
 public abstract class Ghost extends Monster{
     public Node lastVisited;
-    String state;
+    public String state;
     Node PrisonCenter = ListOfIntersection.getIntersection(11, 14);
 
     public Ghost(double x, double y, double size, double speed, int direction) {
@@ -17,7 +17,24 @@ public abstract class Ghost extends Monster{
         state = "chase";
         this.lastVisited = ListOfIntersection.getIntersection(10, 18);
     }
+    public boolean afraid(){
+        return state.equals("fear");
+    }
 
+    public boolean chasing(){
+        return state.equals("chase");
+    }
+    public boolean eaten(){return state.equals("eated");}
+    public void startFear(){
+        state = "fear";
+    }
+    public void startChase(){
+        state = "chase";
+    }
+    public void startEaten(){
+        state = "eated";
+        timerDeath = 25;
+    }
     @Override
     public void interact() {
         return;

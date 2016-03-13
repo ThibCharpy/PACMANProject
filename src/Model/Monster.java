@@ -1,5 +1,8 @@
 package Model;
 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+
 /**
  * Created by thibaultgeoffroy on 25/02/2016.
  */
@@ -12,6 +15,8 @@ public abstract class Monster extends Model{
     int timing = 0;
     public double x;
     public double y;
+    public int timerDeath = 0;
+    public Rectangle hitbox = new Rectangle();
 
 
     protected Monster(double x, double y, double size, double speed, int direction) {
@@ -22,6 +27,12 @@ public abstract class Monster extends Model{
         this.direction = direction;
         height = SIZE_OF_CASE_Y - 1;
         width = SIZE_OF_CASE_X - 1;
+
+        hitbox.setX(x);
+        hitbox.setY(y);
+        hitbox.setWidth(SIZE_OF_CASE_X - 1);
+        hitbox.setHeight(SIZE_OF_CASE_Y - 1);
+        hitbox.setFill(Color.TRANSPARENT);
     }
 
     public abstract void  interact();
@@ -53,6 +64,9 @@ public abstract class Monster extends Model{
             default:
                 break;
         }
+        hitbox.setX(x);
+        hitbox.setY(y);
+
         interact();
     }
     boolean move_is_possible() {
@@ -139,4 +153,14 @@ public abstract class Monster extends Model{
 
 
     public abstract void behavior(Pacman pac, Ghost red);
+
+    public abstract void startFear();
+
+    public abstract void startChase();
+
+    public abstract boolean afraid();
+
+    public abstract void startEaten();
+
+    public abstract boolean eaten();
 }
