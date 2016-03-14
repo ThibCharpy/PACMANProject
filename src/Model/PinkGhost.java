@@ -73,10 +73,13 @@ public class PinkGhost extends Ghost {
         Node PinkyPos = ListOfIntersection.getIntersection(3, 4);
         NoeudGraphe result;
         if (GhostPos.noeud != null) {
+
             if (!this.lastVisited.compare(GhostPos)) {
+
                 switch (this.state) {
                     case "idle":
                         result = RechercheChemin.DiscoverPath(GhostPos, PinkyPos, this);
+                        this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                     case "chase":
@@ -87,9 +90,11 @@ public class PinkGhost extends Ghost {
                             Node PP = findPacmanDestination(PacPos, pac.direction);
                             if (PP.noeud != null) {
                                 result = RechercheChemin.DiscoverPath(GhostPos, PP, this);
+                                this.save_objective = result;
                                 this.newDirection = determineDirection(GhostPos.noeud, result);
                             } else {
                                 result = RechercheChemin.DiscoverPath(GhostPos, PacPos, this);
+                                this.save_objective = result;
                                 this.newDirection = determineDirection(GhostPos.noeud, result);
                             }                         
                         }
@@ -104,13 +109,19 @@ public class PinkGhost extends Ghost {
                             randomNode = GhostPos.noeud.voisins.get(0);
                         }
                         result = RechercheChemin.DiscoverPath(GhostPos, randomNode, this);
+                        this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                     case "eated" :
                         result = RechercheChemin.DiscoverPath(GhostPos, this.PrisonCenter, this);
+                        this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                 }
+            }else if(this.save_objective.compare(GhostPos.noeud)){
+               result = RechercheChemin.DiscoverPath(GhostPos, PinkyPos, this);
+               this.save_objective = result;
+               this.newDirection = determineDirection(GhostPos.noeud, result); 
             }
         }
     }

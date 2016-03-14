@@ -9,14 +9,16 @@ import java.util.LinkedList;
  */
 public abstract class Ghost extends Monster{
     public Node lastVisited;
+    public NoeudGraphe save_objective;
     public String state;
-    Node PrisonCenter = ListOfIntersection.getIntersection(11, 14);
+    
 
     public Ghost(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
         state = "chase";
-        this.lastVisited = ListOfIntersection.getIntersection(10, 18);
+        this.lastVisited = ListOfIntersection.getIntersection(2, 14);
     }
+    @Override
     public boolean afraid(){
         return state.equals("fear");
     }
@@ -24,20 +26,25 @@ public abstract class Ghost extends Monster{
     public boolean chasing(){
         return state.equals("chase");
     }
-    public boolean eaten(){return state.equals("eated");}
+    @Override
+    public boolean eaten(){
+        return state.equals("eated");
+    }
+    @Override
     public void startFear(){
         state = "fear";
     }
+    @Override
     public void startChase(){
         state = "chase";
     }
+    @Override
     public void startEaten(){
         state = "eated";
         timerDeath = 25;
     }
     @Override
     public void interact() {
-        return;
     }
 
 

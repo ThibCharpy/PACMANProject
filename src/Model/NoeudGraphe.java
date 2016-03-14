@@ -109,6 +109,10 @@ public class NoeudGraphe {
     public void addVoisin(Node element){
         this.getVoisin().add(element);
     }
+    
+    boolean compare(NoeudGraphe Pos) {
+        return (this.getCoordX() == Pos.getCoordX() && this.getCoordY() == Pos.getCoordY());
+    }
     /**
      * @param coordX the coordX to set
      */

@@ -80,7 +80,7 @@ public class RechercheChemin {
             chemin.addFirst(n);
             n = n.bestHeuristicParent;
         }
-        if(chemin.size() != 0){
+        if(!chemin.isEmpty()){
         return chemin.getFirst();
         }else{
             return depart.noeud;

@@ -17,7 +17,7 @@ public abstract class Monster extends Model{
     public double y;
     public int timerDeath = 0;
     public Rectangle hitbox = new Rectangle();
-
+    public Node PrisonCenter = ListOfIntersection.getIntersection(13, 14);
 
     protected Monster(double x, double y, double size, double speed, int direction) {
         super();

@@ -107,6 +107,56 @@ public class Pacman extends Monster {
     /**
      * @return the score
      */
+    
+    
+    
+    @Override
+    boolean move_is_possible() {
+        int pos_X = (int) x;
+        int pos_Y = (int) y;
+        int pos_X2 = pos_X;
+        int pos_Y2 = pos_Y;
+        switch (direction) {
+            case 1:
+                pos_Y -= this.speed;
+                pos_Y2 -= this.speed;
+                pos_X2 += width;
+
+                break;
+            case 2:
+
+                pos_Y += this.speed + height;
+                pos_Y2 += this.speed + height;
+                pos_X2 += width;
+
+                break;
+            case 3:
+
+                pos_X -= this.speed;
+                pos_X2 -= this.speed;
+                pos_Y2 += height;
+
+                break;
+            case 4:
+
+                pos_X += this.speed + width;
+                pos_X2 += this.speed + width;
+                pos_Y2 += height;
+
+                break;
+            case 5:
+                return false;
+            default:
+                break;
+        }
+        if (getInfoCase(pos_X, pos_Y) == 1 || getInfoCase(pos_X2, pos_Y2) == 1 || getInfoCase(pos_X, pos_Y) == 4 || getInfoCase(pos_X2, pos_Y2) == 4) {
+            this.direction = 0;
+            return false;
+        }
+
+        return true;
+    }
+    
     public int getScore() {
         return score;
     }

@@ -233,10 +233,10 @@ public class GameController extends  Controller {
         }
         ImageView imgv;
         timing++;
-        for( int i = 0; i<5 ; i++){
-
-            list.get(p[i]).timerDeath --;
-            if (list.get(p[i]).timerDeath == 0){
+        for( int i = 0; i<5 ; i++){ // CONDITION FIN EATEN
+            int X = list.get(p[i]).getMonster_Case_X(list.get(p[i]).x);
+            int Y = list.get(p[i]).getMonster_Case_Y(list.get(p[i]).y);
+            if (list.get(p[i]).eaten() &&( X == list.get(p[i]).PrisonCenter.noeud.coordX ) &&( Y == list.get(p[i]).PrisonCenter.noeud.coordY ) ){
                list.get(p[i]).startChase();
             }
             imgv = new ImageView();
