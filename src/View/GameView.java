@@ -533,6 +533,7 @@ public class GameView extends View{
                 c.soundLibrary.play(c.soundLibrary.bool_eat_gomme, c.soundLibrary.audio_eat_gomme, 0.6);
             }else if("BigGomme".equals(change.getType())){
                 c.soundLibrary.play(c.soundLibrary.bool_eat_gomme, c.soundLibrary.audio_eat_gomme, 0.6);
+                c.soundLibrary.audio_alt_powermode.setRate(0.79);
                 c.soundLibrary.stopAndPlay(c.soundLibrary.bool_alt_powermode, c.soundLibrary.audio_alt_powermode, 0.8);             
             }
             Pane pictureRegion = getPictureRegion(change.getSprite_change());
