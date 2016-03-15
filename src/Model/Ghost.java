@@ -32,7 +32,9 @@ public abstract class Ghost extends Monster{
     }
     @Override
     public void startFear(){
-        state = "fear";
+        if(!eaten()) {
+            state = "fear";
+        }
     }
     @Override
     public void startChase(){

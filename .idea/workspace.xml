@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="549a2a01-627d-49b3-bc2c-d74060d1644f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Controller/GameController.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/GameController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/BlueGhost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/BlueGhost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Ghost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Ghost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Model.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Model.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Monster.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Monster.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/NoeudGraphe.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/NoeudGraphe.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/OrangeGhost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/OrangeGhost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Pacman.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Pacman.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/PinkGhost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/PinkGhost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/RechercheChemin.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/RechercheChemin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/RedGhost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/RedGhost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/View/GameView.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/GameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/GameController.java" afterPath="$PROJECT_DIR$/src/Controller/GameController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Ghost.java" afterPath="$PROJECT_DIR$/src/Model/Ghost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Model.java" afterPath="$PROJECT_DIR$/src/Model/Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Monster.java" afterPath="$PROJECT_DIR$/src/Model/Monster.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Pacman.java" afterPath="$PROJECT_DIR$/src/Model/Pacman.java" />
     </list>
     <ignored path="PACMANProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,10 +57,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Monster.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Monster.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Monster.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5654102">
+            <state vertical-scroll-proportion="0.0">
               <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -106,12 +89,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ghost.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Ghost.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Ghost.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
-              <folding />
+            <state vertical-scroll-proportion="0.49889135">
+              <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+              <folding>
+                <element signature="e#905#906#0" expanded="true" />
+                <element signature="e#936#937#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -203,12 +189,12 @@
         <option value="$PROJECT_DIR$/src/View/CreateMapView.java" />
         <option value="$PROJECT_DIR$/src/Model/NoeudGraphe.java" />
         <option value="$PROJECT_DIR$/src/View/SpriteMonster.java" />
-        <option value="$PROJECT_DIR$/src/Model/Ghost.java" />
         <option value="$PROJECT_DIR$/src/Model/Pacman.java" />
         <option value="$PROJECT_DIR$/src/Model/Model.java" />
         <option value="$PROJECT_DIR$/src/View/GameView.java" />
-        <option value="$PROJECT_DIR$/src/Model/Monster.java" />
         <option value="$PROJECT_DIR$/src/Controller/GameController.java" />
+        <option value="$PROJECT_DIR$/src/Model/Monster.java" />
+        <option value="$PROJECT_DIR$/src/Model/Ghost.java" />
       </list>
     </option>
   </component>
@@ -835,12 +821,12 @@
       <workItem from="1457895473768" duration="3991000" />
       <workItem from="1457903729250" duration="2202000" />
       <workItem from="1457943366917" duration="2069000" />
-      <workItem from="1458049522268" duration="1404000" />
+      <workItem from="1458049522268" duration="1891000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55188000" />
+    <option name="totallyTimeSpent" value="55675000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -853,7 +839,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42289156" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42289156" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13090129" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1268,14 +1254,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Ghost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1304,10 +1282,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Monster.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5654102">
+        <state vertical-scroll-proportion="0.0">
           <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Ghost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49889135">
+          <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+          <folding>
+            <element signature="e#905#906#0" expanded="true" />
+            <element signature="e#936#937#0" expanded="true" />
           </folding>
         </state>
       </provider>
