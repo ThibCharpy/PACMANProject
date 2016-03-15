@@ -54,6 +54,14 @@ public class Model extends Observable{
         return (int) ((Pos_Y) / SIZE_OF_CASE_Y);
     }
 
+    public static int getMonster_Pos_X(int Pos_X) {
+        return (int) ((Pos_X) * SIZE_OF_CASE_X);
+    }
+
+    public static int getMonster_Pos_Y(int Pos_Y) {
+        return (int) ((Pos_Y) * SIZE_OF_CASE_Y);
+    }
+
 
     public void setInfoCase(double Pos_X, double Pos_Y, int toSet) {
         Maze.plateau[getMonster_Case_Y(Pos_Y)][getMonster_Case_X(Pos_X)] = toSet;

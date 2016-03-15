@@ -41,7 +41,12 @@ public abstract class Ghost extends Monster{
     @Override
     public void startEaten(){
         state = "eated";
-        timerDeath = 25;
+        //timerDeath = 25;
+    }
+    public void fromFearToChase(){
+        if(afraid()){
+            startChase();
+        }
     }
     @Override
     public void interact() {

@@ -234,10 +234,8 @@ public class GameController extends  Controller {
         ImageView imgv;
         timing++;
         for( int i = 0; i<5 ; i++){ // CONDITION FIN EATEN
-            int X = list.get(p[i]).getMonster_Case_X(list.get(p[i]).x);
-            int Y = list.get(p[i]).getMonster_Case_Y(list.get(p[i]).y);
-            if (list.get(p[i]).eaten() &&( X == list.get(p[i]).PrisonCenter.noeud.coordX ) &&( Y == list.get(p[i]).PrisonCenter.noeud.coordY ) ){
-               list.get(p[i]).startChase();
+            if(list.get(p[i]).eaten() && list.get(p[i]).hitbox.contains(list.get(p[i]).spawnx ,list.get(p[i]).spawny)){
+                list.get(p[i]).startChase();
             }
             imgv = new ImageView();
             imgv.setImage(SpriteMonster.getPicture(getMonsterType(list.get(p[i])) , list.get(p[i]).direction, timing));
@@ -253,7 +251,7 @@ public class GameController extends  Controller {
     private void beginChase() {
         state = "chase";
         for(int i = 1; i< 5; i++){
-            list.get(p[i]).startChase();
+            list.get(p[i]).fromFearToChase();
         }
     }
 

@@ -37,7 +37,11 @@ public class Pacman extends Monster {
     public boolean eaten() {
         return false;
     }
-    
+
+    @Override
+    public void fromFearToChase() {
+    }
+
     @Override
     public void interact(){
         if (FindNumberOfGomme() != 0) {

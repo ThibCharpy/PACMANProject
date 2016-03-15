@@ -15,8 +15,10 @@ public abstract class Monster extends Model{
     int timing = 0;
     public double x;
     public double y;
-    public int timerDeath = 0;
+    //public int timerDeath = 0;
     public Rectangle hitbox = new Rectangle();
+    public double  spawnx;
+    public double  spawny;
     public Node PrisonCenter = ListOfIntersection.getIntersection(13, 14);
 
     protected Monster(double x, double y, double size, double speed, int direction) {
@@ -27,7 +29,8 @@ public abstract class Monster extends Model{
         this.direction = direction;
         height = SIZE_OF_CASE_Y - 1;
         width = SIZE_OF_CASE_X - 1;
-
+        spawnx = x;
+        spawny = y;
         hitbox.setX(x);
         hitbox.setY(y);
         hitbox.setWidth(SIZE_OF_CASE_X - 1);
@@ -163,4 +166,6 @@ public abstract class Monster extends Model{
     public abstract void startEaten();
 
     public abstract boolean eaten();
+
+    public abstract void fromFearToChase();
 }
