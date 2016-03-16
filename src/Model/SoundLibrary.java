@@ -19,6 +19,7 @@ import javax.sound.sampled.*;
  */
 public class SoundLibrary {
 
+    
     public final AudioClip audio_background1 = new AudioClip(getClass().getResource("/Sprites/pacman_background1.wav").toExternalForm());
     public final AudioClip audio_background2 = new AudioClip(getClass().getResource("/Sprites/pacman_background2.wav").toExternalForm());
     public final AudioClip audio_background3 = new AudioClip(getClass().getResource("/Sprites/pacman_background4.wav").toExternalForm());  

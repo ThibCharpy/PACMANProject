@@ -5,9 +5,9 @@ package Model;
  */
 public class MapChangeRequest {
 
-    private int case_row;
-    private int case_col;
-    private String sprite_change;
+    private final int case_row;
+    private final int case_col;
+    private final String sprite_change;
     private String type;
 
     public MapChangeRequest(int Y, int X, String file, String type){

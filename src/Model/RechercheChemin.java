@@ -122,12 +122,6 @@ public class RechercheChemin {
     public NoeudGraphe DiscoverPath(Node depart, Node objectif, Ghost actual) {
         int X = actual.getMonster_Case_X(actual.x);
         int Y = actual.getMonster_Case_Y(actual.y);
-        if(actual.eaten() && X == 11 && Y == 12){
-            System.out.println("Depart : ");
-            depart.noeud.Affichage();
-            System.out.println("Objectif : ");
-            objectif.noeud.Affichage();
-        }
         resetInfoGraphe();
         depart.noeud.isStart = true;
         objectif.noeud.isEnd = true;
@@ -143,13 +137,6 @@ public class RechercheChemin {
                 depart.noeud.getVoisin().add(memory);
             }
             actual.lastVisited = depart;
-            if(actual.eaten() && X == 11 && Y == 12){
-            System.out.println("Go to : ");
-            solution.Affichage();
-            System.out.println(" ");
-            System.out.println("____________________");
-            System.out.println(" ");
-            }
             return solution;
         }
     }

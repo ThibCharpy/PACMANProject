@@ -10,8 +10,6 @@ public class Pacman extends Monster {
 
     public LinkedList ChangeQueue;
     public int lifeLeft;
-    private int score;
-
 
     public Pacman(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
@@ -84,10 +82,12 @@ public class Pacman extends Monster {
      * @param Pos_Y coordonnée Y du pacman 
      */
     private void EatGomme(double Pos_X, double Pos_Y){
-        setInfoCase(Pos_X, Pos_Y, 0);
+        if(getInfoCase(x + (width / 2), y + (height / 2))==2){
+        setInfoCase(x + (width / 2), y + (height / 2), 0);
         MapChangeRequest gommeEated = new MapChangeRequest(getMonster_Case_Y(Pos_Y), getMonster_Case_X(Pos_X), "/Sprites/empty.png", "Gomme");
         ChangeQueue.add(gommeEated);
-        updateScore(10);   
+        controller.updateScore(10);   
+        }
     }
     
      /**
@@ -98,24 +98,14 @@ public class Pacman extends Monster {
      * @param Pos_Y coordonnée Y du pacman 
      */
     private void EatBigGomme(double Pos_X, double Pos_Y){
-        setInfoCase(Pos_X, Pos_Y, 0);
+        if(getInfoCase(x + (width / 2), y + (height / 2))==3){
+        setInfoCase(x + (width / 2), y + (height / 2), 0);
         MapChangeRequest BiggommeEated = new MapChangeRequest(getMonster_Case_Y(Pos_Y), getMonster_Case_X(Pos_X), "/Sprites/empty.png", "BigGomme");
         ChangeQueue.add(BiggommeEated);
         controller.beginFear();
-        updateScore(25);
-    }
-    private void updateScore(int points){
-        this.setScore((this.getScore() + points));
-    }
-
-    public String getStringScore(){
-        return Integer.toString(this.getScore());
-    }
-    /**
-     * @return the score
-     */
-    
-    
+        controller.updateScore(25);
+        }
+    }   
     
     @Override
     boolean move_is_possible() {
@@ -162,17 +152,6 @@ public class Pacman extends Monster {
         }
 
         return true;
-    }
-    
-    public int getScore() {
-        return score;
-    }
-
-    /**
-     * @param score the score to set
-     */
-    public void setScore(int score) {
-        this.score = score;
     }
 
     @Override

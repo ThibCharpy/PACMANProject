@@ -87,6 +87,28 @@ public class SpriteMonster {
         return pacsprites;
     }
     public static Image[] scaredsprites = createScared();
+    
+    public static Image getDeathPic(int cmpt) {
+        Image[] sprt = deadPacman();
+        return sprt[cmpt];
+    }
+    
+    private static Image[] deadPacman() {
+        Image[] pacdeadsprites = new Image[12];
+        pacdeadsprites[0] = new Image("/Sprites/pacman8.png");
+        pacdeadsprites[1] = new Image("/Sprites/death_pac_1.png");
+        pacdeadsprites[2] = new Image("/Sprites/death_pac_2.png");
+        pacdeadsprites[3] = new Image("/Sprites/death_pac_3.png");
+        pacdeadsprites[4] = new Image("/Sprites/death_pac_4.png");
+        pacdeadsprites[5] = new Image("/Sprites/death_pac_5.png");
+        pacdeadsprites[6] = new Image("/Sprites/death_pac_6.png");
+        pacdeadsprites[7] = new Image("/Sprites/death_pac_7.png");
+        pacdeadsprites[8] = new Image("/Sprites/death_pac_8.png");
+        pacdeadsprites[9] = new Image("/Sprites/death_pac_9.png");
+        pacdeadsprites[10] = new Image("/Sprites/death_pac_10.png");
+        pacdeadsprites[11] = new Image("/Sprites/death_pac_11.png");
+        return pacdeadsprites;
+    }
 
     private static Image[] createScared() {
         scaredsprites = new Image[4];
@@ -108,7 +130,7 @@ public class SpriteMonster {
         return deadsprites;
     }
 
-
+    
     public static  Image getPicture(int i , int direction , int timing){
         switch  (i){
             case 0:
@@ -129,7 +151,9 @@ public class SpriteMonster {
 
         return null;
     }
-
+    
+    
+    
     private static Image getEaten(int direction, int timing) {
         switch(direction){
             case 0:
@@ -238,4 +262,8 @@ public class SpriteMonster {
         }
         return null;
     }
+
+    
+
+    
 }

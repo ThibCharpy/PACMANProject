@@ -46,23 +46,38 @@ public class GameView extends View{
     
     
     public void checkDeath(){
-        if(GameController.PacDead){
-            GameController.PacDead = false;
-            c.soundLibrary.bool_background3 = false;
+        if(GameController.PacDead){           
             c.soundLibrary.audio_background5.stop();
-            c.soundLibrary.audio_death.play(0.65);
+            c.soundLibrary.play(c.soundLibrary.bool_death , c.soundLibrary.audio_death ,0.65);
+            timeline.stop();
+            timeline3.stop();
+            c.DeathImage(GameController.cmpDeath);
+            GameController.cmpDeath++;
+            if(GameController.cmpDeath == 12){
+                timeline2.stop();
+                GameController.PacDead = false;
+                GameController.cmpDeath = 0;
+                GameController.lifeLeft --;
+                if(GameController.lifeLeft > 0){
+                    c.resetPosition();
+                    c.getMonsterPosition();
+                    c.updateImage();
+                    c.soundLibrary.play(c.soundLibrary.bool_introsong ,c.soundLibrary.audio_introsong, 0.65);
+                    timeline4.play();
+                }else{
+                    
+                }
+            }
             
         }
     }
     public void checkRestartNeed(){
         if(GameController.restartNeeded){
             GameController.restartNeeded = false;
-            c.soundLibrary.bool_background3 = false;
             for(int i = 0; i < 5; i ++){
                 Model m = c.list.get(c.p[i]);
                 m = null;
-                c.p[i] = null;
-                
+                c.p[i] = null;                
             }
             c.list.clear();
             timeline.stop();
