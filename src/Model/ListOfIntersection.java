@@ -42,7 +42,9 @@ public class ListOfIntersection {
     private static void addSpecialElements() { // Trouver une méthode de remplacement générique pour tout type de carte
         IntersectionList.add(new Node(new NoeudGraphe(2,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(9,14,"excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(10,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(11,14,"excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(12,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(13,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(20,14,"excpetion")));
     }
@@ -163,6 +165,15 @@ public class ListOfIntersection {
     }
 
     public static Node getIntersection(int coordX, int coordY){
+        for (Node element1 : IntersectionList) {
+            if (element1.noeud.getCoordX() == coordX && element1.noeud.getCoordY() == coordY) {
+                return element1;
+            }
+        }
+        return null;
+    }
+    
+    public static Node getIntersectionAndClosest(int coordX, int coordY){
         for (Node element1 : IntersectionList) {
             if (element1.noeud.getCoordX() == coordX && element1.noeud.getCoordY() == coordY) {
                 return element1;

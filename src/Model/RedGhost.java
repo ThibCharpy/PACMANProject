@@ -21,30 +21,30 @@ public class RedGhost extends Ghost {
      * intersection.
      *
      * @param pac Instance de pacman
+     * 
      *
      */
     @Override
     public void behavior(Pacman pac, Ghost red) {
         int Pos_X_Gho = getMonster_Case_X(this.x);
         int Pos_Y_Gho = getMonster_Case_Y(this.y);
-        Node GhostPos = ListOfIntersection.getIntersection(Pos_X_Gho, Pos_Y_Gho);
+        Node GhostPos = ListOfIntersection.getIntersectionAndClosest(Pos_X_Gho, Pos_Y_Gho);
         NoeudGraphe result = null;
-        Node BlinkyPos = ListOfIntersection.getIntersection(20, 4);
+        Node BlinkyPos = ListOfIntersection.getIntersectionAndClosest(20, 4);
         if (GhostPos.noeud != null) {
             if (!this.lastVisited.compare(GhostPos)) {
-
                 switch (this.state) {
                     case "idle":
-                        result = RechercheChemin.DiscoverPath(GhostPos, BlinkyPos, this);
+                        result = recherche.DiscoverPath(GhostPos, BlinkyPos, this);
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);                      
                         break;
                     case "chase":
                         int Pos_X_pac = getMonster_Case_X(pac.x);
                         int Pos_Y_pac = getMonster_Case_Y(pac.y);
-                        Node PacPos = ListOfIntersection.getIntersection(Pos_X_pac, Pos_Y_pac);
+                        Node PacPos = ListOfIntersection.getIntersectionAndClosest(Pos_X_pac, Pos_Y_pac);
                         if (PacPos.noeud != null) {
-                            result = RechercheChemin.DiscoverPath(GhostPos, PacPos, this);
+                            result = recherche.DiscoverPath(GhostPos, PacPos, this);
                             this.save_objective = result;
                             this.newDirection = determineDirection(GhostPos.noeud, result);
                         }
@@ -58,18 +58,18 @@ public class RedGhost extends Ghost {
                         } else {
                             randomNode = GhostPos.noeud.voisins.get(0);
                         }
-                        result = RechercheChemin.DiscoverPath(GhostPos, randomNode, this);
+                        result = recherche.DiscoverPath(GhostPos, randomNode, this);
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
-                    case "eated":
-                        result = RechercheChemin.DiscoverPath(GhostPos, this.PrisonCenter, this);
+                    case "eated":                       
+                        result = recherche.DiscoverPath(GhostPos, this.PrisonCenter, this);
                         this.save_objective = result;
-                        this.newDirection = determineDirection(GhostPos.noeud, result);
+                        this.newDirection = determineDirection(GhostPos.noeud, result);                                                  
                         break;
                 }
             }else if(this.save_objective.compare(GhostPos.noeud)){
-               result = RechercheChemin.DiscoverPath(GhostPos, BlinkyPos, this);
+               result = recherche.DiscoverPath(GhostPos, BlinkyPos, this);
                this.save_objective = result;
                this.newDirection = determineDirection(GhostPos.noeud, result); 
             }

@@ -19,7 +19,7 @@ public abstract class Monster extends Model{
     public Rectangle hitbox = new Rectangle();
     public double  spawnx;
     public double  spawny;
-    public Node PrisonCenter = ListOfIntersection.getIntersection(13, 14);
+    public Node PrisonCenter = ListOfIntersection.getIntersectionAndClosest(9, 14);
 
     protected Monster(double x, double y, double size, double speed, int direction) {
         super();
@@ -115,13 +115,11 @@ public abstract class Monster extends Model{
             return false;
         }
         if (getInfoCase(pos_X, pos_Y) == 4 || getInfoCase(pos_X2, pos_Y2) == 4) {
-          fromDeathToChase();
+            fromDeathToChase();
         }
+
         return true;
     }
-
-    protected abstract void fromDeathToChase();
-
     public boolean new_move_is_possible() {
         int pos_X = (int) x;
         int pos_Y = (int) y;
@@ -129,23 +127,23 @@ public abstract class Monster extends Model{
         int pos_Y2 = pos_Y;
         switch (this.newDirection) {
             case 1:
-                pos_Y -= height/2;
-                pos_Y2 -= height/2;
+                pos_Y -= height;
+                pos_Y2 -= height;
                 pos_X2 += width;
                 break;
             case 2:
-                pos_Y += height + height/2;
-                pos_Y2 += height + height/2;
+                pos_Y += height + height;
+                pos_Y2 += height + height;
                 pos_X2 += width;
                 break;
             case 3:
-                pos_X -= width/2;
-                pos_X2 -= width/2;
+                pos_X -= width;
+                pos_X2 -= width;
                 pos_Y2 += height;
                 break;
             case 4:
-                pos_X += width + width/2 ;
-                pos_X2 += width + width/2;
+                pos_X += width + width ;
+                pos_X2 += width + width;
                 pos_Y2 += height;
                 break;
             case 5:
@@ -158,7 +156,8 @@ public abstract class Monster extends Model{
         }
         return true;
     }
-
+    
+    protected abstract void fromDeathToChase();
 
     public abstract void behavior(Pacman pac, Ghost red);
 

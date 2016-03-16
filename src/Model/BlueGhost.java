@@ -25,7 +25,7 @@ public class BlueGhost extends Ghost {
         Node res1;
         if ((red_X + Target_X) * 2 >= 2 && (red_X + Target_X) * 2 <= 20 && (red_Y + Target_Y)*2 >= 4 && (red_Y + Target_Y)*2 <= 24) {
             if (Maze.plateau[red_Y + Target_Y][red_X + Target_X] != 1) {
-                res1 = ListOfIntersection.getIntersection(red_X + Target_X, red_Y + Target_Y);
+                res1 = ListOfIntersection.getIntersectionAndClosest(red_X + Target_X, red_Y + Target_Y);
                 if (res1.noeud != null) {
                     return res1;
                 }
@@ -33,7 +33,7 @@ public class BlueGhost extends Ghost {
         }
         if (((red_X + Target_X)) >= 2 && ((red_X + Target_X)) <= 20 && ((red_Y + Target_Y)) >= 4 && ((red_Y + Target_Y)) <= 24) {
             if (Maze.plateau[((red_Y + Target_Y) / 2)][((red_X + Target_X) / 2)] != 1) {
-                res1 = ListOfIntersection.getIntersection(((red_X + Target_X) / 2), ((red_Y + Target_Y) / 2));
+                res1 = ListOfIntersection.getIntersectionAndClosest(((red_X + Target_X) / 2), ((red_Y + Target_Y) / 2));
                 if (res1.noeud != null) {
                     return res1;
                 }
@@ -57,33 +57,33 @@ public class BlueGhost extends Ghost {
     public void behavior(Pacman pac, Ghost red) {
         int Pos_X_Gho = getMonster_Case_X(this.x);
         int Pos_Y_Gho = getMonster_Case_Y(this.y);
-        Node GhostPos = ListOfIntersection.getIntersection(Pos_X_Gho, Pos_Y_Gho);
-        Node InkyPos = ListOfIntersection.getIntersection(20, 24);
+        Node GhostPos = ListOfIntersection.getIntersectionAndClosest(Pos_X_Gho, Pos_Y_Gho);
+        Node InkyPos = ListOfIntersection.getIntersectionAndClosest(20, 24);
         NoeudGraphe result = null;
         if (GhostPos.noeud != null) {
             if (!this.lastVisited.compare(GhostPos)) {
                 switch (this.state) {
                     case "idle":
-                        result = RechercheChemin.DiscoverPath(GhostPos, InkyPos, this);
+                        result = recherche.DiscoverPath(GhostPos, InkyPos, this);
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                     case "chase":
                         int Pos_X_pac = getMonster_Case_X(pac.x);
                         int Pos_Y_pac = getMonster_Case_Y(pac.y);
-                        Node PacPos = ListOfIntersection.getIntersection(Pos_X_pac, Pos_Y_pac);
+                        Node PacPos = ListOfIntersection.getIntersectionAndClosest(Pos_X_pac, Pos_Y_pac);
                             if (PacPos.noeud != null) {
                                 int Pos_X_red = getMonster_Case_X(red.x);
                                 int Pos_Y_red = getMonster_Case_Y(red.y);
                                 Node Objectif = getInkyTarget(Pos_X_red, Pos_Y_red, Pos_X_pac, Pos_Y_pac);
                                 if (Objectif != null) {
                                     if (Objectif.noeud != null) {
-                                        result = RechercheChemin.DiscoverPath(GhostPos, Objectif, this);
+                                        result = recherche.DiscoverPath(GhostPos, Objectif, this);
                                         this.save_objective = result;
                                         this.newDirection = determineDirection(GhostPos.noeud, result);
                                     }
                                 } else {
-                                    result = RechercheChemin.DiscoverPath(GhostPos, InkyPos, this);
+                                    result = recherche.DiscoverPath(GhostPos, InkyPos, this);
                                     this.save_objective = result;
                                     this.newDirection = determineDirection(GhostPos.noeud, result);
                                 }
@@ -98,18 +98,18 @@ public class BlueGhost extends Ghost {
                         }else{
                             randomNode = GhostPos.noeud.voisins.get(0);
                         }
-                        result = RechercheChemin.DiscoverPath(GhostPos, randomNode, this);
+                        result = recherche.DiscoverPath(GhostPos, randomNode, this);
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                      case "eated" :
-                        result = RechercheChemin.DiscoverPath(GhostPos, this.PrisonCenter, this);
+                        result = recherche.DiscoverPath(GhostPos, this.PrisonCenter, this);
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                 }
             }else if(this.save_objective.compare(GhostPos.noeud)){
-               result = RechercheChemin.DiscoverPath(GhostPos, InkyPos, this);
+               result = recherche.DiscoverPath(GhostPos, InkyPos, this);
                this.save_objective = result;
                this.newDirection = determineDirection(GhostPos.noeud, result); 
             }

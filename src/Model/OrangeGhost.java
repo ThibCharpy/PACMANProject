@@ -22,8 +22,8 @@ public class OrangeGhost extends Ghost {
     public void behavior(Pacman pac, Ghost red) {
         int Pos_X_Gho = getMonster_Case_X(this.x);
         int Pos_Y_Gho = getMonster_Case_Y(this.y);
-        Node GhostPos = ListOfIntersection.getIntersection(Pos_X_Gho, Pos_Y_Gho);
-        Node BlinkyPos = ListOfIntersection.getIntersection(3, 24);
+        Node GhostPos = ListOfIntersection.getIntersectionAndClosest(Pos_X_Gho, Pos_Y_Gho);
+        Node BlinkyPos = ListOfIntersection.getIntersectionAndClosest(3, 24);
         NoeudGraphe result;
         if (GhostPos.noeud != null) {
 
@@ -31,27 +31,27 @@ public class OrangeGhost extends Ghost {
 
                 switch (this.state) {
                     case "idle":
-                        result = RechercheChemin.DiscoverPath(GhostPos, BlinkyPos, this);
+                        result = recherche.DiscoverPath(GhostPos, BlinkyPos, this);
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                     case "chase":
                         int Pos_X_pac = getMonster_Case_X(pac.x);
                         int Pos_Y_pac = getMonster_Case_Y(pac.y);
-                        Node PacPos = ListOfIntersection.getIntersection(Pos_X_pac, Pos_Y_pac);
+                        Node PacPos = ListOfIntersection.getIntersectionAndClosest(Pos_X_pac, Pos_Y_pac);
                         if (PacPos.noeud != null) {
                             if (mesureDistance(GhostPos, PacPos) >= 8) {
-                                    result = RechercheChemin.DiscoverPath(GhostPos, PacPos, this);
+                                    result = recherche.DiscoverPath(GhostPos, PacPos, this);
                                     this.save_objective = result;
                                     this.newDirection = determineDirection(GhostPos.noeud, result);
                                 
                             } else {
-                                result = RechercheChemin.DiscoverPath(GhostPos, BlinkyPos, this);
+                                result = recherche.DiscoverPath(GhostPos, BlinkyPos, this);
                                 this.save_objective = result;
                                 this.newDirection = determineDirection(GhostPos.noeud, result);
                             }
                         }else{
-                            result = RechercheChemin.DiscoverPath(GhostPos, BlinkyPos, this);
+                            result = recherche.DiscoverPath(GhostPos, BlinkyPos, this);
                             this.save_objective = result;
                             this.newDirection = determineDirection(GhostPos.noeud, result);
                         }
@@ -65,18 +65,18 @@ public class OrangeGhost extends Ghost {
                         }else{
                             randomNode = GhostPos.noeud.voisins.get(0);
                         }
-                        result = RechercheChemin.DiscoverPath(GhostPos, randomNode, this);
+                        result = recherche.DiscoverPath(GhostPos, randomNode, this);
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                     case "eated" :
-                        result = RechercheChemin.DiscoverPath(GhostPos, this.PrisonCenter, this);
+                        result = recherche.DiscoverPath(GhostPos, this.PrisonCenter, this);
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                 }
             }else if(this.save_objective.compare(GhostPos.noeud)){
-               result = RechercheChemin.DiscoverPath(GhostPos, BlinkyPos, this);
+               result = recherche.DiscoverPath(GhostPos, BlinkyPos, this);
                this.save_objective = result;
                this.newDirection = determineDirection(GhostPos.noeud, result);  
                this.newDirection = determineDirection(GhostPos.noeud, this.save_objective); 

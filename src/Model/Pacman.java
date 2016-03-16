@@ -9,12 +9,14 @@ import java.util.LinkedList;
 public class Pacman extends Monster {
 
     public LinkedList ChangeQueue;
+    public int lifeLeft;
     private int score;
 
 
     public Pacman(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
         ChangeQueue = new LinkedList();
+        lifeLeft = 3;
     }
     @Override
     public void startFear() {
@@ -31,6 +33,7 @@ public class Pacman extends Monster {
 
     @Override
     public void startEaten() {
+        
     }
 
     @Override
@@ -160,12 +163,7 @@ public class Pacman extends Monster {
 
         return true;
     }
-
-    @Override
-    protected void fromDeathToChase() {
-
-    }
-
+    
     public int getScore() {
         return score;
     }
@@ -175,6 +173,11 @@ public class Pacman extends Monster {
      */
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    protected void fromDeathToChase() {
+       
     }
 
 }

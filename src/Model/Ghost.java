@@ -11,12 +11,14 @@ public abstract class Ghost extends Monster{
     public Node lastVisited;
     public NoeudGraphe save_objective;
     public String state;
+    public RechercheChemin recherche;
     
 
     public Ghost(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
         state = "chase";
-        this.lastVisited = ListOfIntersection.getIntersection(2, 14);
+        this.lastVisited = ListOfIntersection.getIntersectionAndClosest(2, 14);
+        recherche = new RechercheChemin(ListOfIntersection.IntersectionList);
     }
     @Override
     public boolean afraid(){
@@ -45,6 +47,7 @@ public abstract class Ghost extends Monster{
         state = "eated";
         //timerDeath = 25;
     }
+    @Override
     public void fromFearToChase(){
         if(afraid()){
             startChase();
@@ -60,6 +63,7 @@ public abstract class Ghost extends Monster{
     }
 
 
+    @Override
     public abstract void behavior(Pacman pac, Ghost red);
 
     /**

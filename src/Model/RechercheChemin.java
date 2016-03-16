@@ -11,16 +11,18 @@ import java.util.PriorityQueue;
  */
 public class RechercheChemin {
 
-    static int nbNodeParcouru = 0; // outils de test
-    static int nbCheminAlt = 0;
+    public LinkedList<Node> IntersectionList;
 
+    public RechercheChemin(LinkedList<Node> list){
+        this.IntersectionList = new LinkedList((LinkedList<Node>) list.clone());
+    }
     /**
      * Cherche dans la liste de node celle qui est classé comme node de depart
      *
      * @return node "depart" de la liste de node
      */
-    public static Node getStartNode() {
-        for (Node a : ListOfIntersection.IntersectionList) {
+    public Node getStartNode() {
+        for (Node a : IntersectionList) {
             if (a.noeud.isStart) {
                 return a;
             }
@@ -38,7 +40,7 @@ public class RechercheChemin {
      *
      * @param n node a explorer
      */
-    private static void Explore(Node n) {
+    private void Explore(Node n) {
         n.noeud.closed = true;
         for (Node voisin : n.noeud.getVoisin()) {
             if (voisin.noeud.isEnd) {
@@ -73,7 +75,7 @@ public class RechercheChemin {
      * @param objectif node d'arrivée de l'algorithme de recherche
      * @return Renvoi la prochaine intersection à atteindre pour arriver à cet objectif
      */
-    private static NoeudGraphe ExtractPath(Node depart, Node objectif) {
+    private NoeudGraphe ExtractPath(Node depart, Node objectif) {
         LinkedList<NoeudGraphe> chemin = new LinkedList<>();
         NoeudGraphe n = objectif.noeud;
         while (n != depart.noeud && n.bestHeuristicParent != null) {
@@ -94,7 +96,7 @@ public class RechercheChemin {
      * @param actual Insance de l'entité utilisant l'algorithme.
      * @return le noeud retiré au noeud de départ ( pour pouvoir le réintégré a la fin de l'exécution de l'algorithme )
      */
-    private static Node setDepart(Node depart, Ghost actual) {
+    private Node setDepart(Node depart, Ghost actual) {
         Node remember = null;
         if (actual.lastVisited != null && depart.noeud.getVoisin().size() > 1) {
             for (int i = 0; i < depart.noeud.getVoisin().size(); i++) {
@@ -114,9 +116,18 @@ public class RechercheChemin {
      *
      * @param depart node de départ pour de l'algorithme de recherche
      * @param objectif node d'arrivée pour de l'algorithme de recherche
+     * @param actual ghost sur lequel est lancé l'algo
      * @return la prochaine intersection a atteindre pour arrivée a l'objectif ( progression pas a pas vers la solution )
      */
-    public static NoeudGraphe DiscoverPath(Node depart, Node objectif, Ghost actual) {
+    public NoeudGraphe DiscoverPath(Node depart, Node objectif, Ghost actual) {
+        int X = actual.getMonster_Case_X(actual.x);
+        int Y = actual.getMonster_Case_Y(actual.y);
+        if(actual.eaten() && X == 11 && Y == 12){
+            System.out.println("Depart : ");
+            depart.noeud.Affichage();
+            System.out.println("Objectif : ");
+            objectif.noeud.Affichage();
+        }
         resetInfoGraphe();
         depart.noeud.isStart = true;
         objectif.noeud.isEnd = true;
@@ -132,6 +143,13 @@ public class RechercheChemin {
                 depart.noeud.getVoisin().add(memory);
             }
             actual.lastVisited = depart;
+            if(actual.eaten() && X == 11 && Y == 12){
+            System.out.println("Go to : ");
+            solution.Affichage();
+            System.out.println(" ");
+            System.out.println("____________________");
+            System.out.println(" ");
+            }
             return solution;
         }
     }
@@ -140,8 +158,8 @@ public class RechercheChemin {
      * Reinitialise toute les informations nécéssaire au fonctionnement de
      * l'algorithme, coût heuristique, meuilleur père etc...
      */
-    private static void resetInfoGraphe() {
-        for (Node a : ListOfIntersection.IntersectionList) {
+    private void resetInfoGraphe() {
+        for (Node a : IntersectionList) {
             a.noeud.resetGrapheInfo();
             for (Node voisin : a.noeud.getVoisin()) {
                 voisin.noeud.resetGrapheInfo();

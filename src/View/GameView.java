@@ -44,6 +44,16 @@ public class GameView extends View{
         c = new GameController(this);
     }
     
+    
+    public void checkDeath(){
+        if(GameController.PacDead){
+            GameController.PacDead = false;
+            c.soundLibrary.bool_background3 = false;
+            c.soundLibrary.audio_background5.stop();
+            c.soundLibrary.audio_death.play(0.65);
+            
+        }
+    }
     public void checkRestartNeed(){
         if(GameController.restartNeeded){
             GameController.restartNeeded = false;
@@ -101,13 +111,19 @@ public class GameView extends View{
         Scene scene = new Scene(root, 300, 250);
 
         scene.setOnKeyPressed(event -> {
-            System.out.println("keyPressed");
+            
             c.pacmanMovement(event.getCode());
         });
 
         timeline = new Timeline(new KeyFrame(
                 Duration.millis(12),
                 ae -> {
+                    if (c.list.get(c.p[1]).afraid() || c.list.get(c.p[1]).eaten() 
+                            || c.list.get(c.p[2]).afraid() || c.list.get(c.p[2]).eaten() 
+                            || c.list.get(c.p[3]).afraid() || c.list.get(c.p[3]).eaten() 
+                            || c.list.get(c.p[4]).afraid() || c.list.get(c.p[4]).eaten()) {
+                        c.ghostBehavior();
+                    }
                     c.movement();
                     c.getMonsterPosition();
                     c.findContact();
@@ -123,9 +139,15 @@ public class GameView extends View{
         timeline2 = new Timeline(new KeyFrame(
                 Duration.millis(150),
                 ae -> {
+                    this.checkDeath();
                     this.checkRestartNeed();
                     c.updateImage();
-                    c.ghostBehavior();
+                    if (!(c.list.get(c.p[1]).afraid() || c.list.get(c.p[1]).eaten()
+                            || c.list.get(c.p[2]).afraid() || c.list.get(c.p[2]).eaten()
+                            || c.list.get(c.p[3]).afraid() || c.list.get(c.p[3]).eaten()
+                            || c.list.get(c.p[4]).afraid() || c.list.get(c.p[4]).eaten())) {
+                        c.ghostBehavior();
+                    }
                     
                 }));
         timeline2.setCycleCount(Animation.INDEFINITE);
