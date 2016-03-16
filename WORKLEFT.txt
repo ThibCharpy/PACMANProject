@@ -1,0 +1,8 @@
+Affichage vie et Score
+Gestion Sauvegarde score/HighScore
+Correction format AudioClip [ANTOINE]
+Téléporteur/traversée [ANTOINE]
+Bonus fruit
+Générateur de carte
+Correction fonction valeurs fixe [ANTOINE]
+Déplacement a la souris 
