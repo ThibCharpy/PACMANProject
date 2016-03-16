@@ -6,3 +6,5 @@ Bonus fruit
 Générateur de carte
 Correction fonction valeurs fixe [ANTOINE]
 Déplacement a la souris 
+Mise au propre code
+Javadoc 
