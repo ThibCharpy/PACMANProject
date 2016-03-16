@@ -160,7 +160,12 @@ public class Pacman extends Monster {
 
         return true;
     }
-    
+
+    @Override
+    protected void fromDeathToChase() {
+
+    }
+
     public int getScore() {
         return score;
     }

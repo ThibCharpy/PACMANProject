@@ -50,6 +50,11 @@ public abstract class Ghost extends Monster{
             startChase();
         }
     }
+    public void fromDeathToChase(){
+        if(eaten()){
+            startChase();
+        }
+    }
     @Override
     public void interact() {
     }

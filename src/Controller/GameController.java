@@ -234,9 +234,9 @@ public class GameController extends  Controller {
         ImageView imgv;
         timing++;
         for( int i = 0; i<5 ; i++){ // CONDITION FIN EATEN
-            if(list.get(p[i]).eaten() && list.get(p[i]).hitbox.contains(list.get(p[i]).spawnx ,list.get(p[i]).spawny)){
+           /* if(list.get(p[i]).eaten() && list.get(p[i]).hitbox.contains(list.get(p[i]).spawnx ,list.get(p[i]).spawny)){
                 list.get(p[i]).startChase();
-            }
+            }*/
             imgv = new ImageView();
             imgv.setImage(SpriteMonster.getPicture(getMonsterType(list.get(p[i])) , list.get(p[i]).direction, timing));
 
