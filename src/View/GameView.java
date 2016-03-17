@@ -24,12 +24,6 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import sun.rmi.rmic.newrmic.Main;
-
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 
 /**
@@ -128,7 +122,10 @@ public class GameView extends View{
             exit_To_Break(null,root);
         });
         btn_Menu.setMaxSize(btn_Width, btn_Height);
-        btn_Menu.setOnAction(event -> c.btn_Action(stage,hv));
+        btn_Menu.setOnAction(event -> {
+            c.soundLibrary.audio_background5.stop();
+            c.btn_Action(stage,hv);
+                });
         btn_Quit.setMaxSize(btn_Width, btn_Height);
         btn_Quit.setOnAction(event -> stage.close());
 
@@ -206,6 +203,12 @@ public class GameView extends View{
                         c.ghostBehavior();
                     }*/
                     c.pacmovement();
+                   
+                    
+                    c.deadBehavior();
+                    c.movement();
+                    c.getMonsterPosition();
+                    c.findContact();
                     c.getMonsterPosition();
             try {
                 updateMap(grid);
@@ -218,10 +221,7 @@ public class GameView extends View{
         timeline_tab[4] = new Timeline(new KeyFrame(
                 Duration.millis(16),
                 ae -> {
-                    c.deadBehavior();
-                    c.movement();
-                    c.getMonsterPosition();
-                    c.findContact();
+                    c.deadMovement();
                     try {
                         updateMap(grid);
                     } catch (LineUnavailableException ex) {

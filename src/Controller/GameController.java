@@ -263,9 +263,14 @@ public class GameController extends Controller {
     public void pacmovement() {
         list.get(p[0]).movement();
     }
+    public void deadMovement(){
+        for (int i = 1; i < 5; i++) {
+            if(list.get(p[i]).afraid()) list.get(p[i]).movement();
+        }
+    }
     public void movement() {
         for (int i = 1; i < 5; i++) {
-            list.get(p[i]).movement();
+           if(!(list.get(p[i]).afraid())) list.get(p[i]).movement();
         }
     }
 
@@ -290,7 +295,7 @@ public class GameController extends Controller {
             list.get(p[0]).newDirection = 4;
         }
     }
-
+    
     public void DeathImage(int cmpt) {
         Pane pPacman = getMonsterPane(list.get(p[0]));
         ImageView imgv = new ImageView();
