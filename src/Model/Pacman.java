@@ -52,10 +52,15 @@ public class Pacman extends Monster {
             if (getInfoCase(x + (width / 2), y + (height / 2)) == 2) {//getInfoCase(pos_X, pos_Y) == 2 || getInfoCase(pos_X2 , pos_Y2) == 2){
                 EatGomme(x, y);
             }
+            if (getInfoCase(x + (width / 2), y + (height / 2)) == 6) {//getInfoCase(pos_X, pos_Y) == 2 || getInfoCase(pos_X2 , pos_Y2) == 2){
+                EatBonus(x, y);
+            }
         } else {
             GameController.restartNeeded = true;
         }
     }
+
+
 
     @Override
     public void behavior(Pacman pac, Ghost red) {
@@ -105,8 +110,15 @@ public class Pacman extends Monster {
         controller.beginFear();
         controller.updateScore(25);
         }
-    }   
-    
+    }
+    private void EatBonus(double x, double y) {
+        if (getInfoCase(x + (width / 2), y + (height / 2)) == 6) {
+            setInfoCase(x + (width / 2), y + (height / 2), 0);
+            MapChangeRequest m = new MapChangeRequest(getMonster_Case_Y(y + (height / 2)), getMonster_Case_X(x + (width / 2)), "/Sprites/empty.png", "Bonus");
+            ChangeQueue.add(m);
+            controller.updateScore(100);
+        }
+    }
     @Override
     boolean move_is_possible() {
         int pos_X = (int) x;
@@ -149,9 +161,6 @@ public class Pacman extends Monster {
         if (getInfoCase(pos_X, pos_Y) == 1 || getInfoCase(pos_X2, pos_Y2) == 1 || getInfoCase(pos_X, pos_Y) == 4 || getInfoCase(pos_X2, pos_Y2) == 4) {
             this.direction = 0;
             return false;
-        }
-        if (getInfoCase(pos_X, pos_Y) == 2 || getInfoCase(pos_X2, pos_Y2) == 2 || getInfoCase(pos_X, pos_Y) == 3 || getInfoCase(pos_X2, pos_Y2) == 3) {
-            System.out.println("POINT");
         }
         return true;
     }

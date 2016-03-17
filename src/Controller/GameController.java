@@ -38,6 +38,7 @@ public class GameController extends Controller {
     public SoundLibrary soundLibrary;
     String state = "idle";
     int timerFear = 0;
+    boolean bonusExiste = false;
 
     public GameController(View v) {
         super(v);
@@ -428,4 +429,23 @@ public class GameController extends Controller {
         }
     }
 
+    public void createBonus() {
+
+        if ((int)(Math.random()*1000)%100 == 0 && !bonusExiste){
+            bonusExiste = true;
+            while(true) {
+                for (int i = 0; i < Maze.plateau.length; i++){
+                    for (int j = 0; j < Maze.plateau[0].length; j++) {
+                        if ((int) (Math.random() * 1000) % 100 == 0 && Maze.plateau[i][j]==2) {
+                            MapChangeRequest m = new MapChangeRequest(i, j, "/Sprites/bonus_cherry.png", "Bonus");
+                            getChangeQueue().add(m);
+                            Maze.plateau[i][j] = 6;
+                            return;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
 }

@@ -239,6 +239,7 @@ public class GameView extends View{
                     this.checkRestartNeed();
                     c.updateImage();
                     c.ghostBehavior();
+                    c.createBonus();
                     /*if (!(c.list.get(c.p[1]).afraid() || c.list.get(c.p[1]).eaten()
                             || c.list.get(c.p[2]).afraid() || c.list.get(c.p[2]).eaten()
                             || c.list.get(c.p[3]).afraid() || c.list.get(c.p[3]).eaten()

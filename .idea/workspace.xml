@@ -5,33 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="549a2a01-627d-49b3-bc2c-d74060d1644f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/CreateView.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Sprites/terrain2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Sprites/terrain2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/View/CreateView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Controller/Controller.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Controller/GameController.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/GameController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Controller/HomeController.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Controller/HomeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/BlueGhost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/BlueGhost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Ghost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Ghost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/ListOfIntersection.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/ListOfIntersection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/MapChangeRequest.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/MapChangeRequest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Monster.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Monster.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/OrangeGhost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/OrangeGhost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/Pacman.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/Pacman.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/PinkGhost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/PinkGhost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/RechercheChemin.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/RechercheChemin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/RedGhost.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/RedGhost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/Model/SoundLibrary.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/Model/SoundLibrary.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/View/GameView.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/GameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/View/HomeView.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/HomeView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PACMANProject/View/SpriteMonster.class" afterPath="$PROJECT_DIR$/out/production/PACMANProject/View/SpriteMonster.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/GameController.java" afterPath="$PROJECT_DIR$/src/Controller/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Monster.java" afterPath="$PROJECT_DIR$/src/Model/Monster.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Pacman.java" afterPath="$PROJECT_DIR$/src/Model/Pacman.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/GameView.java" afterPath="$PROJECT_DIR$/src/View/GameView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/HomeView.java" afterPath="$PROJECT_DIR$/src/View/HomeView.java" />
     </list>
     <ignored path="PACMANProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,17 +34,17 @@
       <file leaf-file-name="GameView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+            <state vertical-scroll-proportion="-12.37037">
+              <caret line="687" column="37" selection-start-line="687" selection-start-column="37" selection-end-line="687" selection-end-column="37" />
               <folding>
-                <element signature="e#21540#21541#0" expanded="true" />
-                <element signature="e#21616#21617#0" expanded="true" />
-                <element signature="e#21927#21928#0" expanded="true" />
-                <element signature="e#22003#22004#0" expanded="true" />
-                <element signature="e#22332#22333#0" expanded="true" />
-                <element signature="e#22408#22409#0" expanded="true" />
-                <element signature="e#22453#22454#0" expanded="true" />
-                <element signature="e#22529#22530#0" expanded="true" />
+                <element signature="e#21567#21568#0" expanded="true" />
+                <element signature="e#21643#21644#0" expanded="true" />
+                <element signature="e#21954#21955#0" expanded="true" />
+                <element signature="e#22030#22031#0" expanded="true" />
+                <element signature="e#22359#22360#0" expanded="true" />
+                <element signature="e#22435#22436#0" expanded="true" />
+                <element signature="e#22480#22481#0" expanded="true" />
+                <element signature="e#22556#22557#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,40 +63,42 @@
       <file leaf-file-name="GameController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36585367">
-              <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.50110865">
+              <caret line="441" column="51" selection-start-line="441" selection-start-column="51" selection-end-line="441" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2823#2824#0" expanded="true" />
-                <element signature="e#2861#2862#0" expanded="true" />
-                <element signature="e#2906#2907#0" expanded="true" />
-                <element signature="e#2944#2945#0" expanded="true" />
-                <element signature="e#2979#2980#0" expanded="true" />
-                <element signature="e#3013#3014#0" expanded="true" />
-                <element signature="e#4217#4218#0" expanded="true" />
-                <element signature="e#4262#4263#0" expanded="true" />
-                <element signature="e#4304#4305#0" expanded="true" />
-                <element signature="e#4346#4347#0" expanded="true" />
-                <element signature="e#4397#4398#0" expanded="true" />
-                <element signature="e#4438#4439#0" expanded="true" />
-                <element signature="e#4511#4512#0" expanded="true" />
-                <element signature="e#4561#4562#0" expanded="true" />
-                <element signature="e#5201#5202#0" expanded="true" />
-                <element signature="e#5239#5240#0" expanded="true" />
-                <element signature="e#5279#5280#0" expanded="true" />
-                <element signature="e#5317#5318#0" expanded="true" />
-                <element signature="e#6782#6783#0" expanded="true" />
-                <element signature="e#6831#6832#0" expanded="true" />
-                <element signature="e#6884#6885#0" expanded="true" />
-                <element signature="e#6932#6933#0" expanded="true" />
-                <element signature="e#7139#7140#0" expanded="true" />
-                <element signature="e#7180#7181#0" expanded="true" />
-                <element signature="e#9317#9318#0" expanded="true" />
-                <element signature="e#9369#9370#0" expanded="true" />
-                <element signature="e#9406#9407#0" expanded="true" />
-                <element signature="e#9463#9464#0" expanded="true" />
-                <element signature="e#9867#9868#0" expanded="true" />
-                <element signature="e#9918#9919#0" expanded="true" />
+                <element signature="e#1427#1428#0" expanded="true" />
+                <element signature="e#1458#1459#0" expanded="true" />
+                <element signature="e#2856#2857#0" expanded="true" />
+                <element signature="e#2894#2895#0" expanded="true" />
+                <element signature="e#2939#2940#0" expanded="true" />
+                <element signature="e#2977#2978#0" expanded="true" />
+                <element signature="e#3012#3013#0" expanded="true" />
+                <element signature="e#3046#3047#0" expanded="true" />
+                <element signature="e#4250#4251#0" expanded="true" />
+                <element signature="e#4295#4296#0" expanded="true" />
+                <element signature="e#4337#4338#0" expanded="true" />
+                <element signature="e#4379#4380#0" expanded="true" />
+                <element signature="e#4430#4431#0" expanded="true" />
+                <element signature="e#4471#4472#0" expanded="true" />
+                <element signature="e#4544#4545#0" expanded="true" />
+                <element signature="e#4594#4595#0" expanded="true" />
+                <element signature="e#5234#5235#0" expanded="true" />
+                <element signature="e#5272#5273#0" expanded="true" />
+                <element signature="e#5312#5313#0" expanded="true" />
+                <element signature="e#5350#5351#0" expanded="true" />
+                <element signature="e#6815#6816#0" expanded="true" />
+                <element signature="e#6864#6865#0" expanded="true" />
+                <element signature="e#6917#6918#0" expanded="true" />
+                <element signature="e#6965#6966#0" expanded="true" />
+                <element signature="e#7172#7173#0" expanded="true" />
+                <element signature="e#7213#7214#0" expanded="true" />
+                <element signature="e#9537#9538#0" expanded="true" />
+                <element signature="e#9589#9590#0" expanded="true" />
+                <element signature="e#9626#9627#0" expanded="true" />
+                <element signature="e#9683#9684#0" expanded="true" />
+                <element signature="e#10087#10088#0" expanded="true" />
+                <element signature="e#10138#10139#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,10 +118,10 @@
         <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="102" column="132" selection-start-line="102" selection-start-column="132" selection-end-line="102" selection-end-column="132" />
+              <caret line="114" column="66" selection-start-line="114" selection-start-column="66" selection-end-line="114" selection-end-column="66" />
               <folding>
-                <element signature="e#1371#1372#0" expanded="true" />
-                <element signature="e#1393#1394#0" expanded="true" />
+                <element signature="e#1561#1562#0" expanded="true" />
+                <element signature="e#1583#1584#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,18 +142,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="137" column="112" selection-start-line="137" selection-start-column="112" selection-end-line="137" selection-end-column="112" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/CreateView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="76" selection-start-line="28" selection-start-column="76" selection-end-line="28" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -242,11 +209,11 @@
         <option value="$PROJECT_DIR$/src/Model/RedGhost.java" />
         <option value="$PROJECT_DIR$/src/Sprites/terrain2.txt" />
         <option value="$PROJECT_DIR$/src/View/CreateView.java" />
-        <option value="$PROJECT_DIR$/src/Controller/GameController.java" />
         <option value="$PROJECT_DIR$/src/Model/Monster.java" />
-        <option value="$PROJECT_DIR$/src/Model/Pacman.java" />
-        <option value="$PROJECT_DIR$/src/View/GameView.java" />
         <option value="$PROJECT_DIR$/src/View/HomeView.java" />
+        <option value="$PROJECT_DIR$/src/View/GameView.java" />
+        <option value="$PROJECT_DIR$/src/Controller/GameController.java" />
+        <option value="$PROJECT_DIR$/src/Model/Pacman.java" />
       </list>
     </option>
   </component>
@@ -333,6 +300,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PACMANProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PACMANProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sprites" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -874,12 +859,12 @@
       <workItem from="1457903729250" duration="2202000" />
       <workItem from="1457943366917" duration="2069000" />
       <workItem from="1458049522268" duration="3664000" />
-      <workItem from="1458118283691" duration="10846000" />
+      <workItem from="1458118283691" duration="13638000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68294000" />
+    <option name="totallyTimeSpent" value="71086000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -955,18 +940,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#268#269#0" expanded="false" />
-            <element signature="e#366#367#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1273,20 +1246,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Node.java">
+    <entry file="file://$PROJECT_DIR$/src/View/HomeView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Maze.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="7" selection-start-line="17" selection-start-column="4" selection-end-line="25" selection-end-column="7" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/Sprites/AlbumArtSmall.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Monster.java">
@@ -1307,14 +1277,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="102" column="132" selection-start-line="102" selection-start-column="132" selection-end-line="102" selection-end-column="132" />
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.37037">
+          <caret line="687" column="37" selection-start-line="687" selection-start-column="37" selection-end-line="687" selection-end-column="37" />
           <folding>
-            <element signature="e#1371#1372#0" expanded="true" />
-            <element signature="e#1393#1394#0" expanded="true" />
+            <element signature="e#21567#21568#0" expanded="true" />
+            <element signature="e#21643#21644#0" expanded="true" />
+            <element signature="e#21954#21955#0" expanded="true" />
+            <element signature="e#22030#22031#0" expanded="true" />
+            <element signature="e#22359#22360#0" expanded="true" />
+            <element signature="e#22435#22436#0" expanded="true" />
+            <element signature="e#22480#22481#0" expanded="true" />
+            <element signature="e#22556#22557#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Maze.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="7" selection-start-line="17" selection-start-column="4" selection-end-line="25" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1326,67 +1318,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/GameView.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Pacman.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+          <caret line="114" column="66" selection-start-line="114" selection-start-column="66" selection-end-line="114" selection-end-column="66" />
           <folding>
-            <element signature="e#21540#21541#0" expanded="true" />
-            <element signature="e#21616#21617#0" expanded="true" />
-            <element signature="e#21927#21928#0" expanded="true" />
-            <element signature="e#22003#22004#0" expanded="true" />
-            <element signature="e#22332#22333#0" expanded="true" />
-            <element signature="e#22408#22409#0" expanded="true" />
-            <element signature="e#22453#22454#0" expanded="true" />
-            <element signature="e#22529#22530#0" expanded="true" />
+            <element signature="e#1561#1562#0" expanded="true" />
+            <element signature="e#1583#1584#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/HomeView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36585367">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.50110865">
+          <caret line="441" column="51" selection-start-line="441" selection-start-column="51" selection-end-line="441" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2823#2824#0" expanded="true" />
-            <element signature="e#2861#2862#0" expanded="true" />
-            <element signature="e#2906#2907#0" expanded="true" />
-            <element signature="e#2944#2945#0" expanded="true" />
-            <element signature="e#2979#2980#0" expanded="true" />
-            <element signature="e#3013#3014#0" expanded="true" />
-            <element signature="e#4217#4218#0" expanded="true" />
-            <element signature="e#4262#4263#0" expanded="true" />
-            <element signature="e#4304#4305#0" expanded="true" />
-            <element signature="e#4346#4347#0" expanded="true" />
-            <element signature="e#4397#4398#0" expanded="true" />
-            <element signature="e#4438#4439#0" expanded="true" />
-            <element signature="e#4511#4512#0" expanded="true" />
-            <element signature="e#4561#4562#0" expanded="true" />
-            <element signature="e#5201#5202#0" expanded="true" />
-            <element signature="e#5239#5240#0" expanded="true" />
-            <element signature="e#5279#5280#0" expanded="true" />
-            <element signature="e#5317#5318#0" expanded="true" />
-            <element signature="e#6782#6783#0" expanded="true" />
-            <element signature="e#6831#6832#0" expanded="true" />
-            <element signature="e#6884#6885#0" expanded="true" />
-            <element signature="e#6932#6933#0" expanded="true" />
-            <element signature="e#7139#7140#0" expanded="true" />
-            <element signature="e#7180#7181#0" expanded="true" />
-            <element signature="e#9317#9318#0" expanded="true" />
-            <element signature="e#9369#9370#0" expanded="true" />
-            <element signature="e#9406#9407#0" expanded="true" />
-            <element signature="e#9463#9464#0" expanded="true" />
-            <element signature="e#9867#9868#0" expanded="true" />
-            <element signature="e#9918#9919#0" expanded="true" />
+            <element signature="e#1427#1428#0" expanded="true" />
+            <element signature="e#1458#1459#0" expanded="true" />
+            <element signature="e#2856#2857#0" expanded="true" />
+            <element signature="e#2894#2895#0" expanded="true" />
+            <element signature="e#2939#2940#0" expanded="true" />
+            <element signature="e#2977#2978#0" expanded="true" />
+            <element signature="e#3012#3013#0" expanded="true" />
+            <element signature="e#3046#3047#0" expanded="true" />
+            <element signature="e#4250#4251#0" expanded="true" />
+            <element signature="e#4295#4296#0" expanded="true" />
+            <element signature="e#4337#4338#0" expanded="true" />
+            <element signature="e#4379#4380#0" expanded="true" />
+            <element signature="e#4430#4431#0" expanded="true" />
+            <element signature="e#4471#4472#0" expanded="true" />
+            <element signature="e#4544#4545#0" expanded="true" />
+            <element signature="e#4594#4595#0" expanded="true" />
+            <element signature="e#5234#5235#0" expanded="true" />
+            <element signature="e#5272#5273#0" expanded="true" />
+            <element signature="e#5312#5313#0" expanded="true" />
+            <element signature="e#5350#5351#0" expanded="true" />
+            <element signature="e#6815#6816#0" expanded="true" />
+            <element signature="e#6864#6865#0" expanded="true" />
+            <element signature="e#6917#6918#0" expanded="true" />
+            <element signature="e#6965#6966#0" expanded="true" />
+            <element signature="e#7172#7173#0" expanded="true" />
+            <element signature="e#7213#7214#0" expanded="true" />
+            <element signature="e#9537#9538#0" expanded="true" />
+            <element signature="e#9589#9590#0" expanded="true" />
+            <element signature="e#9626#9627#0" expanded="true" />
+            <element signature="e#9683#9684#0" expanded="true" />
+            <element signature="e#10087#10088#0" expanded="true" />
+            <element signature="e#10138#10139#0" expanded="true" />
           </folding>
         </state>
       </provider>
