@@ -6,10 +6,14 @@ import Model.Model;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -37,11 +41,28 @@ public class GameView extends View{
     private Timeline timeline;
     private Timeline timeline3;
     private Timeline timeline4;
+
+    Timeline[] timeline_tab;
+    StackPane root;
+    StackPane break_Root;
+    StackPane break_Screen;
+    private Button btn_Resume;
+    private Button btn_Menu;
+    private Button btn_Quit;
+    double btn_Width = 250;
+    double btn_Height = 475;
+    boolean onBreak=false;
+    boolean resume=false;
+
     private Stage stage_save;
     GameController c;
     public GameView() {
         super();
         c = new GameController(this);
+        timeline_tab = new Timeline[4];
+        btn_Resume = new Button("Resume");
+        btn_Menu = new Button("Menu");
+        btn_Quit = new Button("Quit");
     }
     
     
@@ -49,12 +70,12 @@ public class GameView extends View{
         if(GameController.PacDead){           
             c.soundLibrary.audio_background5.stop();
             c.soundLibrary.play(c.soundLibrary.bool_death , c.soundLibrary.audio_death ,0.65);
-            timeline.stop();
-            timeline3.stop();
+            timeline_tab[0].stop();
+            timeline_tab[2].stop();
             c.DeathImage(GameController.cmpDeath);
             GameController.cmpDeath++;
             if(GameController.cmpDeath == 12){
-                timeline2.stop();
+                timeline_tab[1].stop();
                 GameController.PacDead = false;
                 GameController.cmpDeath = 0;
                 GameController.lifeLeft --;
@@ -63,7 +84,7 @@ public class GameView extends View{
                     c.getMonsterPosition();
                     c.updateImage();
                     c.soundLibrary.play(c.soundLibrary.bool_introsong ,c.soundLibrary.audio_introsong, 0.65);
-                    timeline4.play();
+                    timeline_tab[3].play();
                 }else{
                     
                 }
@@ -80,9 +101,9 @@ public class GameView extends View{
                 c.p[i] = null;                
             }
             c.list.clear();
-            timeline.stop();
-            timeline2.stop();
-            timeline3.stop();
+            timeline_tab[0].stop();
+            timeline_tab[1].stop();
+            timeline_tab[2].stop();
             c.soundLibrary.audio_background5.stop();
             start(stage_save);
         }
@@ -91,6 +112,38 @@ public class GameView extends View{
     
     @Override
     public void start(Stage stage) {
+
+        HomeView hv = new HomeView();
+
+        btn_Resume.setMaxSize(btn_Width, btn_Height);
+        btn_Resume.setOnAction(event -> {
+            resume=true;
+            exit_To_Break(null,root);
+        });
+        btn_Menu.setMaxSize(btn_Width, btn_Height);
+        btn_Menu.setOnAction(event -> c.btn_Action(stage,hv));
+        btn_Quit.setMaxSize(btn_Width, btn_Height);
+        btn_Quit.setOnAction(event -> stage.close());
+
+        VBox button_box = new VBox(50);
+        button_box.setAlignment(Pos.CENTER);
+        button_box.getChildren().add(btn_Resume);
+        button_box.getChildren().add(btn_Menu);
+        button_box.getChildren().add(btn_Quit);
+
+        Rectangle break_Screen_Menu_Background = new Rectangle(game_Width-80,game_Heigth-80);
+        break_Screen_Menu_Background.setFill(Color.GREY);
+        StackPane break_Screen_Menu_Root = new StackPane();
+        break_Screen_Menu_Root.getChildren().add(break_Screen_Menu_Background);
+        break_Screen_Menu_Root.getChildren().add(button_box);
+
+        Rectangle break_Screen_Background = new Rectangle(game_Width,game_Heigth);
+        break_Screen_Background.setFill(Color.BLACK);
+
+        break_Screen = new StackPane();
+        break_Screen.getChildren().add(break_Screen_Background);
+        break_Screen.getChildren().add(break_Screen_Menu_Root);
+
         try {
             //TODO #1 gérer le controlleur de la création de Maze
             GameController.initialize_Game("/Sprites/terrain.txt");
@@ -117,7 +170,7 @@ public class GameView extends View{
         stack = c.implementPane(stack);
         c.getMonsterPosition(stack);
 
-        StackPane root = new StackPane();
+        root = new StackPane();
         Rectangle background_root = new Rectangle(getWindow_Width(), getWindow_Height());
         background_root.setFill(Color.BLACK);
         root.getChildren().add(background_root);
@@ -126,11 +179,15 @@ public class GameView extends View{
         Scene scene = new Scene(root, 300, 250);
 
         scene.setOnKeyPressed(event -> {
-            
-            c.pacmanMovement(event.getCode());
+            if(!onBreak){
+                enter_To_Break(event.getCode(), root);
+                c.pacmanMovement(event.getCode());
+            }else{
+                exit_To_Break(event.getCode(),root);
+            }
         });
 
-        timeline = new Timeline(new KeyFrame(
+        timeline_tab[0] = new Timeline(new KeyFrame(
                 Duration.millis(12),
                 ae -> {
                     if (c.list.get(c.p[1]).afraid() || c.list.get(c.p[1]).eaten() 
@@ -148,10 +205,10 @@ public class GameView extends View{
                 Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
             }
                 }));
-        timeline.setCycleCount(Animation.INDEFINITE);
-       
+        timeline_tab[0].setCycleCount(Animation.INDEFINITE);
 
-        timeline2 = new Timeline(new KeyFrame(
+
+        timeline_tab[1] = new Timeline(new KeyFrame(
                 Duration.millis(150),
                 ae -> {
                     this.checkDeath();
@@ -165,30 +222,58 @@ public class GameView extends View{
                     }
                     
                 }));
-        timeline2.setCycleCount(Animation.INDEFINITE);
-        
+        timeline_tab[1].setCycleCount(Animation.INDEFINITE);
 
-        timeline3 = new Timeline(new KeyFrame(
+
+        timeline_tab[2] = new Timeline(new KeyFrame(
                 Duration.millis(290000),
                 ae -> {
                     c.soundLibrary.playOverride(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
                 }));
-        timeline3.setCycleCount(Animation.INDEFINITE);
-        
-        
-        timeline4 = new Timeline(new KeyFrame(
+        timeline_tab[2].setCycleCount(Animation.INDEFINITE);
+
+
+        timeline_tab[3] = new Timeline(new KeyFrame(
                 Duration.millis(4700),
                 ae -> {
-                    timeline3.play();
-                    timeline2.play();
-                    timeline.play();
+                    timeline_tab[2].play();
+                    timeline_tab[1].play();
+                    timeline_tab[0].play();
                     c.soundLibrary.playOverride(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
                 }));
-        timeline4.setCycleCount(0);
-        timeline4.play();
+        timeline_tab[3].setCycleCount(0);
+        timeline_tab[3].play();
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public void enter_To_Break(KeyCode k, StackPane s) {
+        if(k== KeyCode.ESCAPE){
+            onBreak=true;
+            Rectangle r = new Rectangle(getWindow_Width(),getWindow_Height());
+            r.setFill(Color.rgb(50, 50, 50, 0.75));
+            GaussianBlur gb = new GaussianBlur();
+            r.setEffect(gb);
+            break_Root = new StackPane();
+            break_Root.getChildren().add(r);
+            break_Root.getChildren().add(break_Screen);
+            s.getChildren().add(break_Root);
+            for(int i=0; i<timeline_tab.length-1;i++){
+                timeline_tab[i].stop();
+            }
+        }
+    }
+
+    public void exit_To_Break(KeyCode k, StackPane s) {
+        if(k== KeyCode.ESCAPE || resume){
+            onBreak=false;
+            s.getChildren().remove(break_Root);
+            for(int i=0; i<timeline_tab.length;i++){
+                timeline_tab[i].play();
+            }
+            resume=false;
+        }
     }
 
 

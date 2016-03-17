@@ -14,8 +14,4 @@ public class HomeController extends Controller{
     public HomeController(HomeView v){
         super(v);
     }
-
-    public void btn_Action(Stage s, View v){
-        v.start(s);
-    }
 }
