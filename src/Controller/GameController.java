@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -30,9 +31,9 @@ public class GameController extends Controller {
     public static boolean PacDead = false;
     public static int cmpDeath = 0;
     public Pane[] p;
-    public static Score score;
-    public static int lifeLeft = 3;
-    private static int score_for_life = 0;
+    public Score score;
+    public int lifeLeft = 3;
+    private int score_for_life = 0;
     int timing = 0;
     public SoundLibrary soundLibrary;
     String state = "idle";
@@ -86,7 +87,10 @@ public class GameController extends Controller {
     }
 
     public void resetPosition(){
-        setMonsterX(0, 185);
+        for(int i = 0; i<5; i++){
+            list.get(p[i]).reset();
+        }
+        /*setMonsterX(0, 185);
         setMonsterY(0, 363);
         setMonsterX(1, 183);
         setMonsterY(1, 240);
@@ -95,7 +99,7 @@ public class GameController extends Controller {
         setMonsterX(3, 220);
         setMonsterY(3, 254);
         setMonsterX(4, 183);
-        setMonsterY(4, 254);
+        setMonsterY(4, 254);*/
     }
     
     public void setMonsterX(int i, int x) {
@@ -137,16 +141,16 @@ public class GameController extends Controller {
     }
 
     public void updateScore(int i) {
-        GameController.score.setScore_Score(GameController.score.getScore_Score() + i);
-        GameController.score_for_life += i;
+        score.setScore_Score(score.getScore_Score() + i);
+        score_for_life += i;
         System.out.println("score : ");
-        System.out.println(GameController.score);
+        System.out.println(score);
         System.out.println("score_for_life : " );
-        System.out.println(GameController.score_for_life);
-        if(GameController.score_for_life >= 10000){
-            GameController.lifeLeft++;           
+        System.out.println(score_for_life);
+        if(score_for_life >= 10000){
+            lifeLeft++;
             this.soundLibrary.audio_extralife.play(1.2);
-            GameController.score_for_life = GameController.score_for_life - 10000;
+            score_for_life = score_for_life - 10000;
         }
     }
     
@@ -256,8 +260,11 @@ public class GameController extends Controller {
         return stack;
     }
 
+    public void pacmovement() {
+        list.get(p[0]).movement();
+    }
     public void movement() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 1; i < 5; i++) {
             list.get(p[i]).movement();
         }
     }
@@ -337,7 +344,7 @@ public class GameController extends Controller {
 
     public void ghostBehavior() {
         for (int i = 1; i < 5; i++) {
-            list.get(p[i]).behavior((Pacman) list.get(p[0]), (Ghost) list.get(p[1]));
+            if(!(list.get(p[i]).eaten())) list.get(p[i]).behavior((Pacman) list.get(p[0]), (Ghost) list.get(p[1]));
         }
     }
 
@@ -373,11 +380,46 @@ public class GameController extends Controller {
                     scoreMult ++;
                 }
             }
-            GameController.score.setScore_Score(GameController.score.getScore_Score() + 200 * scoreMult);
-            GameController.score_for_life += 200 * scoreMult;
+            score.setScore_Score(score.getScore_Score() + 200 * scoreMult);
+            score_for_life += 200 * scoreMult;
         } else if (!list.get(p[i]).eaten()) {
             GameController.PacDead = true;
             
+        }
+    }
+
+    public void mouvementByMouse(MouseEvent event) {
+        double mouseX = event.getX();
+        double mouseY = event.getY();
+        double pacX = list.get(p[0]).x;
+        double pacY = list.get(p[0]).y;
+
+        double diffX = Math.abs(mouseX - pacX);
+        double diffY = Math.abs(mouseY - pacY);
+
+        if (diffX > diffY){
+            if (mouseX > pacX) {
+                pacmanMovement(KeyCode.RIGHT);
+            }
+            else{
+                pacmanMovement(KeyCode.LEFT);
+            }
+        }
+        else{
+            if (mouseY > pacY) {
+                pacmanMovement(KeyCode.DOWN);
+            }
+            else{
+                pacmanMovement(KeyCode.UP);
+            }
+        }
+    }
+
+    public void deadBehavior() {
+        for(int i = 1; i<5 ; i++){
+            if(list.get(p[i]).eaten()){
+               list.get(p[i]).behavior( (Pacman) list.get(p[0]), (Ghost) list.get(p[1]));
+            }
         }
     }
 

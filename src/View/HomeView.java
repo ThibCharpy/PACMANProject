@@ -46,6 +46,7 @@ public class HomeView extends View{
 
         final View gv = new GameView();
         final View sv = new ScoreView("src/Model/score.txt");
+        //final View sv = new CreateView();
         
         btn_Game.setMaxSize(btn_Width, btn_Height);
         btn_Game.setOnAction(event -> hCtrl.btn_Action(stage,gv));

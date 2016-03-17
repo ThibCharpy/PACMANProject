@@ -26,6 +26,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import sun.rmi.rmic.newrmic.Main;
+
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -54,12 +56,14 @@ public class GameView extends View{
     boolean onBreak=false;
     boolean resume=false;
 
+    private Timeline timelineGhost;
     private Stage stage_save;
+    private Stage stage;
     GameController c;
     public GameView() {
         super();
         c = new GameController(this);
-        timeline_tab = new Timeline[4];
+        timeline_tab = new Timeline[5];
         btn_Resume = new Button("Resume");
         btn_Menu = new Button("Menu");
         btn_Quit = new Button("Quit");
@@ -67,26 +71,28 @@ public class GameView extends View{
     
     
     public void checkDeath(){
-        if(GameController.PacDead){           
+        if(c.PacDead){
             c.soundLibrary.audio_background5.stop();
             c.soundLibrary.play(c.soundLibrary.bool_death , c.soundLibrary.audio_death ,0.65);
             timeline_tab[0].stop();
             timeline_tab[2].stop();
+            timeline_tab[4].stop();
             c.DeathImage(GameController.cmpDeath);
             GameController.cmpDeath++;
             if(GameController.cmpDeath == 12){
                 timeline_tab[1].stop();
                 GameController.PacDead = false;
                 GameController.cmpDeath = 0;
-                GameController.lifeLeft --;
-                if(GameController.lifeLeft > 0){
+                c.lifeLeft --;
+                if(c.lifeLeft > 0){
                     c.resetPosition();
                     c.getMonsterPosition();
                     c.updateImage();
                     c.soundLibrary.play(c.soundLibrary.bool_introsong ,c.soundLibrary.audio_introsong, 0.65);
                     timeline_tab[3].play();
                 }else{
-                    
+                    HomeView h = new HomeView();
+                    h.start(stage_save);
                 }
             }
             
@@ -104,6 +110,7 @@ public class GameView extends View{
             timeline_tab[0].stop();
             timeline_tab[1].stop();
             timeline_tab[2].stop();
+            timeline_tab[4].stop();
             c.soundLibrary.audio_background5.stop();
             start(stage_save);
         }
@@ -186,19 +193,20 @@ public class GameView extends View{
                 exit_To_Break(event.getCode(),root);
             }
         });
-
+        scene.setOnMouseClicked(event -> {
+            c.mouvementByMouse(event);
+        });
         timeline_tab[0] = new Timeline(new KeyFrame(
                 Duration.millis(12),
                 ae -> {
-                    if (c.list.get(c.p[1]).afraid() || c.list.get(c.p[1]).eaten() 
+                    /*if (c.list.get(c.p[1]).afraid() || c.list.get(c.p[1]).eaten()
                             || c.list.get(c.p[2]).afraid() || c.list.get(c.p[2]).eaten() 
                             || c.list.get(c.p[3]).afraid() || c.list.get(c.p[3]).eaten() 
                             || c.list.get(c.p[4]).afraid() || c.list.get(c.p[4]).eaten()) {
                         c.ghostBehavior();
-                    }
-                    c.movement();
+                    }*/
+                    c.pacmovement();
                     c.getMonsterPosition();
-                    c.findContact();
             try {
                 updateMap(grid);
             } catch (LineUnavailableException ex) {
@@ -207,6 +215,22 @@ public class GameView extends View{
                 }));
         timeline_tab[0].setCycleCount(Animation.INDEFINITE);
 
+        timeline_tab[4] = new Timeline(new KeyFrame(
+                Duration.millis(16),
+                ae -> {
+                    c.deadBehavior();
+                    c.movement();
+                    c.getMonsterPosition();
+                    c.findContact();
+                    try {
+                        updateMap(grid);
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }));
+        timeline_tab[4].setCycleCount(Animation.INDEFINITE);
+
+
 
         timeline_tab[1] = new Timeline(new KeyFrame(
                 Duration.millis(150),
@@ -214,12 +238,13 @@ public class GameView extends View{
                     this.checkDeath();
                     this.checkRestartNeed();
                     c.updateImage();
-                    if (!(c.list.get(c.p[1]).afraid() || c.list.get(c.p[1]).eaten()
+                    c.ghostBehavior();
+                    /*if (!(c.list.get(c.p[1]).afraid() || c.list.get(c.p[1]).eaten()
                             || c.list.get(c.p[2]).afraid() || c.list.get(c.p[2]).eaten()
                             || c.list.get(c.p[3]).afraid() || c.list.get(c.p[3]).eaten()
                             || c.list.get(c.p[4]).afraid() || c.list.get(c.p[4]).eaten())) {
                         c.ghostBehavior();
-                    }
+                    }*/
                     
                 }));
         timeline_tab[1].setCycleCount(Animation.INDEFINITE);
@@ -239,6 +264,7 @@ public class GameView extends View{
                     timeline_tab[2].play();
                     timeline_tab[1].play();
                     timeline_tab[0].play();
+                    timeline_tab[4].play();
                     c.soundLibrary.playOverride(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
                 }));
         timeline_tab[3].setCycleCount(0);

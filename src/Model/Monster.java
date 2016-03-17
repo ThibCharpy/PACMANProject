@@ -20,7 +20,14 @@ public abstract class Monster extends Model{
     public double  spawnx;
     public double  spawny;
     public Node PrisonCenter = ListOfIntersection.getIntersectionAndClosest(9, 14);
-
+    /**
+     *Créer une instance de Monster qui représente une créature du jeu (ghost ou pacman)
+     * @param x coordonnée dans l'axe x
+     * @param y coordonnée dans l'axe y
+     * @param size  taille du monster
+     * @param speed vitesse
+     * @param direction direction de base du monster
+     */
     protected Monster(double x, double y, double size, double speed, int direction) {
         super();
         this.x = x;
@@ -40,6 +47,9 @@ public abstract class Monster extends Model{
 
     public abstract void  interact();
 
+    /**
+     * Permet de bouger le pacman en modifinat ses valeurs x et y
+     */
     public void movement() {
 
         if (new_move_is_possible()) {
@@ -72,6 +82,10 @@ public abstract class Monster extends Model{
 
         interact();
     }
+    /**
+     * Permet de voir si un mouvement dans une direction est possible et stoppe le pacman si il rencontre un mur
+     * @return si oui ou non l'objet peut bouger
+     */
     boolean move_is_possible() {
         int pos_X = (int) x;
         int pos_Y = (int) y;
@@ -120,6 +134,10 @@ public abstract class Monster extends Model{
 
         return true;
     }
+    /**
+     * Permet de savoir si l'objet peut bouger vers une direction demandé mais qui n'etait pas encore disponible
+     * @return si oui ou non l'objet peut bouger
+     */
     public boolean new_move_is_possible() {
         int pos_X = (int) x;
         int pos_Y = (int) y;
@@ -172,4 +190,12 @@ public abstract class Monster extends Model{
     public abstract boolean eaten();
 
     public abstract void fromFearToChase();
+
+    public void reset() {
+        this.x = spawnx;
+        this.y = spawny;
+        startChase();
+        this.newDirection=5;
+        this.direction = 0;
+    }
 }

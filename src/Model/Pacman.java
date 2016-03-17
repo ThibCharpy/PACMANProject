@@ -84,7 +84,7 @@ public class Pacman extends Monster {
     private void EatGomme(double Pos_X, double Pos_Y){
         if(getInfoCase(x + (width / 2), y + (height / 2))==2){
         setInfoCase(x + (width / 2), y + (height / 2), 0);
-        MapChangeRequest gommeEated = new MapChangeRequest(getMonster_Case_Y(Pos_Y), getMonster_Case_X(Pos_X), "/Sprites/empty.png", "Gomme");
+        MapChangeRequest gommeEated = new MapChangeRequest(getMonster_Case_Y(y + (height / 2)/*Pos_Y*/), getMonster_Case_X(x + (width / 2)/*Pos_X*/), "/Sprites/empty.png", "Gomme");
         ChangeQueue.add(gommeEated);
         controller.updateScore(10);   
         }
@@ -100,7 +100,7 @@ public class Pacman extends Monster {
     private void EatBigGomme(double Pos_X, double Pos_Y){
         if(getInfoCase(x + (width / 2), y + (height / 2))==3){
         setInfoCase(x + (width / 2), y + (height / 2), 0);
-        MapChangeRequest BiggommeEated = new MapChangeRequest(getMonster_Case_Y(Pos_Y), getMonster_Case_X(Pos_X), "/Sprites/empty.png", "BigGomme");
+        MapChangeRequest BiggommeEated = new MapChangeRequest(getMonster_Case_Y(y + (height / 2)), getMonster_Case_X(x + (width / 2)), "/Sprites/empty.png", "BigGomme");
         ChangeQueue.add(BiggommeEated);
         controller.beginFear();
         controller.updateScore(25);
@@ -150,7 +150,9 @@ public class Pacman extends Monster {
             this.direction = 0;
             return false;
         }
-
+        if (getInfoCase(pos_X, pos_Y) == 2 || getInfoCase(pos_X2, pos_Y2) == 2 || getInfoCase(pos_X, pos_Y) == 3 || getInfoCase(pos_X2, pos_Y2) == 3) {
+            System.out.println("POINT");
+        }
         return true;
     }
 
