@@ -21,6 +21,7 @@ public class HomeView extends View{
 
     private Button btn_Score;
     private Button btn_Game;
+    private Button btn_Paint_Versus_Mode;
     private Button btn_Quit;
 
     final public static double menu_Width = 300;
@@ -31,6 +32,7 @@ public class HomeView extends View{
         btn_Score = new Button("Score");
         btn_Game = new Button("Game");
         btn_Quit = new Button("Quit");
+        btn_Paint_Versus_Mode = new Button("Versus Paint Mode");
         hCtrl = new HomeController(this);
     }
 
@@ -51,6 +53,9 @@ public class HomeView extends View{
         btn_Game.setMaxSize(btn_Width, btn_Height);
         btn_Game.setOnAction(event -> hCtrl.btn_Action(stage,gv));
 
+        btn_Paint_Versus_Mode.setMaxSize(btn_Width, btn_Height);
+        btn_Paint_Versus_Mode.setOnAction(event -> System.out.println("Versus Paint Mode"));
+
         btn_Score.setMaxSize(btn_Width, btn_Height);
         btn_Score.setOnAction(event -> hCtrl.btn_Action(stage,sv));
 
@@ -61,6 +66,7 @@ public class HomeView extends View{
         VBox box_btn = new VBox(50);
         box_btn.setAlignment(Pos.CENTER);
         box_btn.getChildren().add(btn_Game);
+        box_btn.getChildren().add(btn_Paint_Versus_Mode);
         box_btn.getChildren().add(btn_Score);
         box_btn.getChildren().add(btn_Quit);
 
