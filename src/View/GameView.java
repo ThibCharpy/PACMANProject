@@ -218,7 +218,7 @@ public class GameView extends View{
 
         HBox part_Score = new HBox();
         part_Score.setAlignment(Pos.TOP_LEFT);
-        Text text_Score = new Text("Score: "+gamescore.getScore().getRight().intValue()+"                  ");
+        Text text_Score = new Text("Score: " + 0 + "                  ");
         text_Score.setFont(Font.font("Arial", BOLD, 18));
         part_Score.getChildren().add(text_Score);
 
@@ -296,18 +296,17 @@ public class GameView extends View{
                         c.ghostBehavior();
                     }*/
                     c.pacmovement();
-                   
-                    
                     c.deadBehavior();
                     c.movement();
                     c.getMonsterPosition();
                     c.findContact();
                     c.getMonsterPosition();
-            try {
-                updateMap(grid);
-            } catch (LineUnavailableException ex) {
-                Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                    try {
+                        updateMap(grid);
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    text_Score.setText("Score: " + c.getSc().getScore().getRight().intValue() + "                  ");
                 }));
         timeline_tab[0].setCycleCount(Animation.INDEFINITE);
 

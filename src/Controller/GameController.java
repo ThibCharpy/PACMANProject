@@ -161,12 +161,13 @@ public class GameController extends Controller {
         }
     }
 
+
     public void updateScore(int i) {
         sc.setScore_Score(sc.getScore_Score() + i);
         score_for_life += i;
-        System.out.println("score : ");
+        System.out.print("score : ");
         System.out.println(sc);
-        System.out.println("score_for_life : " );
+        System.out.print("score_for_life : " );
         System.out.println(score_for_life);
         if(score_for_life >= 10000){
             lifeLeft++;
@@ -174,7 +175,11 @@ public class GameController extends Controller {
             score_for_life = score_for_life - 10000;
         }
     }
-    
+
+    public Score getSc() {
+        return sc;
+    }
+
     public static void initialize_Game(String path_field) throws IOException {
         Maze.initMapArray(path_field);
     }
@@ -284,6 +289,7 @@ public class GameController extends Controller {
     public void pacmovement() {
         list.get(p[0]).movement();
     }
+
     public void deadMovement(){
         for (int i = 1; i < 5; i++) {
             if(list.get(p[i]).afraid()) list.get(p[i]).movement();
