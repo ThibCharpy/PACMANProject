@@ -63,6 +63,7 @@ public class GameView extends View{
     private Stage stage_save;
     private Stage stage;
     GameController c;
+
     public GameView(String path) {
         super();
         c = new GameController(this);
@@ -96,11 +97,9 @@ public class GameView extends View{
                     c.soundLibrary.play(c.soundLibrary.bool_introsong ,c.soundLibrary.audio_introsong, 0.65);
                     timeline_tab[3].play();
                 }else{
-                    //HomeView h = new HomeView();
                     record_Root = new StackPane();
                     record_Root.getChildren().add(record_Screen);
                     root.getChildren().add(record_Root);
-                    //h.start(stage_save);
                 }
             }
             
@@ -208,17 +207,24 @@ public class GameView extends View{
         }
         c.soundLibrary.play(c.soundLibrary.bool_introsong ,c.soundLibrary.audio_introsong, 0.65);
         this.stage_save = stage;
+
+        Rectangle toolbar_background = new Rectangle(getWindow_Width(),getWindow_Height()/20);
+        toolbar_background.setFill(Color.GREY);
+
+        HBox toolbar = new HBox();
+        toolbar.getChildren().add(toolbar_background);
+
         BorderPane maze = new BorderPane();
         StackPane stack = new StackPane();
         stack.setMinWidth(game_Width);
         stack.setMinHeight(game_Heigth);
         stack.setMaxWidth(game_Width);
         stack.setMaxHeight(game_Heigth);
-        Label top_info = new Label("Get_score                                               Get_A_Life");
+       // Label top_info = new Label("Get_score                                               Get_A_Life");
 
         GridPane grid = getGrid();
         stack.getChildren().add(grid);
-        maze.setTop(top_info);
+        maze.setTop(toolbar);
         maze.setCenter(stack);
 
         c.startGame();
