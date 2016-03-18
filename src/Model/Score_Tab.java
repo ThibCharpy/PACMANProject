@@ -71,6 +71,8 @@ public class Score_Tab extends Model implements Serializable {
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         System.out.println();
         oos.writeObject(this.getScore_Tab_tab());
+        oos.close();
+        fos.close();
     }
 
     public String toString(){

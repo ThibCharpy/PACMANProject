@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,6 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -25,6 +27,8 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
+
+import static javafx.scene.text.FontWeight.BOLD;
 
 /**
  * Created by thibault on 25/02/16.
@@ -42,6 +46,9 @@ public class GameView extends View{
     StackPane root;
     StackPane break_Root;
     StackPane break_Screen;
+    StackPane record_Screen;
+    StackPane record_Root;
+    private Button btn_Submit;
     private Button btn_Resume;
     private Button btn_Menu;
     private Button btn_Quit;
@@ -49,18 +56,22 @@ public class GameView extends View{
     double btn_Height = 475;
     boolean onBreak=false;
     boolean resume=false;
+    private String name;
+    private String path;
 
     private Timeline timelineGhost;
     private Stage stage_save;
     private Stage stage;
     GameController c;
-    public GameView() {
+    public GameView(String path) {
         super();
         c = new GameController(this);
         timeline_tab = new Timeline[5];
         btn_Resume = new Button("Resume");
         btn_Menu = new Button("Menu");
         btn_Quit = new Button("Quit");
+        btn_Submit = new Button("Submit");
+        this.path= path;
     }
     
     
@@ -85,8 +96,11 @@ public class GameView extends View{
                     c.soundLibrary.play(c.soundLibrary.bool_introsong ,c.soundLibrary.audio_introsong, 0.65);
                     timeline_tab[3].play();
                 }else{
-                    HomeView h = new HomeView();
-                    h.start(stage_save);
+                    //HomeView h = new HomeView();
+                    record_Root = new StackPane();
+                    record_Root.getChildren().add(record_Screen);
+                    root.getChildren().add(record_Root);
+                    //h.start(stage_save);
                 }
             }
             
@@ -147,6 +161,43 @@ public class GameView extends View{
         break_Screen = new StackPane();
         break_Screen.getChildren().add(break_Screen_Background);
         break_Screen.getChildren().add(break_Screen_Menu_Root);
+
+
+
+        TextField record = new TextField();
+        Label record_Label = new Label("Enter your Name:");
+        record_Label.setFont(Font.font("Arial", BOLD, 14));
+
+        HBox record_Text_Box = new HBox(20);
+        record_Text_Box.setAlignment(Pos.CENTER);
+        record_Text_Box.getChildren().add(record_Label);
+        record_Text_Box.getChildren().add(record);
+
+        btn_Submit.setMaxSize(btn_Width-160, btn_Height);
+        btn_Submit.setOnAction(event -> {
+            name = record.getText();
+            try {
+                c.saveGameScore(name,path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            hv.start(stage);
+        });
+
+        VBox record_Box = new VBox(20);
+        record_Box.setAlignment(Pos.CENTER);
+        record_Box.getChildren().add(record_Text_Box);
+        record_Box.getChildren().add(btn_Submit);
+
+        StackPane record_Screen_Menu = new StackPane();
+        record_Screen_Menu.getChildren().add(break_Screen_Menu_Background);
+        record_Screen_Menu.getChildren().add(record_Box);
+
+        record_Screen = new StackPane();
+        record_Screen.getChildren().add(break_Screen_Background);
+        record_Screen.getChildren().add(record_Screen_Menu);
 
         try {
             //TODO #1 gérer le controlleur de la création de Maze

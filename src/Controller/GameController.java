@@ -13,7 +13,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -31,7 +35,7 @@ public class GameController extends Controller {
     public static boolean PacDead = false;
     public static int cmpDeath = 0;
     public Pane[] p;
-    public Score score;
+    public Score sc;
     public int lifeLeft = 3;
     private int score_for_life = 0;
     int timing = 0;
@@ -46,7 +50,7 @@ public class GameController extends Controller {
         soundLibrary = new SoundLibrary();
         p = new Pane[5];
         Model.controller = this;
-        score = new Score("score", 0);
+        sc = new Score("score", 0);
     }
 
     public LinkedList getChangeQueue() {
@@ -102,6 +106,22 @@ public class GameController extends Controller {
         setMonsterX(4, 183);
         setMonsterY(4, 254);*/
     }
+
+    public void saveGameScore(String name, String path) throws IOException, ClassNotFoundException {
+        File f = new File(path);
+        Score_Tab st;
+        sc.setScore_Name(name);
+        if(f.exists()){
+            System.out.println("Fichier trouvé => ouverture fichier");
+            st = new Score_Tab(path);
+        }else{
+            st = new Score_Tab();
+            Path myFile = Paths.get(path);
+            Files.createFile(myFile);
+        }
+        st.add_Score(sc);
+        st.writeScore_Tab(path);
+    }
     
     public void setMonsterX(int i, int x) {
         (list.get(p[i]).x) = x;
@@ -142,10 +162,10 @@ public class GameController extends Controller {
     }
 
     public void updateScore(int i) {
-        score.setScore_Score(score.getScore_Score() + i);
+        sc.setScore_Score(sc.getScore_Score() + i);
         score_for_life += i;
         System.out.println("score : ");
-        System.out.println(score);
+        System.out.println(sc);
         System.out.println("score_for_life : " );
         System.out.println(score_for_life);
         if(score_for_life >= 10000){
@@ -386,7 +406,7 @@ public class GameController extends Controller {
                     scoreMult ++;
                 }
             }
-            score.setScore_Score(score.getScore_Score() + 200 * scoreMult);
+            sc.setScore_Score(sc.getScore_Score() + 200 * scoreMult);
             score_for_life += 200 * scoreMult;
         } else if (!list.get(p[i]).eaten()) {
             GameController.PacDead = true;

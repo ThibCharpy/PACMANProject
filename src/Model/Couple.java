@@ -1,9 +1,11 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  * Created by thibault on 22/01/16.
  */
-public class Couple<E,F> {
+public class Couple<E,F> implements Serializable{
     private E left;
     private F right;
 
