@@ -3,6 +3,7 @@ package View;
 import Controller.GameController;
 import Model.MapChangeRequest;
 import Model.Model;
+import Model.Score;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -59,6 +60,8 @@ public class GameView extends View{
     private String name;
     private String path;
 
+    public Score gamescore;
+
     private Timeline timelineGhost;
     private Stage stage_save;
     private Stage stage;
@@ -73,6 +76,8 @@ public class GameView extends View{
         btn_Quit = new Button("Quit");
         btn_Submit = new Button("Submit");
         this.path= path;
+        gamescore = new Score(null,0);
+        name="";
     }
     
     
@@ -208,11 +213,25 @@ public class GameView extends View{
         c.soundLibrary.play(c.soundLibrary.bool_introsong ,c.soundLibrary.audio_introsong, 0.65);
         this.stage_save = stage;
 
+        HBox part_Score = new HBox();
+        part_Score.setAlignment(Pos.TOP_LEFT);
+        Label label_Score = new Label("Score: "+gamescore.getScore().getRight().intValue());
+        label_Score.setFont(Font.font("Arial", BOLD, 14));
+        part_Score.getChildren().add(label_Score);
+        HBox part_Lives = new HBox();
+        part_Lives.setAlignment(Pos.TOP_LEFT);
+        Label label_Lives = new Label("Lives: ");
+        label_Lives.setFont(Font.font("Arial", BOLD, 14));
+        part_Lives.getChildren().add(label_Lives);
+
         Rectangle toolbar_background = new Rectangle(getWindow_Width(),getWindow_Height()/20);
         toolbar_background.setFill(Color.GREY);
 
         HBox toolbar = new HBox();
+        toolbar.setAlignment(Pos.CENTER);
         toolbar.getChildren().add(toolbar_background);
+        toolbar.getChildren().add(part_Score);
+       // toolbar.getChildren().add(part_Lives);
 
         BorderPane maze = new BorderPane();
         StackPane stack = new StackPane();

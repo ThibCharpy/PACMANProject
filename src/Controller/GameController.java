@@ -50,7 +50,7 @@ public class GameController extends Controller {
         soundLibrary = new SoundLibrary();
         p = new Pane[5];
         Model.controller = this;
-        sc = new Score("score", 0);
+        sc = new Score("", 0);
     }
 
     public LinkedList getChangeQueue() {
