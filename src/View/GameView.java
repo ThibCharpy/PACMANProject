@@ -20,6 +20,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -215,23 +216,36 @@ public class GameView extends View{
 
         HBox part_Score = new HBox();
         part_Score.setAlignment(Pos.TOP_LEFT);
-        Label label_Score = new Label("Score: "+gamescore.getScore().getRight().intValue());
-        label_Score.setFont(Font.font("Arial", BOLD, 14));
-        part_Score.getChildren().add(label_Score);
+        Text text_Score = new Text("Score: "+gamescore.getScore().getRight().intValue()+"                  ");
+        text_Score.setFont(Font.font("Arial", BOLD, 18));
+        part_Score.getChildren().add(text_Score);
         HBox part_Lives = new HBox();
-        part_Lives.setAlignment(Pos.TOP_LEFT);
-        Label label_Lives = new Label("Lives: ");
-        label_Lives.setFont(Font.font("Arial", BOLD, 14));
-        part_Lives.getChildren().add(label_Lives);
+        part_Lives.setAlignment(Pos.TOP_RIGHT);
+        Image lives_one = new Image("/Sprites/pacman1.png");
+        ImageView lo = new ImageView(lives_one);
+        Image lives_two = new Image("/Sprites/pacman1.png");
+        ImageView ltw = new ImageView(lives_two);
+        Image lives_three = new Image("/Sprites/pacman1.png");
+        ImageView lth = new ImageView(lives_three);
+        Text text_Lives = new Text("                  Lives: ");
+        text_Lives.setFont(Font.font("Arial", BOLD, 18));
+        part_Lives.getChildren().add(text_Lives);
+        part_Lives.getChildren().add(lo);
+        part_Lives.getChildren().add(ltw);
+        part_Lives.getChildren().add(lth);
+
+        HBox toolbar_content = new HBox();
+        toolbar_content.setAlignment(Pos.CENTER);
+        toolbar_content.getChildren().add(part_Score);
+        toolbar_content.getChildren().add(part_Lives);
 
         Rectangle toolbar_background = new Rectangle(getWindow_Width(),getWindow_Height()/20);
         toolbar_background.setFill(Color.GREY);
 
-        HBox toolbar = new HBox();
-        toolbar.setAlignment(Pos.CENTER);
+        StackPane toolbar = new StackPane();
         toolbar.getChildren().add(toolbar_background);
-        toolbar.getChildren().add(part_Score);
-       // toolbar.getChildren().add(part_Lives);
+        toolbar.getChildren().add(toolbar_content);
+
 
         BorderPane maze = new BorderPane();
         StackPane stack = new StackPane();
