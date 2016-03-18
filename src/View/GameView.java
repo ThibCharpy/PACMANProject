@@ -62,6 +62,7 @@ public class GameView extends View{
     private String path;
 
     public Score gamescore;
+    HBox part_Lives;
 
     private Timeline timelineGhost;
     private Stage stage_save;
@@ -95,6 +96,7 @@ public class GameView extends View{
                 timeline_tab[1].stop();
                 GameController.PacDead = false;
                 GameController.cmpDeath = 0;
+                part_Lives.getChildren().remove(c.lifeLeft);
                 c.lifeLeft --;
                 if(c.lifeLeft > 0){
                     c.resetPosition();
@@ -219,7 +221,8 @@ public class GameView extends View{
         Text text_Score = new Text("Score: "+gamescore.getScore().getRight().intValue()+"                  ");
         text_Score.setFont(Font.font("Arial", BOLD, 18));
         part_Score.getChildren().add(text_Score);
-        HBox part_Lives = new HBox();
+
+        part_Lives = new HBox();
         part_Lives.setAlignment(Pos.TOP_RIGHT);
         Image lives_one = new Image("/Sprites/pacman1.png");
         ImageView lo = new ImageView(lives_one);
