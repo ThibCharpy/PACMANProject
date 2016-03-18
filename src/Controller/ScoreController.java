@@ -8,7 +8,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 /**
  * Created by thibault on 27/02/16.
@@ -60,13 +59,11 @@ public class ScoreController extends Controller {
         }
     }
 
-    public int  getSt(int n) {
-        Integer num=0;
+    public Score getSt(int n) {
         try {
-            num = st.getScore(n);
-            return num.intValue();
+            return st.getScore(n);
         } catch (NoMoreScoreException nme) {
-            return -1;
+            return null;
         }
     }
 }

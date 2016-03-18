@@ -1,6 +1,7 @@
 package View;
 
 import Controller.ScoreController;
+import Model.Score;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -50,11 +51,11 @@ public class ScoreView extends View{
         int score_To_Show = 10;
 
         while (cpt < score_To_Show) {
-            int n = sCtrl.getSt(cpt);
-            if(n<0){
+            Score s = sCtrl.getSt(cpt);
+            if(s==null){
                 score_display = new Text((cpt + 1) + ". ..........");
             }else{
-                score_display = new Text((cpt + 1) + ". " + n);
+                score_display = new Text((cpt + 1) + ". " + s.toString());
             }
             score_display.setFont(new Font(25));
             score.getChildren().add(score_display);

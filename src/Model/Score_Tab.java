@@ -26,10 +26,10 @@ public class Score_Tab extends Model implements Serializable {
         return tab.iterator();
     }
 
-    public Integer getScore(int n) throws NoMoreScoreException {
+    public Score getScore(int n) throws NoMoreScoreException {
         assert(!tab.isEmpty());
         try {
-            return tab.get(n).getScore().getRight();
+            return tab.get(n);
         }catch(IndexOutOfBoundsException e){
             throw new NoMoreScoreException();
         }
