@@ -28,8 +28,6 @@ import java.util.Map;
  */
 public class GameController extends Controller {
 
-    
-
     public Map<Pane, Monster> list;
     public static boolean restartNeeded = false;
     public static boolean PacDead = false;
