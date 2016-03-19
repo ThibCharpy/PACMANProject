@@ -41,7 +41,6 @@ public class GameController extends Controller {
     String state = "idle";
     int timerFear = 0;
     boolean bonusExiste = false;
-    GameView gv;
 
     public GameController(View v) {
         super(v);
@@ -50,7 +49,6 @@ public class GameController extends Controller {
         p = new Pane[5];
         Model.controller = this;
         sc = new Score("", 0);
-        gv = (GameView) v;
     }
 
     public LinkedList getChangeQueue() {
@@ -166,7 +164,6 @@ public class GameController extends Controller {
         score_for_life += i;
         if (score_for_life >= 10000) {
             lifeLeft++;
-            gv.part_Lives.getChildren().add(new ImageView(new Image ("/Sprites/pacman1.png")));
             this.soundLibrary.audio_extralife.play(1.2);
             score_for_life = score_for_life - 10000;
         }

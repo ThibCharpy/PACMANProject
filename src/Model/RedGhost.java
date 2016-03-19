@@ -40,13 +40,15 @@ public class RedGhost extends Ghost {
                         this.newDirection = determineDirection(GhostPos.noeud, result);                      
                         break;
                     case "chase":
-                        int Pos_X_pac = getMonster_Case_X(pac.x);
-                        int Pos_Y_pac = getMonster_Case_Y(pac.y);
+                        int Pos_X_pac = getMonster_Case_X(pac.x + (width / 2));
+                        int Pos_Y_pac = getMonster_Case_Y(pac.y + (height / 2));
                         Node PacPos = ListOfIntersection.getIntersectionAndClosest(Pos_X_pac, Pos_Y_pac);
-                        if (PacPos.noeud != null) {
-                            result = recherche.DiscoverPath(GhostPos, PacPos, this);
-                            this.save_objective = result;
-                            this.newDirection = determineDirection(GhostPos.noeud, result);
+                        if (!(Pos_X_pac == Pos_X_Gho && Pos_Y_pac == Pos_Y_Gho)) {
+                            if (PacPos.noeud != null) {
+                                result = recherche.DiscoverPath(GhostPos, PacPos, this);
+                                this.save_objective = result;
+                                this.newDirection = determineDirection(GhostPos.noeud, result);
+                            }
                         }
                         break;
                     case "fear":

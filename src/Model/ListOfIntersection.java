@@ -42,13 +42,14 @@ public class ListOfIntersection {
      * l'intérieur de la prison, ou les points des passage des "téléporteurs"
      */
     private static void addSpecialElements() { // Trouver une méthode de remplacement générique pour tout type de carte
-        IntersectionList.add(new Node(new NoeudGraphe(2, 14, "Teleport")));
+        IntersectionList.add(new Node(new NoeudGraphe(2, 14, "TeleportG")));
         IntersectionList.add(new Node(new NoeudGraphe(9, 14, "excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(11, 20, "excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(10, 14, "excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(11, 14, "excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(12, 14, "excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(13, 14, "excpetion")));
-        IntersectionList.add(new Node(new NoeudGraphe(20, 14, "Teleport")));
+        IntersectionList.add(new Node(new NoeudGraphe(20, 14, "TeleportD")));
     }
 
     /**

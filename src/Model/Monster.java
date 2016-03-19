@@ -124,7 +124,7 @@ public abstract class Monster extends Model{
             default:
                 break;
         }
-        if (getInfoCase(pos_X, pos_Y) == 1 || getInfoCase(pos_X2, pos_Y2) == 1) {
+        if (getInfoCase(pos_X, pos_Y) == 1 || getInfoCase(pos_X2, pos_Y2) == 1  || getInfoCase(pos_X, pos_Y) == 5 || getInfoCase(pos_X2, pos_Y2) == 5) {
             this.direction = 0;
             return false;
         }

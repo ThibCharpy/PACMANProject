@@ -66,31 +66,65 @@ public class Pacman extends Monster {
     public void behavior(Pacman pac, Ghost red) { // Permet l'usage de multiple téléporteur, si volontée d'en ajouté plusieurs.
         int Pos_X = getMonster_Case_X(this.x + (width / 2));
         int Pos_Y = getMonster_Case_Y(this.y + (height / 2));
+        int xp = 0;
+        int yp = 0;
         int dirsave = this.direction;
         int newdirsave = this.newDirection;
-        Node PacPos = ListOfIntersection.getIntersection(Pos_X, Pos_Y);      
+        Node PacPos = ListOfIntersection.getIntersection(Pos_X, Pos_Y);
         if (PacPos != null && PacPos.noeud != null) {
-            if (PacPos.noeud.TypeOf.equals("Teleport")) {
+            boolean passageAutorisé = false;
+            if (PacPos.noeud.TypeOf.equals("TeleportG")) {
+                if (this.direction == 3) {
+                    passageAutorisé = true;
+                    xp = ((int) -Model.SIZE_OF_CASE_X);
+                    yp = 1;
+                }
+            }
+            if (PacPos.noeud.TypeOf.equals("TeleportD")) {
+                if (this.direction == 4) {
+                    passageAutorisé = true;
+                    xp = ((int) Model.SIZE_OF_CASE_X);
+                    yp = 1;
+                }
+            }
+            if (PacPos.noeud.TypeOf.equals("TeleportH")) {
+                if (this.direction == 1) {
+                    passageAutorisé = true;
+                    yp = ((int) -Model.SIZE_OF_CASE_Y);
+                }
+            }
+            if (PacPos.noeud.TypeOf.equals("TeleportB")) {
+                if (this.direction == 2) {
+                    passageAutorisé = true;
+                    yp = ((int) Model.SIZE_OF_CASE_Y);
+                }
+            }
+            if (passageAutorisé) {
+                this.LastVisited = PacPos;
                 LinkedList<Node> destination = new LinkedList();
                 for (Node element : ListOfIntersection.IntersectionList) {
-                    if (element.noeud.TypeOf.equals("Teleport") && (!element.compare(PacPos))) {
+                    if ((element.noeud.TypeOf.equals("TeleportG"))
+                            || (element.noeud.TypeOf.equals("TeleportD"))
+                            || (element.noeud.TypeOf.equals("TeleportB"))
+                            || (element.noeud.TypeOf.equals("TeleportH"))
+                            && (!element.compare(PacPos))) {
                         destination.add(element);
                     }
-                }               
-                for(Node element : destination){
-                    if(!(element.compare(this.LastVisited)) && (element.noeud.getCoordX() == PacPos.noeud.getCoordX() || element.noeud.getCoordY() == PacPos.noeud.getCoordY())){
+                }
+                for (Node element : destination) {
+                    if (!(element.compare(this.LastVisited)) && (element.noeud.getCoordX() == PacPos.noeud.getCoordX() || element.noeud.getCoordY() == PacPos.noeud.getCoordY())) {
                         this.LastVisited = PacPos;
-                        this.x = (int)(element.noeud.coordX * Model.SIZE_OF_CASE_X);
-                        this.y = (int)(element.noeud.coordY * Model.SIZE_OF_CASE_Y)+1 ;
+                        this.x = (int) element.noeud.coordX * Model.SIZE_OF_CASE_X + xp;
+                        this.y = (int) element.noeud.coordY * Model.SIZE_OF_CASE_Y + yp;
                         controller.getMonsterPosition();
-                        controller.updateImage();                     
+                        controller.updateImage();
                     }
                 }
                 destination.clear();
             }
-            
+
         }
-       
+
     }
 
     private int FindNumberOfGomme() {
@@ -190,7 +224,7 @@ public class Pacman extends Monster {
             default:
                 break;
         }
-        if (getInfoCase(pos_X, pos_Y) == 1 || getInfoCase(pos_X2, pos_Y2) == 1 || getInfoCase(pos_X, pos_Y) == 4 || getInfoCase(pos_X2, pos_Y2) == 4) {
+        if (getInfoCase(pos_X, pos_Y) == 1 || getInfoCase(pos_X2, pos_Y2) == 1 || getInfoCase(pos_X, pos_Y) == 4 || getInfoCase(pos_X2, pos_Y2) == 4 || getInfoCase(pos_X, pos_Y) == 5 || getInfoCase(pos_X2, pos_Y2) == 5) {
             this.direction = 0;
             return false;
         }

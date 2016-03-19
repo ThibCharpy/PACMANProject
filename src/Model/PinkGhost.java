@@ -4,17 +4,23 @@ package Model;
  * Created by thibaultgeoffroy on 29/02/2016.
  */
 public class PinkGhost extends Ghost {
+
     public PinkGhost(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
     }
-    
+
     /**
-     * Méthode utilisée pour essayer de prédir la destination du pacman.
-     *      En fonction de la direction actuelle du pacman, on trouve la prochaine intersection dans cette direction.
-     *      En itérant dans le tableau dans la direction fournie par pacman, on retourne la premiere intersection trouvée.
-     * @param PacPos posiion du pacman, ou intersection la plus proche si il n'est pas sur une intersection.
+     * Méthode utilisée pour essayer de prédir la destination du pacman. En
+     * fonction de la direction actuelle du pacman, on trouve la prochaine
+     * intersection dans cette direction. En itérant dans le tableau dans la
+     * direction fournie par pacman, on retourne la premiere intersection
+     * trouvée.
+     *
+     * @param PacPos posiion du pacman, ou intersection la plus proche si il
+     * n'est pas sur une intersection.
      * @param direction direction actuelle du pacman
-     * @return la prochaine intersection sur le chemin du pacman, ou sa position actuelle si il n'y en a pas.
+     * @return la prochaine intersection sur le chemin du pacman, ou sa position
+     * actuelle si il n'y en a pas.
      */
     public Node findPacmanDestination(Node PacPos, int direction) {
         NoeudGraphe found = null;
@@ -55,15 +61,23 @@ public class PinkGhost extends Ghost {
             return PacPos;
         }
     }
-   /**
-     * Détermine la cible du fantome en fonction de son etat actuel, lorsqu'il arrive a une intersection il effectue les choix suivant :
-     *      - En mode idle, il va se diriger vers le coin supérieur gauche et effectuer une ronde
-     *      - En mode chase, il va utilisé la findPacmanDestination pour détérminer sa cible, une fois en partant de la position du pacman, puis de la position déterminée précédement. Si celle ci est null, on utilise la précedente, si elle est null également, il retourne vers le coin supérieur gauche.
-     *      - En mode fear, il choisi aléatoirement une direction.
-     * 
-     * Cette fonction retourne la direction a prendre a l'intersection actuelle du fantome, elle est lancée seulement si le fantome est sur une intersection.
-     * @param pac Instance de pacman 
-     * 
+
+    /**
+     * Détermine la cible du fantome en fonction de son etat actuel, lorsqu'il
+     * arrive a une intersection il effectue les choix suivant : - En mode idle,
+     * il va se diriger vers le coin supérieur gauche et effectuer une ronde -
+     * En mode chase, il va utilisé la findPacmanDestination pour détérminer sa
+     * cible, une fois en partant de la position du pacman, puis de la position
+     * déterminée précédement. Si celle ci est null, on utilise la précedente,
+     * si elle est null également, il retourne vers le coin supérieur gauche. -
+     * En mode fear, il choisi aléatoirement une direction.
+     *
+     * Cette fonction retourne la direction a prendre a l'intersection actuelle
+     * du fantome, elle est lancée seulement si le fantome est sur une
+     * intersection.
+     *
+     * @param pac Instance de pacman
+     *
      */
     @Override
     public void behavior(Pacman pac, Ghost red) {
@@ -83,45 +97,47 @@ public class PinkGhost extends Ghost {
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                     case "chase":
-                        int Pos_X_pac = getMonster_Case_X(pac.x);
-                        int Pos_Y_pac = getMonster_Case_Y(pac.y);
+                        int Pos_X_pac = getMonster_Case_X(pac.x + (width / 2));
+                        int Pos_Y_pac = getMonster_Case_Y(pac.y + (height / 2));
                         Node PacPos = ListOfIntersection.getIntersectionAndClosest(Pos_X_pac, Pos_Y_pac);
-                        if (PacPos.noeud != null) {
-                            Node PP = findPacmanDestination(PacPos, pac.direction);
-                            if (PP.noeud != null) {
-                                result = recherche.DiscoverPath(GhostPos, PP, this);
-                                this.save_objective = result;
-                                this.newDirection = determineDirection(GhostPos.noeud, result);
-                            } else {
-                                result = recherche.DiscoverPath(GhostPos, PacPos, this);
-                                this.save_objective = result;
-                                this.newDirection = determineDirection(GhostPos.noeud, result);
-                            }                         
+                        if (!(Pos_X_pac == Pos_X_Gho && Pos_Y_pac == Pos_Y_Gho)) {
+                            if (PacPos.noeud != null) {
+                                Node PP = findPacmanDestination(PacPos, pac.direction);
+                                if (PP.noeud != null) {
+                                    result = recherche.DiscoverPath(GhostPos, PP, this);
+                                    this.save_objective = result;
+                                    this.newDirection = determineDirection(GhostPos.noeud, result);
+                                } else {
+                                    result = recherche.DiscoverPath(GhostPos, PacPos, this);
+                                    this.save_objective = result;
+                                    this.newDirection = determineDirection(GhostPos.noeud, result);
+                                }
+                            }
                         }
                         break;
                     case "fear":
                         int x;
                         Node randomNode;
-                        if(GhostPos.noeud.voisins.size() > 1){                          
-                            x = (int) (Math.random()*GhostPos.noeud.voisins.size());
+                        if (GhostPos.noeud.voisins.size() > 1) {
+                            x = (int) (Math.random() * GhostPos.noeud.voisins.size());
                             randomNode = GhostPos.noeud.voisins.get(x);
-                        }else{
+                        } else {
                             randomNode = GhostPos.noeud.voisins.get(0);
                         }
                         result = recherche.DiscoverPath(GhostPos, randomNode, this);
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
-                    case "eated" :
+                    case "eated":
                         result = recherche.DiscoverPath(GhostPos, this.PrisonCenter, this);
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                 }
-            }else if(this.save_objective.compare(GhostPos.noeud)){
-               result = recherche.DiscoverPath(GhostPos, PinkyPos, this);
-               this.save_objective = result;
-               this.newDirection = determineDirection(GhostPos.noeud, result); 
+            } else if (this.save_objective.compare(GhostPos.noeud)) {
+                result = recherche.DiscoverPath(GhostPos, PinkyPos, this);
+                this.save_objective = result;
+                this.newDirection = determineDirection(GhostPos.noeud, result);
             }
         }
     }
