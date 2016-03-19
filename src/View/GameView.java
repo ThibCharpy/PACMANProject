@@ -62,7 +62,7 @@ public class GameView extends View{
     private String path;
 
     public Score gamescore;
-    HBox part_Lives;
+    public HBox part_Lives;
 
     private Timeline timelineGhost;
     private Stage stage_save;
