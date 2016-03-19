@@ -60,7 +60,8 @@ public class GameView extends View{
     boolean resume=false;
     private String name;
     private String path;
-
+    private String map;
+    private int ghostSpeed;
     public Score gamescore;
     public HBox part_Lives;
 
@@ -69,15 +70,17 @@ public class GameView extends View{
     private Stage stage;
     GameController c;
 
-    public GameView(String path) {
+    public GameView(String path, String map) {
         super();
         c = new GameController(this);
-        timeline_tab = new Timeline[5];
+        timeline_tab = new Timeline[6];
         btn_Resume = new Button("Resume");
         btn_Menu = new Button("Menu");
         btn_Quit = new Button("Quit");
         btn_Submit = new Button("Submit");
+        this.map = map;
         this.path= path;
+        this.ghostSpeed = 18;
         gamescore = new Score(null,0);
         name="";
     }
@@ -90,6 +93,7 @@ public class GameView extends View{
             timeline_tab[0].stop();
             timeline_tab[2].stop();
             timeline_tab[4].stop();
+            timeline_tab[5].stop();
             c.DeathImage(GameController.cmpDeath);
             GameController.cmpDeath++;
             if(GameController.cmpDeath == 12){
@@ -121,12 +125,30 @@ public class GameView extends View{
                 m = null;
                 c.p[i] = null;                
             }
+            c.soundLibrary.audio_alt_powermode.stop();
             c.list.clear();
             timeline_tab[0].stop();
             timeline_tab[1].stop();
             timeline_tab[2].stop();
             timeline_tab[4].stop();
+            timeline_tab[5].stop();
             c.soundLibrary.audio_background5.stop();
+            if(this.map.equals("/Sprites/terrain.txt")){
+                this.map = "/Sprites/terrain2.txt" ;
+                if(this.ghostSpeed > 12){
+                    this.ghostSpeed --;
+                }
+            }else if(this.map.equals("/Sprites/terrain2.txt")){
+                this.map = "/Sprites/terrain3.txt" ;
+                if(this.ghostSpeed > 12){
+                    this.ghostSpeed --;
+                }
+            }else if(this.map.equals("/Sprites/terrain3.txt")){
+                this.map = "/Sprites/terrain.txt" ;
+                if(this.ghostSpeed > 12){
+                    this.ghostSpeed --;
+                }
+            }
             start(stage_save);
         }
     }
@@ -207,9 +229,7 @@ public class GameView extends View{
         record_Screen.getChildren().add(record_Screen_Menu);
 
         try {
-            //TODO #1 gérer le controlleur de la création de Maze
-            GameController.initialize_Game("/Sprites/terrain.txt");
-            //Maze.initMapArray("/Sprites/terrain.txt");
+            GameController.initialize_Game(map);
         } catch (IOException ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -296,9 +316,7 @@ public class GameView extends View{
                         c.ghostBehavior();
                     }*/
                     c.pacmovement();
-                    c.deadBehavior();
-                    c.movement();
-                    c.getMonsterPosition();
+                    c.deadBehavior();                   
                     c.findContact();
                     c.getMonsterPosition();
                     try {
@@ -357,11 +375,20 @@ public class GameView extends View{
                     timeline_tab[2].play();
                     timeline_tab[1].play();
                     timeline_tab[0].play();
+                    timeline_tab[5].play();
                     timeline_tab[4].play();
                     c.soundLibrary.playOverride(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
                 }));
         timeline_tab[3].setCycleCount(0);
         timeline_tab[3].play();
+        timeline_tab[5] = new Timeline(new KeyFrame(
+                Duration.millis(this.ghostSpeed),
+                ae -> {
+                    c.movement();
+                    c.findContact();
+                    c.getMonsterPosition();
+                }));
+        timeline_tab[5].setCycleCount(Animation.INDEFINITE);
         stage.setScene(scene);
         stage.show();
 

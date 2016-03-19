@@ -46,7 +46,7 @@ public class HomeView extends View{
         double btn_Width = 250;
         double btn_Height = 475;
 
-        final View gv = new GameView("src/Model/score.txt");
+        final View gv = new GameView("src/Model/score.txt","/Sprites/terrain.txt");
         final View sv = new ScoreView("src/Model/score.txt");
         //final View sv = new CreateView();
         
