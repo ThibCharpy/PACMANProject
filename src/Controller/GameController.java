@@ -2,32 +2,24 @@ package Controller;
 
 import Model.*;
 import View.*;
-import javafx.scene.*;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
-/**
- * Created by thibault on 27/02/16.
- */
-public class GameController extends Controller {
 
+public class GameController extends Controller {
+    
     public Map<Pane, Monster> list;
     public static boolean restartNeeded = false;
     public static boolean PacDead = false;
@@ -42,6 +34,10 @@ public class GameController extends Controller {
     int timerFear = 0;
     boolean bonusExiste = false;
 
+    /**
+     * Constructeur de la classe GameController.
+     * @param v View associer au Controller
+     */
     public GameController(View v) {
         super(v);
         list = new HashMap<>();
@@ -51,20 +47,19 @@ public class GameController extends Controller {
         sc = new Score("", 0);
     }
 
+    /**
+     * Getter de ChangeQueue (cf @MageChangeRequest).
+     * @return ChangeQueue contenue dans Pacman
+     */
     public LinkedList getChangeQueue() {
         Model m = list.get(p[0]);
         return ((Pacman) m).ChangeQueue;
 
     }
-
-    public static double getHG() {
-        return Model.HG;
-    }
-
-    public static double getLG() {
-        return Model.LG;
-    }
-
+    
+    /**
+     * Fonction utilisée pour initialiser les monstres sur la carte.
+     */
     public void startGame() {
         Pacman pacman = new Pacman(185, 363, 13, 1, 0);
         Pane pPacman = getMonsterPane(pacman);
@@ -89,28 +84,27 @@ public class GameController extends Controller {
 
     }
 
+    /**
+     * Lance la réinitialisation des positions des monstres.
+     */
     public void resetPosition() {
         for (int i = 0; i < 5; i++) {
             list.get(p[i]).reset();
         }
-        /*setMonsterX(0, 185);
-        setMonsterY(0, 363);
-        setMonsterX(1, 183);
-        setMonsterY(1, 240);
-        setMonsterX(2, 165);
-        setMonsterY(2, 254);
-        setMonsterX(3, 220);
-        setMonsterY(3, 254);
-        setMonsterX(4, 183);
-        setMonsterY(4, 254);*/
     }
 
+    /**
+     * Fonction de sauvegarde du score à l'intérieur d'un fichier texte en fonction du nom du joueur.
+     * @param name Nom du joueur.
+     * @param path Chemin vers le fichier de sauvegarde des scores.
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     */
     public void saveGameScore(String name, String path) throws IOException, ClassNotFoundException {
         File f = new File(path);
         Score_Tab st;
         sc.setScore_Name(name);
         if (f.exists()) {
-            System.out.println("Fichier trouvé => ouverture fichier");
             st = new Score_Tab(path);
         } else {
             st = new Score_Tab();
@@ -121,18 +115,37 @@ public class GameController extends Controller {
         st.writeScore_Tab(path);
     }
 
+    /**
+     * Setter de la position X d'un monstre.
+     * @param i numero du monstre
+     * @param x position X du monstre
+     */
     public void setMonsterX(int i, int x) {
         (list.get(p[i]).x) = x;
     }
 
+    /**
+     * Setter de la position Y d'un monstre.
+     * @param i numero du monstre
+     * @param y position Y du monstre
+     */
     public void setMonsterY(int i, int y) {
         (list.get(p[i]).y) = y;
     }
 
+    /**
+     * Getter de la taille de la liste de monstre.
+     * @return 
+     */
     public int sizeOfList() {
         return list.size();
     }
-
+    
+    /**
+     * Retourne un entier représentant le type de monstre passé en paramètre.
+     * @param m Monstre (Pacman / Fantomes).
+     * @return entier correspondant au type de monstre.
+     */
     public int getMonsterType(Monster m) {
         if (m.afraid()) {
             return 5;
@@ -159,6 +172,10 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Met à jour le score en fonction d'un entier i.
+     * @param i entier i à ajouter au score.
+     */
     public void updateScore(int i) {
         sc.setScore_Score(sc.getScore_Score() + i);
         score_for_life += i;
@@ -169,30 +186,64 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Getter de score.
+     * @return score.
+     */
     public Score getSc() {
         return sc;
     }
 
+    /**
+     * Initialise un tableau static contenant une réprésentation du fichier texte contenant la carte.
+     * @param path_field chemin vers le fichier contenant la carte.
+     * @throws IOException 
+     */
     public static void initialize_Game(String path_field) throws IOException {
         Maze.initMapArray(path_field);
     }
 
+    /**
+     * Getter de largeur du tableau du terrain.
+     * @return largeur du tableau.
+     */
     public static int getMaze_Width() {
         return Maze.plateau[0].length;
     }
-
+    /**
+     * Getter de hauteur du tableau du terrain.
+     * @return hauteur du tableau.
+     */
     public static int getMaze_Heigth() {
         return Maze.plateau.length;
     }
 
+    /**
+     * Getter de contenu du tableau du terrain.
+     * @param i Coordonnée i.
+     * @param j Coordonnée i.
+     * @return Information contenu dans la case [i][j].
+     */
     public static int getMaze_Box(int i, int j) {
         return Maze.plateau[i][j];
     }
 
+    /**
+     * Getter du nombre de voisin d'une case du tableau, un voisin étant toute case qui n'est pas un mur.
+     * @param i Coordonnée i.
+     * @param j Coordonnée j.
+     * @param value valeur a tester pour considéré une case comme voisine.
+     * @return Nombre de voisin de la case.
+     */
     public static int getMaze_CountNeighbour(int i, int j, int value) {
         return Maze.checkWall(i, j, value);
     }
 
+    /**
+     * Retourne la largeur du monstre.  
+     * @param i ID du monstre dans la liste
+     * @return largeur du monstre en pixel
+     */
     public double getMonsterWidth(int i) {
         Model m = list.get(i);
         if (m instanceof Monster) {
@@ -201,6 +252,11 @@ public class GameController extends Controller {
         return 0;
     }
 
+    /**
+     * Retourne la hauteur du monstre.  
+     * @param i ID du monstre dans la liste
+     * @return hauteur du monstre en pixel
+     */
     public double getMonsterHeight(int i) {
         Model m = list.get(i);
         if (m instanceof Monster) {
@@ -209,6 +265,11 @@ public class GameController extends Controller {
         return 0;
     }
 
+    /**
+     * Actualise la position des monstres.
+     * @param root StackPane contenant les monstres.
+     * @return root avec les positions acutalisées.
+     */
     public StackPane getMonsterPosition(StackPane root) {
         for (int i = 0; i < 5; i++) {
             p[i].setLayoutX(list.get(p[i]).x);
@@ -217,14 +278,29 @@ public class GameController extends Controller {
         return root;
     }
 
+    /**
+     * Getter de la position X du fantome
+     * @param i ID du fantome
+     * @return Coordonnée X du fantome
+     */
     public double getMonsterX(int i) {
         return (list.get(i).x);
     }
 
+    /**
+     * Getter de la position Y du fantome
+     * @param i ID du fantome
+     * @return Coordonnée Y du fantome
+     */
     public double getMonsterY(int i) {
         return (list.get(i).y);
     }
 
+    /**
+     * Getter de la Pane associer au monstre en parametre.
+     * @param m Monstre.
+     * @return Pane du Monstre
+     */
     public Pane getMonsterPane(Monster m) {
         final Image img;
         switch (getMonsterType(m)) {
