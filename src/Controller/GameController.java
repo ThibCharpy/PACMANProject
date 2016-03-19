@@ -162,10 +162,6 @@ public class GameController extends Controller {
     public void updateScore(int i) {
         sc.setScore_Score(sc.getScore_Score() + i);
         score_for_life += i;
-        System.out.print("score : ");
-        System.out.println(sc);
-        System.out.print("score_for_life : ");
-        System.out.println(score_for_life);
         if (score_for_life >= 10000) {
             lifeLeft++;
             this.soundLibrary.audio_extralife.play(1.2);

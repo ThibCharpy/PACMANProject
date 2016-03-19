@@ -69,25 +69,24 @@ public class Pacman extends Monster {
         int dirsave = this.direction;
         int newdirsave = this.newDirection;
         Node PacPos = ListOfIntersection.getIntersection(Pos_X, Pos_Y);      
-        if (PacPos != null && PacPos.noeud != null && !PacPos.compare(LastVisited)) {
+        if (PacPos != null && PacPos.noeud != null) {
             if (PacPos.noeud.TypeOf.equals("Teleport")) {
                 LinkedList<Node> destination = new LinkedList();
                 for (Node element : ListOfIntersection.IntersectionList) {
-                    if (element.noeud.TypeOf.equals("Teleport") && (!element.compare(PacPos)) && !(element.compare(LastVisited))) {
+                    if (element.noeud.TypeOf.equals("Teleport") && (!element.compare(PacPos))) {
                         destination.add(element);
                     }
-                }
-                LastVisited = PacPos;
+                }               
                 for(Node element : destination){
-                    if(element.noeud.getCoordX() == PacPos.noeud.getCoordX() || element.noeud.getCoordY() == PacPos.noeud.getCoordY()){
+                    if(!(element.compare(this.LastVisited)) && (element.noeud.getCoordX() == PacPos.noeud.getCoordX() || element.noeud.getCoordY() == PacPos.noeud.getCoordY())){
+                        this.LastVisited = PacPos;
                         this.x = element.noeud.coordX * Model.SIZE_OF_CASE_X;
                         this.y = element.noeud.coordY * Model.SIZE_OF_CASE_Y + 2;
                         controller.getMonsterPosition();
-                        controller.updateImage();
-                        this.direction = dirsave;
-                        this.newDirection = newdirsave;                      
+                        controller.updateImage();                     
                     }
                 }
+                destination.clear();
             }
             
         }

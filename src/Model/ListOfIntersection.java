@@ -317,7 +317,7 @@ public class ListOfIntersection {
         if (testdirection(element.getCoordX(), element.getCoordY(), direction)) {
             switch (direction) {
                 case 0: // Cas Droite
-                    while (!found && (Maze.plateau[element.getCoordY()][element.getCoordX() + cmpt]) != 1) {
+                    while (!found && ( (Maze.plateau[element.getCoordY()][element.getCoordX() + cmpt]) != 1) ) {
                         found = isAndAddIntersection(element.getCoordX() + cmpt, element.getCoordY(), element, cmpt);
                         cmpt++;
                     }

@@ -419,7 +419,7 @@ public class GameView extends View{
         for (int i = 0; i < maze_Height; i++) {
             for (int j = 0; j < maze_Width; j++) {
                 int maze_box = GameController.getMaze_Box(i,j);
-                if (maze_box == 0 || maze_box == 4) {
+                if (maze_box == 0 || maze_box == 4 || maze_box == 5 ) {
                     Pane pictureRegion = getPictureRegion("/Sprites/empty.png");
                     grid.setConstraints(pictureRegion, j, i);
                     grid.add(pictureRegion, j, i);
