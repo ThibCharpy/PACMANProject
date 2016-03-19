@@ -6,6 +6,7 @@ import java.util.LinkedList;
  * Created by thibaultgeoffroy on 25/02/2016.
  */
 public class ListOfIntersection {
+
     /**
      *
      */
@@ -37,16 +38,17 @@ public class ListOfIntersection {
     }
 
     /**
-     * Méthode temporaire pour ajouter les "intersections" spéciale, tel que l'intérieur de la prison, ou les points des passage des "téléporteurs"
+     * Méthode temporaire pour ajouter les "intersections" spéciale, tel que
+     * l'intérieur de la prison, ou les points des passage des "téléporteurs"
      */
     private static void addSpecialElements() { // Trouver une méthode de remplacement générique pour tout type de carte
-        IntersectionList.add(new Node(new NoeudGraphe(2,14,"Teleport")));
-        IntersectionList.add(new Node(new NoeudGraphe(9,14,"excpetion")));
-        IntersectionList.add(new Node(new NoeudGraphe(10,14,"excpetion")));
-        IntersectionList.add(new Node(new NoeudGraphe(11,14,"excpetion")));
-        IntersectionList.add(new Node(new NoeudGraphe(12,14,"excpetion")));
-        IntersectionList.add(new Node(new NoeudGraphe(13,14,"excpetion")));
-        IntersectionList.add(new Node(new NoeudGraphe(20,14,"Teleport")));
+        IntersectionList.add(new Node(new NoeudGraphe(2, 14, "Teleport")));
+        IntersectionList.add(new Node(new NoeudGraphe(9, 14, "excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(10, 14, "excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(11, 14, "excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(12, 14, "excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(13, 14, "excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(20, 14, "Teleport")));
     }
 
     /**
@@ -72,7 +74,7 @@ public class ListOfIntersection {
     private static boolean isLineH(int i, int x) {
         boolean LineHorizontal = false;
         if (((x - 1 > -1) && (x + 1 < Maze.plateau[0].length))) {
-            if ((Maze.plateau[i][x - 1] == 1 ) && (Maze.plateau[i][x + 1] == 1)) {
+            if ((Maze.plateau[i][x - 1] == 1) && (Maze.plateau[i][x + 1] == 1)) {
                 LineHorizontal = true;
             }
         }
@@ -164,7 +166,7 @@ public class ListOfIntersection {
         return false;
     }
 
-    public static Node getIntersection(int coordX, int coordY){
+    public static Node getIntersection(int coordX, int coordY) {
         for (Node element1 : IntersectionList) {
             if (element1.noeud.getCoordX() == coordX && element1.noeud.getCoordY() == coordY) {
                 return element1;
@@ -172,8 +174,8 @@ public class ListOfIntersection {
         }
         return null;
     }
-    
-    public static Node getIntersectionAndClosest(int coordX, int coordY){
+
+    public static Node getIntersectionAndClosest(int coordX, int coordY) {
         for (Node element1 : IntersectionList) {
             if (element1.noeud.getCoordX() == coordX && element1.noeud.getCoordY() == coordY) {
                 return element1;
@@ -200,10 +202,13 @@ public class ListOfIntersection {
     }
 
     /**
-     * Recherche l'intersection la plus proche de la postion fournie en paramètre 
+     * Recherche l'intersection la plus proche de la postion fournie en
+     * paramètre
+     *
      * @param coordX coordonée X de la postion à inspecter
      * @param coordY coordonée Y de la postion à inspecter
-     * @return l'intersection la plus proche de la postion en paramètre, ou null si elle n'existe pas.
+     * @return l'intersection la plus proche de la postion en paramètre, ou null
+     * si elle n'existe pas.
      */
     public static Node findClosestIntersection(int coordX, int coordY) {
         int direction = 0;
@@ -228,12 +233,15 @@ public class ListOfIntersection {
     }
 
     /**
-     * Recheche le voisin le plus proche des coordonées en parametre en fonction d'une direction,
-     * progresse sur la ligne ou la colonne, appel isIntersection et renvoi la distance quand on a un résultat.
+     * Recheche le voisin le plus proche des coordonées en parametre en fonction
+     * d'une direction, progresse sur la ligne ou la colonne, appel
+     * isIntersection et renvoi la distance quand on a un résultat.
+     *
      * @param CoordX coordonnées X de la cible à inspecter
      * @param CoordY coordonnées Y de la cible à inspecter
      * @param direction direction a prendre pour l'exploration
-     * @return le voisin le plus proche de la cible dans la direction indiquée, ou null si il n'existe pas.
+     * @return le voisin le plus proche de la cible dans la direction indiquée,
+     * ou null si il n'existe pas.
      */
     private static Node findVoisin2(int CoordX, int CoordY, int direction) {
         NoeudGraphe found = null;
@@ -241,7 +249,7 @@ public class ListOfIntersection {
         if (testdirection(CoordX, CoordY, direction)) {
             switch (direction) {
                 case 0: // Cas Droite
-                    while (found == null && CoordX + cmpt < Maze.plateau[0].length &&(Maze.plateau[CoordY][CoordX + cmpt]) != 1) {
+                    while (found == null && CoordX + cmpt < Maze.plateau[0].length && (Maze.plateau[CoordY][CoordX + cmpt]) != 1) {
                         found = testIntersection(CoordX + cmpt, CoordY);
                         cmpt++;
                     }
@@ -317,25 +325,25 @@ public class ListOfIntersection {
         if (testdirection(element.getCoordX(), element.getCoordY(), direction)) {
             switch (direction) {
                 case 0: // Cas Droite
-                    while (!found && ( (Maze.plateau[element.getCoordY()][element.getCoordX() + cmpt]) != 1) ) {
+                    while (!found && (((Maze.plateau[element.getCoordY()][element.getCoordX() + cmpt]) != 1) && ((Maze.plateau[element.getCoordY()][element.getCoordX() + cmpt]) != 5))) {
                         found = isAndAddIntersection(element.getCoordX() + cmpt, element.getCoordY(), element, cmpt);
                         cmpt++;
                     }
                     return cmpt;
                 case 1: // Cas Gauche
-                    while (!found && (Maze.plateau[element.getCoordY()][element.getCoordX() - cmpt]) != 1) {
+                    while (!found && (((Maze.plateau[element.getCoordY()][element.getCoordX() - cmpt]) != 1) && ((Maze.plateau[element.getCoordY()][element.getCoordX() - cmpt]) != 5))) {
                         found = isAndAddIntersection(element.getCoordX() - cmpt, element.getCoordY(), element, cmpt);
                         cmpt++;
                     }
                     return cmpt;
                 case 2: // Cas Haut
-                    while (!found && (Maze.plateau[element.getCoordY() + cmpt][element.getCoordX()]) != 1) {
+                    while (!found && (((Maze.plateau[element.getCoordY() + cmpt][element.getCoordX()]) != 1) && ((Maze.plateau[element.getCoordY() + cmpt][element.getCoordX()]) != 5))) {
                         found = isAndAddIntersection(element.getCoordX(), element.getCoordY() + cmpt, element, cmpt);
                         cmpt++;
                     }
                     return cmpt;
                 case 3: // Cas Bas
-                    while (!found && (Maze.plateau[element.getCoordY() - cmpt][element.getCoordX()]) != 1) {
+                    while (!found && (((Maze.plateau[element.getCoordY() - cmpt][element.getCoordX()]) != 1) && ((Maze.plateau[element.getCoordY() - cmpt][element.getCoordX()]) != 5))) {
                         found = isAndAddIntersection(element.getCoordX(), element.getCoordY() - cmpt, element, cmpt);
                         cmpt++;
                     }
