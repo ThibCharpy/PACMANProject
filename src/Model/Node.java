@@ -39,6 +39,11 @@ public class Node {
         System.out.println(this.noeud.getTypeOf() + "  :  " + this.noeud.getCoordY() + " ; " + this.noeud.getCoordX()+ " -> " + this.distance);
     }
 
+    /**
+     * Compare deux node.
+     * @param Pos node a comparer a this
+     * @return Vrai si même node, faux sinon.
+     */
     boolean compare(Node Pos) {
         return (this.noeud.getCoordX() == Pos.noeud.getCoordX() && this.noeud.getCoordY() == Pos.noeud.getCoordY());
     }

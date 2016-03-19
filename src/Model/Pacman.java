@@ -10,12 +10,14 @@ public class Pacman extends Monster {
 
     public LinkedList ChangeQueue;
     public int lifeLeft;
+    private Node LastVisited = ListOfIntersection.getIntersectionAndClosest(11, 14);
 
     public Pacman(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
         ChangeQueue = new LinkedList();
         lifeLeft = 3;
     }
+
     @Override
     public void startFear() {
     }
@@ -31,7 +33,7 @@ public class Pacman extends Monster {
 
     @Override
     public void startEaten() {
-        
+
     }
 
     @Override
@@ -44,7 +46,7 @@ public class Pacman extends Monster {
     }
 
     @Override
-    public void interact(){
+    public void interact() {
         if (FindNumberOfGomme() != 0) {
             if (getInfoCase(x + (width / 2), y + (height / 2)) == 3) { //|| getInfoCase(pos_X2 , pos_Y2) == 3){
                 EatBigGomme(x, y);
@@ -60,57 +62,87 @@ public class Pacman extends Monster {
         }
     }
 
-
-
     @Override
-    public void behavior(Pacman pac, Ghost red) {
-        return;
+    public void behavior(Pacman pac, Ghost red) { // Permet l'usage de multiple téléporteur, si volontée d'en ajouté plusieurs.
+        int Pos_X = getMonster_Case_X(this.x + (width / 2));
+        int Pos_Y = getMonster_Case_Y(this.y + (height / 2));
+        int dirsave = this.direction;
+        int newdirsave = this.newDirection;
+        Node PacPos = ListOfIntersection.getIntersection(Pos_X, Pos_Y);      
+        if (PacPos != null && PacPos.noeud != null && !PacPos.compare(LastVisited)) {
+            if (PacPos.noeud.TypeOf.equals("Teleport")) {
+                LinkedList<Node> destination = new LinkedList();
+                for (Node element : ListOfIntersection.IntersectionList) {
+                    if (element.noeud.TypeOf.equals("Teleport") && (!element.compare(PacPos)) && !(element.compare(LastVisited))) {
+                        destination.add(element);
+                    }
+                }
+                LastVisited = PacPos;
+                for(Node element : destination){
+                    if(element.noeud.getCoordX() == PacPos.noeud.getCoordX() || element.noeud.getCoordY() == PacPos.noeud.getCoordY()){
+                        this.x = element.noeud.coordX * Model.SIZE_OF_CASE_X;
+                        this.y = element.noeud.coordY * Model.SIZE_OF_CASE_Y + 2;
+                        controller.getMonsterPosition();
+                        controller.updateImage();
+                        this.direction = dirsave;
+                        this.newDirection = newdirsave;                      
+                    }
+                }
+            }
+            
+        }
+       
     }
-    
-    private int FindNumberOfGomme(){
+
+    private int FindNumberOfGomme() {
         int cmpt = 0;
-        for(int x = 0; x < Maze.plateau.length; x ++){
-            for (int i = 0; i < Maze.plateau[0].length; i++){
-                if(Maze.plateau[x][i] == 2 || Maze.plateau[x][i] == 3){
+        for (int x = 0; x < Maze.plateau.length; x++) {
+            for (int i = 0; i < Maze.plateau[0].length; i++) {
+                if (Maze.plateau[x][i] == 2 || Maze.plateau[x][i] == 3) {
                     cmpt++;
                 }
             }
         }
         return cmpt;
     }
-    
+
     /**
-     * Fonction utilisée pour l'ingestion des gommes par pacman, lorsqu'il est sur une case avec une gomme
-     * on utilise un MapChangeRequest pour demander un changement de sprite de cette case.
-     * On l'ajoute a la changeQueue qui représente les changements a apporté a la view et on change le score.
+     * Fonction utilisée pour l'ingestion des gommes par pacman, lorsqu'il est
+     * sur une case avec une gomme on utilise un MapChangeRequest pour demander
+     * un changement de sprite de cette case. On l'ajoute a la changeQueue qui
+     * représente les changements a apporté a la view et on change le score.
+     *
      * @param Pos_X coordonnée X du pacman
-     * @param Pos_Y coordonnée Y du pacman 
+     * @param Pos_Y coordonnée Y du pacman
      */
-    private void EatGomme(double Pos_X, double Pos_Y){
-        if(getInfoCase(x + (width / 2), y + (height / 2))==2){
-        setInfoCase(x + (width / 2), y + (height / 2), 0);
-        MapChangeRequest gommeEated = new MapChangeRequest(getMonster_Case_Y(y + (height / 2)/*Pos_Y*/), getMonster_Case_X(x + (width / 2)/*Pos_X*/), "/Sprites/empty.png", "Gomme");
-        ChangeQueue.add(gommeEated);
-        controller.updateScore(10);   
+    private void EatGomme(double Pos_X, double Pos_Y) {
+        if (getInfoCase(x + (width / 2), y + (height / 2)) == 2) {
+            setInfoCase(x + (width / 2), y + (height / 2), 0);
+            MapChangeRequest gommeEated = new MapChangeRequest(getMonster_Case_Y(y + (height / 2)/*Pos_Y*/), getMonster_Case_X(x + (width / 2)/*Pos_X*/), "/Sprites/empty.png", "Gomme");
+            ChangeQueue.add(gommeEated);
+            controller.updateScore(10);
         }
     }
-    
-     /**
-     * Fonction utilisée pour l'ingestion des gommes par pacman, lorsqu'il est sur une case avec une gomme
-     * on utilise un MapChangeRequest pour demander un changement de sprite de cette case.
-     * On l'ajoute a la changeQueue qui représente les changements a apporté a la view et on change le score.
+
+    /**
+     * Fonction utilisée pour l'ingestion des gommes par pacman, lorsqu'il est
+     * sur une case avec une gomme on utilise un MapChangeRequest pour demander
+     * un changement de sprite de cette case. On l'ajoute a la changeQueue qui
+     * représente les changements a apporté a la view et on change le score.
+     *
      * @param Pos_X coordonnée X du pacman
-     * @param Pos_Y coordonnée Y du pacman 
+     * @param Pos_Y coordonnée Y du pacman
      */
-    private void EatBigGomme(double Pos_X, double Pos_Y){
-        if(getInfoCase(x + (width / 2), y + (height / 2))==3){
-        setInfoCase(x + (width / 2), y + (height / 2), 0);
-        MapChangeRequest BiggommeEated = new MapChangeRequest(getMonster_Case_Y(y + (height / 2)), getMonster_Case_X(x + (width / 2)), "/Sprites/empty.png", "BigGomme");
-        ChangeQueue.add(BiggommeEated);
-        controller.beginFear();
-        controller.updateScore(25);
+    private void EatBigGomme(double Pos_X, double Pos_Y) {
+        if (getInfoCase(x + (width / 2), y + (height / 2)) == 3) {
+            setInfoCase(x + (width / 2), y + (height / 2), 0);
+            MapChangeRequest BiggommeEated = new MapChangeRequest(getMonster_Case_Y(y + (height / 2)), getMonster_Case_X(x + (width / 2)), "/Sprites/empty.png", "BigGomme");
+            ChangeQueue.add(BiggommeEated);
+            controller.beginFear();
+            controller.updateScore(25);
         }
     }
+
     private void EatBonus(double x, double y) {
         if (getInfoCase(x + (width / 2), y + (height / 2)) == 6) {
             setInfoCase(x + (width / 2), y + (height / 2), 0);
@@ -119,6 +151,7 @@ public class Pacman extends Monster {
             controller.updateScore(100);
         }
     }
+
     @Override
     boolean move_is_possible() {
         int pos_X = (int) x;
@@ -167,7 +200,7 @@ public class Pacman extends Monster {
 
     @Override
     protected void fromDeathToChase() {
-       
+
     }
 
 }

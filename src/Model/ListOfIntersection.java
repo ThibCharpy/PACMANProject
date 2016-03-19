@@ -40,13 +40,13 @@ public class ListOfIntersection {
      * Méthode temporaire pour ajouter les "intersections" spéciale, tel que l'intérieur de la prison, ou les points des passage des "téléporteurs"
      */
     private static void addSpecialElements() { // Trouver une méthode de remplacement générique pour tout type de carte
-        IntersectionList.add(new Node(new NoeudGraphe(2,14,"excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(2,14,"Teleport")));
         IntersectionList.add(new Node(new NoeudGraphe(9,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(10,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(11,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(12,14,"excpetion")));
         IntersectionList.add(new Node(new NoeudGraphe(13,14,"excpetion")));
-        IntersectionList.add(new Node(new NoeudGraphe(20,14,"excpetion")));
+        IntersectionList.add(new Node(new NoeudGraphe(20,14,"Teleport")));
     }
 
     /**
@@ -72,7 +72,7 @@ public class ListOfIntersection {
     private static boolean isLineH(int i, int x) {
         boolean LineHorizontal = false;
         if (((x - 1 > -1) && (x + 1 < Maze.plateau[0].length))) {
-            if ((Maze.plateau[i][x - 1] == 1) && (Maze.plateau[i][x + 1] == 1)) {
+            if ((Maze.plateau[i][x - 1] == 1 ) && (Maze.plateau[i][x + 1] == 1)) {
                 LineHorizontal = true;
             }
         }

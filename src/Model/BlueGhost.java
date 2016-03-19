@@ -55,8 +55,8 @@ public class BlueGhost extends Ghost {
 
     @Override
     public void behavior(Pacman pac, Ghost red) {
-        int Pos_X_Gho = getMonster_Case_X(this.x);
-        int Pos_Y_Gho = getMonster_Case_Y(this.y);
+        int Pos_X_Gho = getMonster_Case_X(this.x + (width / 2));
+        int Pos_Y_Gho = getMonster_Case_Y(this.y + (height / 2));
         Node GhostPos = ListOfIntersection.getIntersectionAndClosest(Pos_X_Gho, Pos_Y_Gho);
         Node InkyPos = ListOfIntersection.getIntersectionAndClosest(20, 24);
         NoeudGraphe result = null;

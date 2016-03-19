@@ -89,8 +89,8 @@ public class GameController extends Controller {
 
     }
 
-    public void resetPosition(){
-        for(int i = 0; i<5; i++){
+    public void resetPosition() {
+        for (int i = 0; i < 5; i++) {
             list.get(p[i]).reset();
         }
         /*setMonsterX(0, 185);
@@ -109,10 +109,10 @@ public class GameController extends Controller {
         File f = new File(path);
         Score_Tab st;
         sc.setScore_Name(name);
-        if(f.exists()){
+        if (f.exists()) {
             System.out.println("Fichier trouvé => ouverture fichier");
             st = new Score_Tab(path);
-        }else{
+        } else {
             st = new Score_Tab();
             Path myFile = Paths.get(path);
             Files.createFile(myFile);
@@ -120,7 +120,7 @@ public class GameController extends Controller {
         st.add_Score(sc);
         st.writeScore_Tab(path);
     }
-    
+
     public void setMonsterX(int i, int x) {
         (list.get(p[i]).x) = x;
     }
@@ -128,7 +128,7 @@ public class GameController extends Controller {
     public void setMonsterY(int i, int y) {
         (list.get(p[i]).y) = y;
     }
-    
+
     public int sizeOfList() {
         return list.size();
     }
@@ -159,15 +159,14 @@ public class GameController extends Controller {
         }
     }
 
-
     public void updateScore(int i) {
         sc.setScore_Score(sc.getScore_Score() + i);
         score_for_life += i;
         System.out.print("score : ");
         System.out.println(sc);
-        System.out.print("score_for_life : " );
+        System.out.print("score_for_life : ");
         System.out.println(score_for_life);
-        if(score_for_life >= 10000){
+        if (score_for_life >= 10000) {
             lifeLeft++;
             this.soundLibrary.audio_extralife.play(1.2);
             score_for_life = score_for_life - 10000;
@@ -268,7 +267,6 @@ public class GameController extends Controller {
         return pictureRegion;
     }
 
-    
     public void setGRID_SIZE_Y(double game_heigth) {
         Model.setGRID_SIZE_Y(game_heigth);
     }
@@ -288,14 +286,19 @@ public class GameController extends Controller {
         list.get(p[0]).movement();
     }
 
-    public void deadMovement(){
+    public void deadMovement() {
         for (int i = 1; i < 5; i++) {
-            if(list.get(p[i]).afraid()) list.get(p[i]).movement();
+            if (list.get(p[i]).afraid()) {
+                list.get(p[i]).movement();
+            }
         }
     }
+
     public void movement() {
         for (int i = 1; i < 5; i++) {
-           if(!(list.get(p[i]).afraid())) list.get(p[i]).movement();
+            if (!(list.get(p[i]).afraid())) {
+                list.get(p[i]).movement();
+            }
         }
     }
 
@@ -320,7 +323,7 @@ public class GameController extends Controller {
             list.get(p[0]).newDirection = 4;
         }
     }
-    
+
     public void DeathImage(int cmpt) {
         Pane pPacman = getMonsterPane(list.get(p[0]));
         ImageView imgv = new ImageView();
@@ -357,14 +360,14 @@ public class GameController extends Controller {
         }
     }
 
-    public void setNbLifeLeft(){
-       ((Pacman) list.get(p[0])).lifeLeft --;
+    public void setNbLifeLeft() {
+        ((Pacman) list.get(p[0])).lifeLeft--;
     }
-    
-    public int getNbLifeLeft(){
+
+    public int getNbLifeLeft() {
         return ((Pacman) list.get(p[0])).lifeLeft;
     }
-    
+
     private void beginChase() {
         state = "chase";
         for (int i = 1; i < 5; i++) {
@@ -373,8 +376,10 @@ public class GameController extends Controller {
     }
 
     public void ghostBehavior() {
-        for (int i = 1; i < 5; i++) {
-            if(!(list.get(p[i]).eaten())) list.get(p[i]).behavior((Pacman) list.get(p[0]), (Ghost) list.get(p[1]));
+        for (int i = 0; i < 5; i++) {
+            if (!(list.get(p[i]).eaten())) {
+                list.get(p[i]).behavior((Pacman) list.get(p[0]), (Ghost) list.get(p[1]));
+            }
         }
     }
 
@@ -407,14 +412,14 @@ public class GameController extends Controller {
             int scoreMult = 1;
             for (int x = 1; x < 5; x++) {
                 if (list.get(p[x]).eaten()) {
-                    scoreMult ++;
+                    scoreMult++;
                 }
             }
-            sc.setScore_Score(sc.getScore_Score() + 200 * scoreMult);
-            score_for_life += 200 * scoreMult;
+            sc.setScore_Score(sc.getScore_Score() + 150 * scoreMult);
+            score_for_life += 150 * scoreMult;
         } else if (!list.get(p[i]).eaten()) {
             GameController.PacDead = true;
-            
+
         }
     }
 
@@ -427,40 +432,35 @@ public class GameController extends Controller {
         double diffX = Math.abs(mouseX - pacX);
         double diffY = Math.abs(mouseY - pacY);
 
-        if (diffX > diffY){
+        if (diffX > diffY) {
             if (mouseX > pacX) {
                 pacmanMovement(KeyCode.RIGHT);
-            }
-            else{
+            } else {
                 pacmanMovement(KeyCode.LEFT);
             }
-        }
-        else{
-            if (mouseY > pacY) {
-                pacmanMovement(KeyCode.DOWN);
-            }
-            else{
-                pacmanMovement(KeyCode.UP);
-            }
+        } else if (mouseY > pacY) {
+            pacmanMovement(KeyCode.DOWN);
+        } else {
+            pacmanMovement(KeyCode.UP);
         }
     }
 
     public void deadBehavior() {
-        for(int i = 1; i<5 ; i++){
-            if(list.get(p[i]).eaten()){
-               list.get(p[i]).behavior( (Pacman) list.get(p[0]), (Ghost) list.get(p[1]));
+        for (int i = 1; i < 5; i++) {
+            if (list.get(p[i]).eaten()) {
+                list.get(p[i]).behavior((Pacman) list.get(p[0]), (Ghost) list.get(p[1]));
             }
         }
     }
 
     public void createBonus() {
 
-        if ((int)(Math.random()*1000)%100 == 0 && !bonusExiste){
+        if ((int) (Math.random() * 1000) % 100 == 0 && !bonusExiste) {
             bonusExiste = true;
-            while(true) {
-                for (int i = 0; i < Maze.plateau.length; i++){
+            while (true) {
+                for (int i = 0; i < Maze.plateau.length; i++) {
                     for (int j = 0; j < Maze.plateau[0].length; j++) {
-                        if ((int) (Math.random() * 1000) % 100 == 0 && Maze.plateau[i][j]==2) {
+                        if ((int) (Math.random() * 1000) % 100 == 0 && Maze.plateau[i][j] == 2) {
                             MapChangeRequest m = new MapChangeRequest(i, j, "/Sprites/bonus_cherry.png", "Bonus");
                             getChangeQueue().add(m);
                             Maze.plateau[i][j] = 6;
