@@ -80,8 +80,8 @@ public class Pacman extends Monster {
                 for(Node element : destination){
                     if(!(element.compare(this.LastVisited)) && (element.noeud.getCoordX() == PacPos.noeud.getCoordX() || element.noeud.getCoordY() == PacPos.noeud.getCoordY())){
                         this.LastVisited = PacPos;
-                        this.x = element.noeud.coordX * Model.SIZE_OF_CASE_X;
-                        this.y = element.noeud.coordY * Model.SIZE_OF_CASE_Y + 2;
+                        this.x = (int)(element.noeud.coordX * Model.SIZE_OF_CASE_X);
+                        this.y = (int)(element.noeud.coordY * Model.SIZE_OF_CASE_Y)+1 ;
                         controller.getMonsterPosition();
                         controller.updateImage();                     
                     }
