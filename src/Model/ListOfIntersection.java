@@ -2,14 +2,10 @@ package Model;
 
 import java.util.LinkedList;
 
-/**
- * Created by thibaultgeoffroy on 25/02/2016.
- */
+
 public class ListOfIntersection {
 
-    /**
-     *
-     */
+
     public static LinkedList<Node> IntersectionList;
 
     /**
@@ -167,6 +163,15 @@ public class ListOfIntersection {
         return false;
     }
 
+    /**
+     * Fonction qui retourne une intersection de coordonnée X,Y si celle ci
+     * existe.
+     *
+     * @param coordX Coordonnée X.
+     * @param coordY Coordonnée Y.
+     * @return retourne une Node contenant l'intersection si elle existe à ces
+     * coordonnées précise, null sinon.
+     */
     public static Node getIntersection(int coordX, int coordY) {
         for (Node element1 : IntersectionList) {
             if (element1.noeud.getCoordX() == coordX && element1.noeud.getCoordY() == coordY) {
@@ -176,6 +181,15 @@ public class ListOfIntersection {
         return null;
     }
 
+    /**
+     * Fonction qui retourne une intersection de coordonnée X,Y si celle ci
+     * n'existe pas, cherche l'intersection la plus proche.
+     *
+     * @param coordX Coordonnée X.
+     * @param coordY Coordonnée Y.
+     * @return retourne une Node contenant l'intersection si elle existe à ces
+     * coordonnées précise, sinon utilise la méthode findClosestIntersection.
+     */
     public static Node getIntersectionAndClosest(int coordX, int coordY) {
         for (Node element1 : IntersectionList) {
             if (element1.noeud.getCoordX() == coordX && element1.noeud.getCoordY() == coordY) {

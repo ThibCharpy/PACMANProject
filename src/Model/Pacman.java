@@ -12,6 +12,15 @@ public class Pacman extends Monster {
     public int lifeLeft;
     private Node LastVisited = ListOfIntersection.getIntersectionAndClosest(11, 14);
 
+    /**
+     * Constructeur de la classe Pacman
+     *
+     * @param x Coordonnée X
+     * @param y Coordonnée Y
+     * @param size taille du fantome
+     * @param speed vitesse du fantome
+     * @param direction direction initiale du fantome
+     */
     public Pacman(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
         ChangeQueue = new LinkedList();
@@ -45,6 +54,9 @@ public class Pacman extends Monster {
     public void fromFearToChase() {
     }
 
+    /**
+     * Fonction gérant l'intéraction avec les gommes et les bonus.
+     */
     @Override
     public void interact() {
         if (FindNumberOfGomme() != 0) {
@@ -62,6 +74,13 @@ public class Pacman extends Monster {
         }
     }
 
+    /**
+     * Défini la comportement du pacman lorsqu'il se trouve sur les
+     * téléporteurs.
+     *
+     * @param pac
+     * @param red
+     */
     @Override
     public void behavior(Pacman pac, Ghost red) { // Permet l'usage de multiple téléporteur, si volontée d'en ajouté plusieurs.
         int Pos_X = getMonster_Case_X(this.x + (width / 2));
@@ -116,7 +135,7 @@ public class Pacman extends Monster {
                         this.LastVisited = PacPos;
                         this.x = (int) element.noeud.coordX * Model.SIZE_OF_CASE_X + xp;
                         this.y = (int) element.noeud.coordY * Model.SIZE_OF_CASE_Y + yp;
-                        controller.getMonsterPosition();
+                        controller.setMonsterPosition();
                         controller.updateImage();
                     }
                 }
@@ -127,6 +146,11 @@ public class Pacman extends Monster {
 
     }
 
+    /**
+     * Fonction renvoyant le nombre de gomme restante sur le plateau de jeu.
+     *
+     * @return nombre de gomme restante.
+     */
     private int FindNumberOfGomme() {
         int cmpt = 0;
         for (int x = 0; x < Maze.plateau.length; x++) {
@@ -176,6 +200,15 @@ public class Pacman extends Monster {
         }
     }
 
+    /**
+     * Fonction utilisée pour l'ingestion des bonus par pacman, lorsqu'il est
+     * sur une case avec un bonus on utilise un MapChangeRequest pour demander
+     * un changement de sprite de cette case. On l'ajoute a la changeQueue qui
+     * représente les changements a apporté a la view et on change le score.
+     *
+     * @param x coordonnée X du pacman
+     * @param y coordonnée Y du pacman
+     */
     private void EatBonus(double x, double y) {
         if (getInfoCase(x + (width / 2), y + (height / 2)) == 6) {
             setInfoCase(x + (width / 2), y + (height / 2), 0);
@@ -185,6 +218,12 @@ public class Pacman extends Monster {
         }
     }
 
+    /**
+     * Override de la fonction présente dans Monster, pour empécher le pacman de
+     * rentré dans la prison.
+     *
+     * @return
+     */
     @Override
     boolean move_is_possible() {
         int pos_X = (int) x;

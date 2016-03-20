@@ -5,6 +5,15 @@ package Model;
  */
 public class RedGhost extends Ghost {
 
+    /**
+     * Constructeur de la classe RedGhost
+     *
+     * @param x Coordonnée X
+     * @param y Coordonnée Y
+     * @param size taille du fantome
+     * @param speed vitesse du fantome
+     * @param direction direction initiale du fantome
+     */
     public RedGhost(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
     }
@@ -21,7 +30,7 @@ public class RedGhost extends Ghost {
      * intersection.
      *
      * @param pac Instance de pacman
-     * 
+     *
      *
      */
     @Override
@@ -37,7 +46,7 @@ public class RedGhost extends Ghost {
                     case "idle":
                         result = recherche.DiscoverPath(GhostPos, BlinkyPos, this);
                         this.save_objective = result;
-                        this.newDirection = determineDirection(GhostPos.noeud, result);                      
+                        this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                     case "chase":
                         int Pos_X_pac = getMonster_Case_X(pac.x + (width / 2));
@@ -64,16 +73,16 @@ public class RedGhost extends Ghost {
                         this.save_objective = result;
                         this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
-                    case "eated":                       
+                    case "eated":
                         result = recherche.DiscoverPath(GhostPos, this.PrisonCenter, this);
                         this.save_objective = result;
-                        this.newDirection = determineDirection(GhostPos.noeud, result);                                                  
+                        this.newDirection = determineDirection(GhostPos.noeud, result);
                         break;
                 }
-            }else if(this.save_objective.compare(GhostPos.noeud)){
-               result = recherche.DiscoverPath(GhostPos, BlinkyPos, this);
-               this.save_objective = result;
-               this.newDirection = determineDirection(GhostPos.noeud, result); 
+            } else if (this.save_objective.compare(GhostPos.noeud)) {
+                result = recherche.DiscoverPath(GhostPos, BlinkyPos, this);
+                this.save_objective = result;
+                this.newDirection = determineDirection(GhostPos.noeud, result);
             }
         }
     }

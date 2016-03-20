@@ -1,8 +1,5 @@
 package Model;
 
-/**
- * Created by thibaultgeoffroy on 25/02/2016.
- */
 public class MapChangeRequest {
 
     private final int case_row;
@@ -10,7 +7,15 @@ public class MapChangeRequest {
     private final String sprite_change;
     private String type;
 
-    public MapChangeRequest(int Y, int X, String file, String type){
+    /**
+     * Constructeur de classe MapChangeRequest
+     *
+     * @param Y Coordonnée Y
+     * @param X Coordonnée X
+     * @param file Path vers un le sprite a intégré.
+     * @param type String représentant le type de changement à effectuer.
+     */
+    public MapChangeRequest(int Y, int X, String file, String type) {
         this.case_row = Y;
         this.case_col = X;
         this.sprite_change = file;
@@ -51,6 +56,5 @@ public class MapChangeRequest {
     public void setType(String type) {
         this.type = type;
     }
-
 
 }

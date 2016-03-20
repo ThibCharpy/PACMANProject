@@ -5,6 +5,15 @@ package Model;
  */
 public class PinkGhost extends Ghost {
 
+    /**
+     * Constructeur de la classe PinkGhost
+     *
+     * @param x Coordonnée X
+     * @param y Coordonnée Y
+     * @param size taille du fantome
+     * @param speed vitesse du fantome
+     * @param direction direction initiale du fantome
+     */
     public PinkGhost(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
     }

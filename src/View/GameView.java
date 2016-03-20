@@ -35,7 +35,7 @@ import static javafx.scene.text.FontWeight.BOLD;
 /**
  * Created by thibault on 25/02/16.
  */
-public class GameView extends View{
+public class GameView extends View {
 
     private final double game_Width = 380;
     private final double game_Heigth = 525;
@@ -56,8 +56,8 @@ public class GameView extends View{
     private Button btn_Quit;
     double btn_Width = 250;
     double btn_Height = 475;
-    boolean onBreak=false;
-    boolean resume=false;
+    boolean onBreak = false;
+    boolean resume = false;
     private String name;
     private String path;
     private String map;
@@ -70,6 +70,12 @@ public class GameView extends View{
     private Stage stage;
     GameController c;
 
+    /**
+     * Constructeur de la classe GameView
+     *
+     * @param path Path pour le fichier de Score.
+     * @param map Path pour le fichier txt contenant la carte à afficher
+     */
     public GameView(String path, String map) {
         super();
         c = new GameController(this);
@@ -79,51 +85,60 @@ public class GameView extends View{
         btn_Quit = new Button("Quit");
         btn_Submit = new Button("Submit");
         this.map = map;
-        this.path= path;
+        this.path = path;
         this.ghostSpeed = 18;
-        gamescore = new Score(null,0);
-        name="";
+        gamescore = new Score(null, 0);
+        name = "";
     }
-    
-    
-    public void checkDeath(){
-        if(c.PacDead){
+
+    /**
+     * Fonction gérant la mort du pacman et toute les actions associé, gestion
+     * des sons, reset des positions, retour au menu si plus de vie.
+     */
+    public void checkDeath() {
+        if (GameController.PacDead) {
             c.soundLibrary.audio_background5.stop();
-            c.soundLibrary.play(c.soundLibrary.bool_death , c.soundLibrary.audio_death ,0.65);
+            c.soundLibrary.audio_alt_powermode.stop();
+            c.soundLibrary.play(c.soundLibrary.bool_death, c.soundLibrary.audio_death, 0.65);
             timeline_tab[0].stop();
             timeline_tab[2].stop();
             timeline_tab[4].stop();
             timeline_tab[5].stop();
             c.DeathImage(GameController.cmpDeath);
             GameController.cmpDeath++;
-            if(GameController.cmpDeath == 12){
+            if (GameController.cmpDeath == 12) {
                 timeline_tab[1].stop();
                 GameController.PacDead = false;
                 GameController.cmpDeath = 0;
                 part_Lives.getChildren().remove(c.lifeLeft);
-                c.lifeLeft --;
-                if(c.lifeLeft > 0){
+                c.lifeLeft--;
+                if (c.lifeLeft > 0) {
                     c.resetPosition();
-                    c.getMonsterPosition();
+                    c.setMonsterPosition();
                     c.updateImage();
-                    c.soundLibrary.play(c.soundLibrary.bool_introsong ,c.soundLibrary.audio_introsong, 0.65);
+                    c.soundLibrary.play(c.soundLibrary.bool_introsong, c.soundLibrary.audio_introsong, 0.65);
                     timeline_tab[3].play();
-                }else{
+                } else {
                     record_Root = new StackPane();
                     record_Root.getChildren().add(record_Screen);
                     root.getChildren().add(record_Root);
                 }
             }
-            
+
         }
     }
-    public void checkRestartNeed(){
-        if(GameController.restartNeeded){
+
+    /**
+     * Fonction gérant le redémarrage, changement de carte, changement de
+     * terrain entre les niveau.
+     */
+    public void checkRestartNeed() {
+        if (GameController.restartNeeded) {
             GameController.restartNeeded = false;
-            for(int i = 0; i < 5; i ++){
+            for (int i = 0; i < 5; i++) {
                 Model m = c.list.get(c.p[i]);
                 m = null;
-                c.p[i] = null;                
+                c.p[i] = null;
             }
             c.soundLibrary.audio_alt_powermode.stop();
             c.list.clear();
@@ -133,27 +148,32 @@ public class GameView extends View{
             timeline_tab[4].stop();
             timeline_tab[5].stop();
             c.soundLibrary.audio_background5.stop();
-            if(this.map.equals("/Sprites/terrain.txt")){
-                this.map = "/Sprites/terrain2.txt" ;
-                if(this.ghostSpeed > 12){
-                    this.ghostSpeed --;
+            if (this.map.equals("/Sprites/terrain.txt")) {
+                this.map = "/Sprites/terrain2.txt";
+                if (this.ghostSpeed > 12) {
+                    this.ghostSpeed--;
                 }
-            }else if(this.map.equals("/Sprites/terrain2.txt")){
-                this.map = "/Sprites/terrain3.txt" ;
-                if(this.ghostSpeed > 12){
-                    this.ghostSpeed --;
+            } else if (this.map.equals("/Sprites/terrain2.txt")) {
+                this.map = "/Sprites/terrain3.txt";
+                if (this.ghostSpeed > 12) {
+                    this.ghostSpeed--;
                 }
-            }else if(this.map.equals("/Sprites/terrain3.txt")){
-                this.map = "/Sprites/terrain.txt" ;
-                if(this.ghostSpeed > 12){
-                    this.ghostSpeed --;
+            } else if (this.map.equals("/Sprites/terrain3.txt")) {
+                this.map = "/Sprites/terrain.txt";
+                if (this.ghostSpeed > 12) {
+                    this.ghostSpeed--;
                 }
             }
             start(stage_save);
         }
     }
-    
-    
+
+    /**
+     * Fonction gérant l'affichage et les timelines nécéssaire au fonctionnement
+     * du jeu.
+     *
+     * @param stage Stage sur lequel afficher les informations.
+     */
     @Override
     public void start(Stage stage) {
 
@@ -161,14 +181,14 @@ public class GameView extends View{
 
         btn_Resume.setMaxSize(btn_Width, btn_Height);
         btn_Resume.setOnAction(event -> {
-            resume=true;
-            exit_To_Break(null,root);
+            resume = true;
+            exit_To_Break(null, root);
         });
         btn_Menu.setMaxSize(btn_Width, btn_Height);
         btn_Menu.setOnAction(event -> {
             c.soundLibrary.audio_background5.stop();
-            c.btn_Action(stage,hv);
-                });
+            c.btn_Action(stage, hv);
+        });
         btn_Quit.setMaxSize(btn_Width, btn_Height);
         btn_Quit.setOnAction(event -> stage.close());
 
@@ -178,20 +198,18 @@ public class GameView extends View{
         button_box.getChildren().add(btn_Menu);
         button_box.getChildren().add(btn_Quit);
 
-        Rectangle break_Screen_Menu_Background = new Rectangle(game_Width-80,game_Heigth-80);
+        Rectangle break_Screen_Menu_Background = new Rectangle(game_Width - 80, game_Heigth - 80);
         break_Screen_Menu_Background.setFill(Color.GREY);
         StackPane break_Screen_Menu_Root = new StackPane();
         break_Screen_Menu_Root.getChildren().add(break_Screen_Menu_Background);
         break_Screen_Menu_Root.getChildren().add(button_box);
 
-        Rectangle break_Screen_Background = new Rectangle(game_Width,game_Heigth);
+        Rectangle break_Screen_Background = new Rectangle(game_Width, game_Heigth);
         break_Screen_Background.setFill(Color.BLACK);
 
         break_Screen = new StackPane();
         break_Screen.getChildren().add(break_Screen_Background);
         break_Screen.getChildren().add(break_Screen_Menu_Root);
-
-
 
         TextField record = new TextField();
         Label record_Label = new Label("Enter your Name:");
@@ -202,11 +220,11 @@ public class GameView extends View{
         record_Text_Box.getChildren().add(record_Label);
         record_Text_Box.getChildren().add(record);
 
-        btn_Submit.setMaxSize(btn_Width-160, btn_Height);
+        btn_Submit.setMaxSize(btn_Width - 160, btn_Height);
         btn_Submit.setOnAction(event -> {
             name = record.getText();
             try {
-                c.saveGameScore(name,path);
+                c.saveGameScore(name, path);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
@@ -233,7 +251,7 @@ public class GameView extends View{
         } catch (IOException ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
-        c.soundLibrary.play(c.soundLibrary.bool_introsong ,c.soundLibrary.audio_introsong, 0.65);
+        c.soundLibrary.play(c.soundLibrary.bool_introsong, c.soundLibrary.audio_introsong, 0.65);
         this.stage_save = stage;
 
         HBox part_Score = new HBox();
@@ -262,13 +280,12 @@ public class GameView extends View{
         toolbar_content.getChildren().add(part_Score);
         toolbar_content.getChildren().add(part_Lives);
 
-        Rectangle toolbar_background = new Rectangle(getWindow_Width(),getWindow_Height()/20);
+        Rectangle toolbar_background = new Rectangle(getWindow_Width(), getWindow_Height() / 20);
         toolbar_background.setFill(Color.GREY);
 
         StackPane toolbar = new StackPane();
         toolbar.getChildren().add(toolbar_background);
         toolbar.getChildren().add(toolbar_content);
-
 
         BorderPane maze = new BorderPane();
         StackPane stack = new StackPane();
@@ -276,7 +293,7 @@ public class GameView extends View{
         stack.setMinHeight(game_Heigth);
         stack.setMaxWidth(game_Width);
         stack.setMaxHeight(game_Heigth);
-       // Label top_info = new Label("Get_score                                               Get_A_Life");
+        // Label top_info = new Label("Get_score                                               Get_A_Life");
 
         GridPane grid = getGrid();
         stack.getChildren().add(grid);
@@ -296,11 +313,11 @@ public class GameView extends View{
         Scene scene = new Scene(root, 300, 250);
 
         scene.setOnKeyPressed(event -> {
-            if(!onBreak){
+            if (!onBreak) {
                 enter_To_Break(event.getCode(), root);
                 c.pacmanMovement(event.getCode());
-            }else{
-                exit_To_Break(event.getCode(),root);
+            } else {
+                exit_To_Break(event.getCode(), root);
             }
         });
         scene.setOnMouseClicked(event -> {
@@ -316,9 +333,9 @@ public class GameView extends View{
                         c.ghostBehavior();
                     }*/
                     c.pacmovement();
-                    c.deadBehavior();                   
+                    c.deadBehavior();
                     c.findContact();
-                    c.getMonsterPosition();
+                    c.setMonsterPosition();
                     try {
                         updateMap(grid);
                     } catch (LineUnavailableException ex) {
@@ -340,8 +357,6 @@ public class GameView extends View{
                 }));
         timeline_tab[4].setCycleCount(Animation.INDEFINITE);
 
-
-
         timeline_tab[1] = new Timeline(new KeyFrame(
                 Duration.millis(150),
                 ae -> {
@@ -356,18 +371,16 @@ public class GameView extends View{
                             || c.list.get(c.p[4]).afraid() || c.list.get(c.p[4]).eaten())) {
                         c.ghostBehavior();
                     }*/
-                    
+
                 }));
         timeline_tab[1].setCycleCount(Animation.INDEFINITE);
-
 
         timeline_tab[2] = new Timeline(new KeyFrame(
                 Duration.millis(290000),
                 ae -> {
-                    c.soundLibrary.playOverride(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
+                    c.soundLibrary.playOverride(c.soundLibrary.bool_background5, c.soundLibrary.audio_background5, 0.35);
                 }));
         timeline_tab[2].setCycleCount(Animation.INDEFINITE);
-
 
         timeline_tab[3] = new Timeline(new KeyFrame(
                 Duration.millis(4700),
@@ -377,7 +390,7 @@ public class GameView extends View{
                     timeline_tab[0].play();
                     timeline_tab[5].play();
                     timeline_tab[4].play();
-                    c.soundLibrary.playOverride(c.soundLibrary.bool_background5 ,c.soundLibrary.audio_background5, 0.35);
+                    c.soundLibrary.playOverride(c.soundLibrary.bool_background5, c.soundLibrary.audio_background5, 0.35);
                 }));
         timeline_tab[3].setCycleCount(0);
         timeline_tab[3].play();
@@ -386,7 +399,7 @@ public class GameView extends View{
                 ae -> {
                     c.movement();
                     c.findContact();
-                    c.getMonsterPosition();
+                    c.setMonsterPosition();
                 }));
         timeline_tab[5].setCycleCount(Animation.INDEFINITE);
         stage.setScene(scene);
@@ -394,10 +407,16 @@ public class GameView extends View{
 
     }
 
+    /**
+     * Fonction déclenchant l'entrée en mode pause.
+     *
+     * @param k code touche.
+     * @param s StackPane sur laquelle affiché le menu de pause.
+     */
     public void enter_To_Break(KeyCode k, StackPane s) {
-        if(k== KeyCode.ESCAPE){
-            onBreak=true;
-            Rectangle r = new Rectangle(getWindow_Width(),getWindow_Height());
+        if (k == KeyCode.ESCAPE) {
+            onBreak = true;
+            Rectangle r = new Rectangle(getWindow_Width(), getWindow_Height());
             r.setFill(Color.rgb(50, 50, 50, 0.75));
             GaussianBlur gb = new GaussianBlur();
             r.setEffect(gb);
@@ -405,24 +424,35 @@ public class GameView extends View{
             break_Root.getChildren().add(r);
             break_Root.getChildren().add(break_Screen);
             s.getChildren().add(break_Root);
-            for(int i=0; i<timeline_tab.length-1;i++){
+            for (int i = 0; i < timeline_tab.length - 1; i++) {
                 timeline_tab[i].stop();
             }
         }
     }
 
+    /**
+     * Fonction déclenchant la sortie du mode pause.
+     *
+     * @param k code touche.
+     * @param s StackPane sur laquelle retirer le menu de pause.
+     */
     public void exit_To_Break(KeyCode k, StackPane s) {
-        if(k== KeyCode.ESCAPE || resume){
-            onBreak=false;
+        if (k == KeyCode.ESCAPE || resume) {
+            onBreak = false;
             s.getChildren().remove(break_Root);
-            for(int i=0; i<timeline_tab.length;i++){
+            for (int i = 0; i < timeline_tab.length; i++) {
                 timeline_tab[i].play();
             }
-            resume=false;
+            resume = false;
         }
     }
 
-
+    /**
+     * Fonction créant la Grid correspondant au labyrinthe dans lequel pacman
+     * évolue.
+     *
+     * @return Grid avec tout les sprites adapté par case de la grid.
+     */
     private GridPane getGrid() {
         GridPane grid = new GridPane();
         grid.setVgap(0);
@@ -445,8 +475,8 @@ public class GameView extends View{
 
         for (int i = 0; i < maze_Height; i++) {
             for (int j = 0; j < maze_Width; j++) {
-                int maze_box = GameController.getMaze_Box(i,j);
-                if (maze_box == 0 || maze_box == 4 || maze_box == 5 ) {
+                int maze_box = GameController.getMaze_Box(i, j);
+                if (maze_box == 0 || maze_box == 4 || maze_box == 5) {
                     Pane pictureRegion = getPictureRegion("/Sprites/empty.png");
                     grid.setConstraints(pictureRegion, j, i);
                     grid.add(pictureRegion, j, i);
@@ -473,6 +503,15 @@ public class GameView extends View{
         c.initialize_list();
         return grid;
     }
+
+    /**
+     * Retourne le sprites correspondant au coordonnées en paramètre, détermine
+     * le type de Sprite nécéssaire.
+     *
+     * @param i Coordonnée i
+     * @param x Coordonnée x
+     * @return Sprites dans le bon sens, en fonction des coordonnées
+     */
     private Pane GetWallPane(int i, int x) {
         if (isSquare(i, x)) {
             return getPictureRegion("/Sprites/Corner.png");
@@ -498,6 +537,13 @@ public class GameView extends View{
         return getPictureRegion("/Sprites/empty.png");
     }
 
+    /**
+     * Retourne le CornerSprite correspondant au coordonnées en paramètre
+     *
+     * @param i Coordonnée i
+     * @param x Coordonnée x
+     * @return Sprites dans le bon sens, en fonction des coordonnées
+     */
     private Pane GetCornerPane(int i, int x) {
         if (isCornerBD(i, x)) {
             return getPictureRegion("/Sprites/CornerBD.png");
@@ -514,6 +560,13 @@ public class GameView extends View{
         return getPictureRegion("/Sprites/empty.png");
     }
 
+    /**
+     * Retourne le Inter3Sprite correspondant au coordonnées en paramètre
+     *
+     * @param i Coordonnée i
+     * @param x Coordonnée x
+     * @return Sprites dans le bon sens, en fonction des coordonnées
+     */
     private Pane GetInter3Pane(int i, int x) {
         if (isCornerHG(i, x) && isLineV(i, x)) {
             return getPictureRegion("/Sprites/Inter3VerticalD.png");
@@ -530,6 +583,13 @@ public class GameView extends View{
         return getPictureRegion("/Sprites/empty.png");
     }
 
+    /**
+     * Retourne le EndLineSprite correspondant au coordonnées en paramètre
+     *
+     * @param i Coordonnée i
+     * @param x Coordonnée x
+     * @return Sprites dans le bon sens, en fonction des coordonnées
+     */
     private Pane GetEndLinePane(int i, int x) {
         if (isEndLineB(i, x)) {
             return getPictureRegion("/Sprites/EndLineB.png");
@@ -556,7 +616,7 @@ public class GameView extends View{
     private boolean isCornerHG(int i, int j) {
         boolean CornerHG = false;
         if (((i + 1 < GameController.getMaze_Heigth()) && (j + 1 < GameController.getMaze_Width()))) {
-            if ((GameController.getMaze_Box(i + 1,j) == 1) && (GameController.getMaze_Box(i,j + 1) == 1)) {
+            if ((GameController.getMaze_Box(i + 1, j) == 1) && (GameController.getMaze_Box(i, j + 1) == 1)) {
                 CornerHG = true;
             }
         }
@@ -573,7 +633,7 @@ public class GameView extends View{
     private boolean isCornerHD(int i, int j) {
         boolean CornerHD = false;
         if (((i + 1 < GameController.getMaze_Heigth()) && (j - 1 > -1))) {
-            if ((GameController.getMaze_Box(i + 1,j) == 1) && (GameController.getMaze_Box(i,j - 1) == 1)) {
+            if ((GameController.getMaze_Box(i + 1, j) == 1) && (GameController.getMaze_Box(i, j - 1) == 1)) {
                 CornerHD = true;
             }
         }
@@ -590,7 +650,7 @@ public class GameView extends View{
     private boolean isCornerBD(int i, int j) {
         boolean CornerBD = false;
         if (((i - 1 > -1) && (j - 1 > -1))) {
-            if ((GameController.getMaze_Box(i - 1,j) == 1) && (GameController.getMaze_Box(i,j - 1) == 1)) {
+            if ((GameController.getMaze_Box(i - 1, j) == 1) && (GameController.getMaze_Box(i, j - 1) == 1)) {
                 CornerBD = true;
             }
         }
@@ -607,7 +667,7 @@ public class GameView extends View{
     private boolean isCornerBG(int i, int j) {
         boolean CornerBG = false;
         if (((i - 1 > -1) && (j + 1 < GameController.getMaze_Width()))) {
-            if ((GameController.getMaze_Box(i - 1,j) == 1) && (GameController.getMaze_Box(i,j + 1) == 1)) {
+            if ((GameController.getMaze_Box(i - 1, j) == 1) && (GameController.getMaze_Box(i, j + 1) == 1)) {
                 CornerBG = true;
             }
         }
@@ -624,7 +684,7 @@ public class GameView extends View{
     private boolean isLineH(int i, int j) {
         boolean LineHorizontal = false;
         if (((j - 1 > -1) && (j + 1 < GameController.getMaze_Width()))) {
-            if ((GameController.getMaze_Box(i,j -1) == 1) && (GameController.getMaze_Box(i,j + 1) == 1)) {
+            if ((GameController.getMaze_Box(i, j - 1) == 1) && (GameController.getMaze_Box(i, j + 1) == 1)) {
                 LineHorizontal = true;
             }
         }
@@ -641,7 +701,7 @@ public class GameView extends View{
     private boolean isLineV(int i, int j) {
         boolean LineVertical = false;
         if (((i - 1 > -1) && (i + 1 < GameController.getMaze_Heigth()))) {
-            if ((GameController.getMaze_Box(i -1,j) == 1) && (GameController.getMaze_Box(i + 1,j) == 1)) {
+            if ((GameController.getMaze_Box(i - 1, j) == 1) && (GameController.getMaze_Box(i + 1, j) == 1)) {
                 LineVertical = true;
             }
         }
@@ -658,7 +718,7 @@ public class GameView extends View{
     private boolean isEndLineH(int i, int j) {
         boolean EndLineH = false;
         if (i + 1 < GameController.getMaze_Heigth()) {
-            if (GameController.getMaze_Box(i + 1,j) == 1) {
+            if (GameController.getMaze_Box(i + 1, j) == 1) {
                 EndLineH = true;
             }
         }
@@ -675,7 +735,7 @@ public class GameView extends View{
     private boolean isEndLineB(int i, int j) {
         boolean EndLineB = false;
         if (i - 1 > -1) {
-            if (GameController.getMaze_Box(i - 1,j) == 1) {
+            if (GameController.getMaze_Box(i - 1, j) == 1) {
                 EndLineB = true;
             }
         }
@@ -692,7 +752,7 @@ public class GameView extends View{
     private boolean isEndLineG(int i, int j) {
         boolean EndLineG = false;
         if (j - 1 > -1) {
-            if (GameController.getMaze_Box(i,j - 1) == 1) {
+            if (GameController.getMaze_Box(i, j - 1) == 1) {
                 EndLineG = true;
             }
         }
@@ -709,7 +769,7 @@ public class GameView extends View{
     private boolean isEndLineD(int i, int j) {
         boolean EndLineD = false;
         if (j + 1 < GameController.getMaze_Width()) {
-            if (GameController.getMaze_Box(i,j + 1) == 1) {
+            if (GameController.getMaze_Box(i, j + 1) == 1) {
                 EndLineD = true;
             }
         }
@@ -795,14 +855,14 @@ public class GameView extends View{
      */
     private void updateMap(GridPane grid) throws LineUnavailableException {
         LinkedList ChangeQueue = c.getChangeQueue();
-        while (!(ChangeQueue.isEmpty())) {          
-            MapChangeRequest change = (MapChangeRequest) ChangeQueue.pop();  
-            if("Gomme".equals(change.getType())){
+        while (!(ChangeQueue.isEmpty())) {
+            MapChangeRequest change = (MapChangeRequest) ChangeQueue.pop();
+            if ("Gomme".equals(change.getType())) {
                 c.soundLibrary.play(c.soundLibrary.bool_eat_gomme, c.soundLibrary.audio_eat_gomme, 0.6);
-            }else if("BigGomme".equals(change.getType())){
+            } else if ("BigGomme".equals(change.getType())) {
                 c.soundLibrary.play(c.soundLibrary.bool_eat_gomme, c.soundLibrary.audio_eat_gomme, 0.6);
                 c.soundLibrary.audio_alt_powermode.setRate(0.79);
-                c.soundLibrary.stopAndPlay(c.soundLibrary.bool_alt_powermode, c.soundLibrary.audio_alt_powermode, 0.8);             
+                c.soundLibrary.stopAndPlay(c.soundLibrary.bool_alt_powermode, c.soundLibrary.audio_alt_powermode, 0.8);
             }
             Pane pictureRegion = getPictureRegion(change.getSprite_change());
             grid.setConstraints(pictureRegion, change.getCase_col(), change.getCase_row());

@@ -3,10 +3,8 @@ package Model;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-/**
- * Created by thibaultgeoffroy on 25/02/2016.
- */
-public abstract class Monster extends Model{
+public abstract class Monster extends Model {
+
     double speed;
     public int direction;
     public int newDirection = 5;
@@ -15,16 +13,18 @@ public abstract class Monster extends Model{
     int timing = 0;
     public double x;
     public double y;
-    //public int timerDeath = 0;
     public Rectangle hitbox = new Rectangle();
-    public double  spawnx;
-    public double  spawny;
+    public double spawnx;
+    public double spawny;
     public Node PrisonCenter = ListOfIntersection.getIntersectionAndClosest(9, 14);
+
     /**
-     *Créer une instance de Monster qui représente une créature du jeu (ghost ou pacman)
+     * Créer une instance de Monster qui représente une créature du jeu (ghost
+     * ou pacman)
+     *
      * @param x coordonnée dans l'axe x
      * @param y coordonnée dans l'axe y
-     * @param size  taille du monster
+     * @param size taille du monster
      * @param speed vitesse
      * @param direction direction de base du monster
      */
@@ -45,7 +45,7 @@ public abstract class Monster extends Model{
         hitbox.setFill(Color.TRANSPARENT);
     }
 
-    public abstract void  interact();
+    public abstract void interact();
 
     /**
      * Permet de bouger le pacman en modifinat ses valeurs x et y
@@ -82,8 +82,11 @@ public abstract class Monster extends Model{
 
         interact();
     }
+
     /**
-     * Permet de voir si un mouvement dans une direction est possible et stoppe le pacman si il rencontre un mur
+     * Permet de voir si un mouvement dans une direction est possible et stoppe
+     * le pacman si il rencontre un mur
+     *
      * @return si oui ou non l'objet peut bouger
      */
     boolean move_is_possible() {
@@ -124,7 +127,7 @@ public abstract class Monster extends Model{
             default:
                 break;
         }
-        if (getInfoCase(pos_X, pos_Y) == 1 || getInfoCase(pos_X2, pos_Y2) == 1  || getInfoCase(pos_X, pos_Y) == 5 || getInfoCase(pos_X2, pos_Y2) == 5) {
+        if (getInfoCase(pos_X, pos_Y) == 1 || getInfoCase(pos_X2, pos_Y2) == 1 || getInfoCase(pos_X, pos_Y) == 5 || getInfoCase(pos_X2, pos_Y2) == 5) {
             this.direction = 0;
             return false;
         }
@@ -134,8 +137,11 @@ public abstract class Monster extends Model{
 
         return true;
     }
+
     /**
-     * Permet de savoir si l'objet peut bouger vers une direction demandé mais qui n'etait pas encore disponible
+     * Permet de savoir si l'objet peut bouger vers une direction demandé mais
+     * qui n'etait pas encore disponible
+     *
      * @return si oui ou non l'objet peut bouger
      */
     public boolean new_move_is_possible() {
@@ -160,7 +166,7 @@ public abstract class Monster extends Model{
                 pos_Y2 += height;
                 break;
             case 4:
-                pos_X += width + width ;
+                pos_X += width + width;
                 pos_X2 += width + width;
                 pos_Y2 += height;
                 break;
@@ -174,7 +180,7 @@ public abstract class Monster extends Model{
         }
         return true;
     }
-    
+
     protected abstract void fromDeathToChase();
 
     public abstract void behavior(Pacman pac, Ghost red);
@@ -191,11 +197,15 @@ public abstract class Monster extends Model{
 
     public abstract void fromFearToChase();
 
+    /**
+     * Fonction réinitilisant la poisiton d'un monstre ( retour a la position de
+     * départ ).
+     */
     public void reset() {
         this.x = spawnx;
         this.y = spawny;
         startChase();
-        this.newDirection=5;
+        this.newDirection = 5;
         this.direction = 0;
     }
 }

@@ -4,68 +4,96 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/**
- * Created by thibault on 22/01/16.
- */
-
 public class Score_Tab extends Model implements Serializable {
+
     private ArrayList<Score> tab;
 
-    public Score_Tab(){
-        tab = new ArrayList<Score>();
+    /**
+     * Constructeur par défault de la classe Score_tab.
+     */
+    public Score_Tab() {
+        tab = new ArrayList<>();
     }
 
-    public Score_Tab( String path ) throws IOException, ClassNotFoundException {
+    /**
+     * Constructeur de la classe Score_tab.
+     *
+     * @param path Path vers le fichier de sauvegarde des scores.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public Score_Tab(String path) throws IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream(path);
         ObjectInputStream o = new ObjectInputStream(fis);
         this.setScore_Tab_tab((ArrayList<Score>) o.readObject());
         fis.close();
     }
 
-    public Iterator<Score> iterator(){
+    /**
+     * Itérateur sur la tableau de sauvegarde des scores.
+     *
+     * @return Itérateur sur tableau de sauvearde
+     */
+    public Iterator<Score> iterator() {
         return tab.iterator();
     }
 
+    /**
+     * Getter de Score.
+     *
+     * @param n place dans le tableau de score.
+     * @return Score si il existe.
+     * @throws NoMoreScoreException
+     */
     public Score getScore(int n) throws NoMoreScoreException {
-        assert(!tab.isEmpty());
+        assert (!tab.isEmpty());
         try {
             return tab.get(n);
-        }catch(IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             throw new NoMoreScoreException();
         }
     }
 
-    public void add_Score(Score s){
+    /**
+     * Méthode d'ajout d'un Score dans le tableau de Score.
+     *
+     * @param s Score à ajouter.
+     */
+    public void add_Score(Score s) {
         Iterator<Score> it = iterator();
-        int pos=0;
-        if(tab.isEmpty()) {
+        int pos = 0;
+        if (tab.isEmpty()) {
             tab.add(s);
-        }else {
+        } else {
             Score tmp;
-            while(it.hasNext()){
+            while (it.hasNext()) {
                 tmp = it.next();
-                if(tmp.getScore_Score().intValue() < s.getScore_Score().intValue()){
-                    tab.add(pos,s);
+                if (tmp.getScore_Score().intValue() < s.getScore_Score().intValue()) {
+                    tab.add(pos, s);
                     return;
-                }else{
-                    if(tmp.getScore_Score().intValue() == s.getScore_Score().intValue()){
-                        tab.add(pos+1,s);
-                        return;
-                    }
+                } else if (tmp.getScore_Score().intValue() == s.getScore_Score().intValue()) {
+                    tab.add(pos + 1, s);
+                    return;
                 }
                 pos++;
             }
         }
     }
 
-    public ArrayList<Score> getScore_Tab_tab(){
+    
+    public ArrayList<Score> getScore_Tab_tab() {
         return tab;
     }
 
-    public void setScore_Tab_tab(ArrayList<Score> al){
-        tab=al;
+    public void setScore_Tab_tab(ArrayList<Score> al) {
+        tab = al;
     }
 
+    /**
+     * Méthode sauvegardant tab dans un fichier texte.
+     * @param path Path vers le fichier de sauvegarde.
+     * @throws IOException 
+     */
     public void writeScore_Tab(String path) throws IOException {
         FileOutputStream fos = new FileOutputStream(path);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -75,14 +103,14 @@ public class Score_Tab extends Model implements Serializable {
         fos.close();
     }
 
-    public String toString(){
-        String s="";
+    public String toString() {
+        String s = "";
         Iterator<Score> it = iterator();
-        int pos=0;
+        int pos = 0;
         Score tmp;
         while (it.hasNext()) {
-            tmp=it.next();
-            s+=(pos+1)+"."+tmp.toString()+"\n";
+            tmp = it.next();
+            s += (pos + 1) + "." + tmp.toString() + "\n";
         }
         return s;
     }

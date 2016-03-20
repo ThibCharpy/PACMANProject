@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 /**
  * Created by thibault on 25/02/16.
  */
-public class ScoreView extends View{
+public class ScoreView extends View {
 
     final public static double menu_Width = 300;
     final public static double menu_Height = 475;
@@ -28,13 +28,23 @@ public class ScoreView extends View{
     private Button btn_Menu;
     private Button btn_Quit;
 
-    public ScoreView(String path){
+    /**
+     * Constructeur de ScoreView
+     *
+     * @param path Path vers le fichier des scores.
+     */
+    public ScoreView(String path) {
         super();
         btn_Menu = new Button("Menu");
         btn_Quit = new Button("Quit");
-        sCtrl = new ScoreController(this,path);
+        sCtrl = new ScoreController(this, path);
     }
 
+    /**
+     * Fonction start gérant l'affichage de la fenetre des scores.
+     *
+     * @param stage Stage sur lequel afficher les Scores.
+     */
     @Override
     public void start(Stage stage) {
 
@@ -52,9 +62,9 @@ public class ScoreView extends View{
 
         while (cpt < score_To_Show) {
             Score s = sCtrl.getSt(cpt);
-            if(s==null){
+            if (s == null) {
                 score_display = new Text((cpt + 1) + ". ..........");
-            }else{
+            } else {
                 score_display = new Text((cpt + 1) + ". " + s.toString());
             }
             score_display.setFont(new Font(25));
@@ -67,7 +77,7 @@ public class ScoreView extends View{
         middle.getChildren().add(background_middle);
         middle.getChildren().add(score);
 
-        btn_Menu.setOnAction(event -> sCtrl.btn_Action(stage,hv));
+        btn_Menu.setOnAction(event -> sCtrl.btn_Action(stage, hv));
 
         btn_Quit.setOnAction(event -> stage.close());
 

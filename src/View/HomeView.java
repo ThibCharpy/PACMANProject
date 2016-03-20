@@ -10,12 +10,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-
-
 /**
  * Created by thibault on 25/02/16.
  */
-public class HomeView extends View{
+public class HomeView extends View {
 
     HomeController hCtrl;
 
@@ -26,8 +24,11 @@ public class HomeView extends View{
 
     final public static double menu_Width = 300;
     final public static double menu_Height = 475;
-    
-    public HomeView(){
+
+    /**
+     * Constructeur de classe HomeView.
+     */
+    public HomeView() {
         super();
         btn_Score = new Button("Score");
         btn_Game = new Button("Game");
@@ -36,28 +37,31 @@ public class HomeView extends View{
         hCtrl = new HomeController(this);
     }
 
-
-    
+    /**
+     * Fonction start pour la gestion du menu principal.
+     *
+     * @param stage Stage sur lequel affiché le menu principal.
+     */
     @Override
     public void start(final Stage stage) {
         stage.setWidth(getWindow_Width());
         stage.setHeight(getWindow_Height());
-        
+
         double btn_Width = 250;
         double btn_Height = 475;
 
-        final View gv = new GameView("src/Model/score.txt","/Sprites/terrain.txt");
+        final View gv = new GameView("src/Model/score.txt", "/Sprites/terrain.txt");
         final View sv = new ScoreView("src/Model/score.txt");
         //final View sv = new CreateView();
-        
+
         btn_Game.setMaxSize(btn_Width, btn_Height);
-        btn_Game.setOnAction(event -> hCtrl.btn_Action(stage,gv));
+        btn_Game.setOnAction(event -> hCtrl.btn_Action(stage, gv));
 
         btn_Paint_Versus_Mode.setMaxSize(btn_Width, btn_Height);
         btn_Paint_Versus_Mode.setOnAction(event -> System.out.println("Versus Paint Mode"));
 
         btn_Score.setMaxSize(btn_Width, btn_Height);
-        btn_Score.setOnAction(event -> hCtrl.btn_Action(stage,sv));
+        btn_Score.setOnAction(event -> hCtrl.btn_Action(stage, sv));
 
         btn_Quit.setMaxSize(btn_Width, btn_Height);
         btn_Quit.setOnAction(event -> stage.close());
@@ -90,6 +94,5 @@ public class HomeView extends View{
         stage.setResizable(false);
         stage.show();
     }
-
 
 }

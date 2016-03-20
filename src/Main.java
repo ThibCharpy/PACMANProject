@@ -1,12 +1,14 @@
+
 import View.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class Main extends Application {
 
     /**
      * Fonction main.
-     * @param args 
+     *
+     * @param args
      */
     public static void main(String[] args) {
 
@@ -15,8 +17,9 @@ public class Main extends Application{
 
     /**
      * Fonction start, lancement de la HomeView ( Menu ) du jeu.
+     *
      * @param primaryStage Stage sur lequel afficher.
-     * @throws Exception 
+     * @throws Exception
      */
     @Override
     public void start(Stage primaryStage) throws Exception {

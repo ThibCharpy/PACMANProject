@@ -1,21 +1,20 @@
 package Model;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 
 /**
  * Classe contenant une methode static pour la recherche du plus court chemin
  * entre deux intersections
  *
- * @author Antoine
  */
 public class RechercheChemin {
 
     public LinkedList<Node> IntersectionList;
 
-    public RechercheChemin(LinkedList<Node> list){
+    public RechercheChemin(LinkedList<Node> list) {
         this.IntersectionList = new LinkedList((LinkedList<Node>) list.clone());
     }
+
     /**
      * Cherche dans la liste de node celle qui est classé comme node de depart
      *
@@ -73,7 +72,8 @@ public class RechercheChemin {
      *
      * @param depart node de départ de l'algorithme de recherche
      * @param objectif node d'arrivée de l'algorithme de recherche
-     * @return Renvoi la prochaine intersection à atteindre pour arriver à cet objectif
+     * @return Renvoi la prochaine intersection à atteindre pour arriver à cet
+     * objectif
      */
     private NoeudGraphe ExtractPath(Node depart, Node objectif) {
         LinkedList<NoeudGraphe> chemin = new LinkedList<>();
@@ -82,19 +82,21 @@ public class RechercheChemin {
             chemin.addFirst(n);
             n = n.bestHeuristicParent;
         }
-        if(!chemin.isEmpty()){
-        return chemin.getFirst();
-        }else{
+        if (!chemin.isEmpty()) {
+            return chemin.getFirst();
+        } else {
             return depart.noeud;
         }
     }
 
-    
     /**
-     * Change le noeud de départ de l'algorithme en supprimant la node précédement visitée par une entité ( pour évité un retour sur ses pas )
+     * Change le noeud de départ de l'algorithme en supprimant la node
+     * précédement visitée par une entité ( pour évité un retour sur ses pas )
+     *
      * @param depart noeud de départ de l'algorithme.
      * @param actual Insance de l'entité utilisant l'algorithme.
-     * @return le noeud retiré au noeud de départ ( pour pouvoir le réintégré a la fin de l'exécution de l'algorithme )
+     * @return le noeud retiré au noeud de départ ( pour pouvoir le réintégré a
+     * la fin de l'exécution de l'algorithme )
      */
     private Node setDepart(Node depart, Ghost actual) {
         Node remember = null;
@@ -117,7 +119,8 @@ public class RechercheChemin {
      * @param depart node de départ pour de l'algorithme de recherche
      * @param objectif node d'arrivée pour de l'algorithme de recherche
      * @param actual ghost sur lequel est lancé l'algo
-     * @return la prochaine intersection a atteindre pour arrivée a l'objectif ( progression pas a pas vers la solution )
+     * @return la prochaine intersection a atteindre pour arrivée a l'objectif (
+     * progression pas a pas vers la solution )
      */
     public NoeudGraphe DiscoverPath(Node depart, Node objectif, Ghost actual) {
         int X = actual.getMonster_Case_X(actual.x);

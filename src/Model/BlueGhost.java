@@ -1,10 +1,15 @@
 package Model;
 
-/**
- * Created by thibaultgeoffroy on 29/02/2016.
- */
 public class BlueGhost extends Ghost {
 
+    /**
+     * Constructeur de la classe BlueGhost
+     * @param x Coordonnée X
+     * @param y Coordonnée Y
+     * @param size taille du fantome
+     * @param speed vitesse du fantome
+     * @param direction direction initiale du fantome
+     */
     public BlueGhost(double x, double y, double size, double speed, int direction) {
         super(x, y, size, speed, direction);
     }
@@ -59,8 +64,7 @@ public class BlueGhost extends Ghost {
      * mode fear, il choisi aléatoirement une direction.
      *
      * Cette fonction retourne la direction a prendre a l'intersection actuelle
-     * du fantome, elle est lancée seulement si le fantome est sur une
-     * intersection.
+     * du fantome. Si le fantome n'est pas sur une intersection, l'algorithme séléction l'intersection la plus proche.
      *
      * @param pac Instance de pacman
      * @param red Instance du fantome rouge

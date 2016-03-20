@@ -9,15 +9,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-/**
- * Created by thibault on 27/02/16.
- */
 public class ScoreController extends Controller {
 
-    private String path_Field;
+    private final String path_Field;
 
     private Score_Tab st;
 
+    /**
+     * Constructeur de la classe ScoreController
+     * @param v vue associer a l'affichage du score
+     * @param path chemin vers le fichier de sauvegarde des scores
+     */
     public ScoreController(View v, String path){
         super(v);
         File f = new File(path);
@@ -25,10 +27,7 @@ public class ScoreController extends Controller {
             try {
                 System.out.println("Fichier trouvé => ouverture fichier");
                 st = new Score_Tab(path);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+            } catch (IOException | ClassNotFoundException e) {
             }
         }else{
             st = new Score_Tab();
@@ -36,29 +35,39 @@ public class ScoreController extends Controller {
         path_Field = path;
     }
 
+    /**
+     * Méthode gérant l'action lié a l'appui sur un bouton
+     * @param s Stage lié au bouton
+     * @param v View lié au bouton
+     */
+    @Override
     public void btn_Action(Stage s, View v){
         v.start(s);
     }
 
+    /**
+     * Méthode gérant la création du fichier de sauvegarde des scores si il n'existe pas, sauvegarde le score.
+     */
     public void saveScore(){
         File f = new File(path_Field);
         if(!(f.exists())){
-            System.out.println("Fichier non trouvé pour sauvegarde => Creation score.txt");
             Path myFile = Paths.get(path_Field);
             try {
                 Path file = Files.createFile(myFile);
             } catch (IOException e) {
-                e.printStackTrace();
             }
         }
-        System.out.println("Sauvegarde Liste dans score.txt");
         try {
             st.writeScore_Tab(path_Field);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
+    /**
+     * Getter de score
+     * @param n
+     * @return 
+     */
     public Score getSt(int n) {
         try {
             return st.getScore(n);

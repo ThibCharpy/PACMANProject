@@ -6,6 +6,7 @@ import java.util.LinkedList;
  * Created by thibaultgeoffroy on 25/02/2016.
  */
 public class NoeudGraphe {
+
     /**
      * coordonnée X, correspond à la deuxieme dimension du tableau
      */
@@ -22,29 +23,33 @@ public class NoeudGraphe {
     public String TypeOf;
 
     /**
-     * Cout necessaire pour atteindre cette intersection par rapport a une intersecion de depart
+     * Cout necessaire pour atteindre cette intersection par rapport a une
+     * intersecion de depart
      */
     public int Heuristiccost = 0;
 
     /**
-     * Marque le fait que l'intersection a déjà été parcouru une fois dans l'algorithme de plus court chemin
+     * Marque le fait que l'intersection a déjà été parcouru une fois dans
+     * l'algorithme de plus court chemin
      */
     public boolean closed = false;
 
     // public boolean blocked = false;
-
     /**
-     * Marque le fait que cette intersection sois le point de depart de l'algorithme de plus court chemin
+     * Marque le fait que cette intersection sois le point de depart de
+     * l'algorithme de plus court chemin
      */
     public boolean isStart = false;
 
     /**
-     * Marque le fait que cette intersection sois le point d'arrivé de l'algorithme de plus court chemin
+     * Marque le fait que cette intersection sois le point d'arrivé de
+     * l'algorithme de plus court chemin
      */
     public boolean isEnd = false;
 
     /**
-     * Intersection "parent" dans le résultat de l'algorithme de plus court chemin
+     * Intersection "parent" dans le résultat de l'algorithme de plus court
+     * chemin
      */
     public NoeudGraphe bestHeuristicParent;
 
@@ -54,12 +59,15 @@ public class NoeudGraphe {
     public LinkedList<Node> voisins;
 
     /**
-     * Constructeur de NoeudGraphe, principalement utilisé pour crée des nodes principales
+     * Constructeur de NoeudGraphe, principalement utilisé pour crée des nodes
+     * principales
+     *
      * @param X coordonnée X, correspond à la deuxieme dimension du tableau
      * @param Y coordonnée Y, correspond à la premiere dimension du tableau
-     * @param type String contenant le type d'intersection où pointe les coordonnées
+     * @param type String contenant le type d'intersection où pointe les
+     * coordonnées
      */
-    public NoeudGraphe(int X, int Y, String type){
+    public NoeudGraphe(int X, int Y, String type) {
         this.coordX = X;
         this.coordY = Y;
         this.TypeOf = type;
@@ -67,13 +75,16 @@ public class NoeudGraphe {
     }
 
     /**
-     * Constructeur de NoeudGraphe, principalement utilisé pour crée des nodes secondaire
+     * Constructeur de NoeudGraphe, principalement utilisé pour crée des nodes
+     * secondaire
+     *
      * @param X coordonnée X, correspond à la deuxieme dimension du tableau
      * @param Y coordonnée Y, correspond à la premiere dimension du tableau
-     * @param type String contenant le type d'intersection où pointe les coordonnées
+     * @param type String contenant le type d'intersection où pointe les
+     * coordonnées
      * @param voisin Liste de voisin de l'intersection
      */
-    public NoeudGraphe(int X, int Y, String type, LinkedList<Node> voisin){
+    public NoeudGraphe(int X, int Y, String type, LinkedList<Node> voisin) {
         this.coordX = X;
         this.coordY = Y;
         this.TypeOf = type;
@@ -81,9 +92,10 @@ public class NoeudGraphe {
     }
 
     /**
-     * Reinitialise les informations utilisées dans l'algorithme de plus court chemin
+     * Reinitialise les informations utilisées dans l'algorithme de plus court
+     * chemin
      */
-    public void resetGrapheInfo(){
+    public void resetGrapheInfo() {
         this.Heuristiccost = 0;
         this.closed = false;
         this.isEnd = false;
@@ -91,7 +103,7 @@ public class NoeudGraphe {
         this.bestHeuristicParent = null;
     }
 
-    public void Affichage(){
+    public void Affichage() {
         System.out.println(this.getTypeOf() + "  :  " + this.getCoordY() + " ; " + this.getCoordX());
     }
 
@@ -104,15 +116,17 @@ public class NoeudGraphe {
 
     /**
      * Ajoute un element en parametre a la liste de voisin
+     *
      * @param element voisin a ajouté
      */
-    public void addVoisin(Node element){
+    public void addVoisin(Node element) {
         this.getVoisin().add(element);
     }
-    
+
     boolean compare(NoeudGraphe Pos) {
         return (this.getCoordX() == Pos.getCoordX() && this.getCoordY() == Pos.getCoordY());
     }
+
     /**
      * @param coordX the coordX to set
      */

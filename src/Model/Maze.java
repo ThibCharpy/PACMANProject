@@ -1,6 +1,5 @@
 package Model;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +8,6 @@ import java.io.InputStreamReader;
 /**
  * Created by thibaultgeoffroy on 25/02/2016.
  */
-
 public class Maze {
 
     public static int[][] plateau;
@@ -18,10 +16,11 @@ public class Maze {
     /**
      * Compte le nombre de 1 qui se situe sur les cases voisines (non située en
      * diagonale/ en forme de + en partant de i,x) des coordonées fourni en
-     * paramètre
+     * paramètre.
      *
      * @param i coordonnée rangée
      * @param x coordonnée colonne
+     * @param ValueToTest Valeur a testé
      * @return nombre de 1 autour de i,x
      */
     public static int checkWall(int i, int x, int ValueToTest) {
@@ -54,7 +53,7 @@ public class Maze {
      * @throws IOException si FileNotFound
      */
     public static void initMapArray(String file) throws IOException {
-        int[] data= testFileFormat(file);
+        int[] data = testFileFormat(file);
         if (data[0] == 1) {
             plateau = new int[data[1]][data[2]];
             InputStream ips = Model.class.getResourceAsStream(file);

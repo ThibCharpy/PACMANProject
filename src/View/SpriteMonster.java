@@ -1,15 +1,13 @@
 package View;
 
-import Controller.GameController;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 
 /**
- * Created by thibaultgeoffroy on 29/02/2016.
+ * Classe créant des tableaux d'images pour la gestions des animations.
+ *
  */
 public class SpriteMonster {
+
     public static Image[] pacsprites = createPacman();
     public static Image[] redsprites = createRed();
 
@@ -25,7 +23,6 @@ public class SpriteMonster {
         redsprites[7] = new Image("/Sprites/red-up-2.png");
         return redsprites;
     }
-
 
     public static Image[] bluesprites = createBlue();
 
@@ -72,27 +69,26 @@ public class SpriteMonster {
         return pinksprites;
     }
 
-
     private static Image[] createPacman() {
         pacsprites = new Image[9];
         pacsprites[0] = new Image("/Sprites/pacman8.png");
-        pacsprites[1] =  new Image("/Sprites/pacman2.png");
-        pacsprites[2] =  new Image("/Sprites/pacman5.png");
-        pacsprites[3] =  new Image("/Sprites/pacman3.png");
+        pacsprites[1] = new Image("/Sprites/pacman2.png");
+        pacsprites[2] = new Image("/Sprites/pacman5.png");
+        pacsprites[3] = new Image("/Sprites/pacman3.png");
         pacsprites[4] = new Image("/Sprites/pacman4.png");
-        pacsprites[5] =  new Image("/Sprites/pacman0.png");
-        pacsprites[6] =  new Image("/Sprites/pacman7.png");
-        pacsprites[7] =  new Image("/Sprites/pacman1.png");
-        pacsprites[8] =  new Image("/Sprites/pacman6.png");
+        pacsprites[5] = new Image("/Sprites/pacman0.png");
+        pacsprites[6] = new Image("/Sprites/pacman7.png");
+        pacsprites[7] = new Image("/Sprites/pacman1.png");
+        pacsprites[8] = new Image("/Sprites/pacman6.png");
         return pacsprites;
     }
     public static Image[] scaredsprites = createScared();
-    
+
     public static Image getDeathPic(int cmpt) {
         Image[] sprt = deadPacman();
         return sprt[cmpt];
     }
-    
+
     private static Image[] deadPacman() {
         Image[] pacdeadsprites = new Image[12];
         pacdeadsprites[0] = new Image("/Sprites/pacman8.png");
@@ -130,32 +126,29 @@ public class SpriteMonster {
         return deadsprites;
     }
 
-    
-    public static  Image getPicture(int i , int direction , int timing){
-        switch  (i){
+    public static Image getPicture(int i, int direction, int timing) {
+        switch (i) {
             case 0:
-                return getPacSprite(pacsprites , direction , timing);
+                return getPacSprite(pacsprites, direction, timing);
             case 1:
-                return getSprite(redsprites , direction , timing);
+                return getSprite(redsprites, direction, timing);
             case 2:
-                return getSprite(bluesprites , direction , timing);
+                return getSprite(bluesprites, direction, timing);
             case 3:
-                return getSprite(pinksprites , direction , timing);
+                return getSprite(pinksprites, direction, timing);
             case 4:
-                return getSprite(orangesprites , direction , timing);
+                return getSprite(orangesprites, direction, timing);
             case 5:
                 return getScared(timing);
             case 6:
-                return  getEaten(direction, timing);
+                return getEaten(direction, timing);
         }
 
         return null;
     }
-    
-    
-    
+
     private static Image getEaten(int direction, int timing) {
-        switch(direction){
+        switch (direction) {
             case 0:
                 return deadsprites[1];
             case 1:
@@ -171,7 +164,7 @@ public class SpriteMonster {
     }
 
     private static Image getScared(int timing) {
-        switch(timing%2) {
+        switch (timing % 2) {
             case 0:
                 return scaredsprites[0];
             case 1:
@@ -180,12 +173,21 @@ public class SpriteMonster {
         return null;
     }
 
-    private static Image getSprite(Image[] sprites , int direction, int timing) {
-        switch (direction){
+    /**
+     * Fonction récupérant une Image en fonction de la direction de l'objet et
+     * du timing de son animation, spécialement pour les fantomes.
+     *
+     * @param sprites tableau d'image de l'objet.
+     * @param direction direction de l'objet.
+     * @param timing timing de l'animation de l'objet.
+     * @return Sprite correspondant au condition.
+     */
+    private static Image getSprite(Image[] sprites, int direction, int timing) {
+        switch (direction) {
             case 0:
                 return sprites[0];
             case 1:
-                switch(timing%2){
+                switch (timing % 2) {
                     case 0:
                         return sprites[6];
                     case 1:
@@ -194,7 +196,7 @@ public class SpriteMonster {
                 }
                 break;
             case 2:
-                switch(timing%2){
+                switch (timing % 2) {
                     case 0:
                         return sprites[0];
                     case 1:
@@ -202,7 +204,7 @@ public class SpriteMonster {
                 }
                 break;
             case 3:
-                switch(timing%2){
+                switch (timing % 2) {
                     case 0:
                         return sprites[2];
                     case 1:
@@ -210,7 +212,7 @@ public class SpriteMonster {
                 }
                 break;
             case 4:
-                switch(timing%2) {
+                switch (timing % 2) {
                     case 0:
                         return sprites[4];
                     case 1:
@@ -221,12 +223,22 @@ public class SpriteMonster {
         }
         return null;
     }
-    private static Image getPacSprite(Image[] sprites , int direction, int timing) {
-        switch (direction){
+
+    /**
+     * Fonction récupérant une Image en fonction de la direction de l'objet et
+     * du timing de son animation spécialement pour pacman.
+     *
+     * @param sprites tableau d'image de l'objet.
+     * @param direction direction de l'objet.
+     * @param timing timing de l'animation de l'objet.
+     * @return Sprite correspondant au condition.
+     */
+    private static Image getPacSprite(Image[] sprites, int direction, int timing) {
+        switch (direction) {
             case 0:
                 return sprites[0];
             case 1:
-                switch(timing%2){
+                switch (timing % 2) {
                     case 0:
                         return sprites[0];
                     case 1:
@@ -235,7 +247,7 @@ public class SpriteMonster {
                 }
                 break;
             case 2:
-                switch(timing%2){
+                switch (timing % 2) {
                     case 0:
                         return sprites[0];
                     case 1:
@@ -243,7 +255,7 @@ public class SpriteMonster {
                 }
                 break;
             case 3:
-                switch(timing%2){
+                switch (timing % 2) {
                     case 0:
                         return sprites[0];
                     case 1:
@@ -251,7 +263,7 @@ public class SpriteMonster {
                 }
                 break;
             case 4:
-                switch(timing%2) {
+                switch (timing % 2) {
                     case 0:
                         return sprites[0];
                     case 1:
@@ -263,7 +275,4 @@ public class SpriteMonster {
         return null;
     }
 
-    
-
-    
 }

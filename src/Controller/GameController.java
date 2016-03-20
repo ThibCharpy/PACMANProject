@@ -17,9 +17,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-
 public class GameController extends Controller {
-    
+
     public Map<Pane, Monster> list;
     public static boolean restartNeeded = false;
     public static boolean PacDead = false;
@@ -36,6 +35,7 @@ public class GameController extends Controller {
 
     /**
      * Constructeur de la classe GameController.
+     *
      * @param v View associer au Controller
      */
     public GameController(View v) {
@@ -48,7 +48,8 @@ public class GameController extends Controller {
     }
 
     /**
-     * Getter de ChangeQueue (cf @MageChangeRequest).
+     * Getter de ChangeQueue.
+     *
      * @return ChangeQueue contenue dans Pacman
      */
     public LinkedList getChangeQueue() {
@@ -56,7 +57,7 @@ public class GameController extends Controller {
         return ((Pacman) m).ChangeQueue;
 
     }
-    
+
     /**
      * Fonction utilisée pour initialiser les monstres sur la carte.
      */
@@ -94,11 +95,13 @@ public class GameController extends Controller {
     }
 
     /**
-     * Fonction de sauvegarde du score à l'intérieur d'un fichier texte en fonction du nom du joueur.
+     * Fonction de sauvegarde du score à l'intérieur d'un fichier texte en
+     * fonction du nom du joueur.
+     *
      * @param name Nom du joueur.
      * @param path Chemin vers le fichier de sauvegarde des scores.
-     * @throws IOException 
-     * @throws ClassNotFoundException 
+     * @throws IOException
+     * @throws ClassNotFoundException
      */
     public void saveGameScore(String name, String path) throws IOException, ClassNotFoundException {
         File f = new File(path);
@@ -117,6 +120,7 @@ public class GameController extends Controller {
 
     /**
      * Setter de la position X d'un monstre.
+     *
      * @param i numero du monstre
      * @param x position X du monstre
      */
@@ -126,6 +130,7 @@ public class GameController extends Controller {
 
     /**
      * Setter de la position Y d'un monstre.
+     *
      * @param i numero du monstre
      * @param y position Y du monstre
      */
@@ -135,14 +140,16 @@ public class GameController extends Controller {
 
     /**
      * Getter de la taille de la liste de monstre.
-     * @return 
+     *
+     * @return
      */
     public int sizeOfList() {
         return list.size();
     }
-    
+
     /**
      * Retourne un entier représentant le type de monstre passé en paramètre.
+     *
      * @param m Monstre (Pacman / Fantomes).
      * @return entier correspondant au type de monstre.
      */
@@ -174,6 +181,7 @@ public class GameController extends Controller {
 
     /**
      * Met à jour le score en fonction d'un entier i.
+     *
      * @param i entier i à ajouter au score.
      */
     public void updateScore(int i) {
@@ -188,6 +196,7 @@ public class GameController extends Controller {
 
     /**
      * Getter de score.
+     *
      * @return score.
      */
     public Score getSc() {
@@ -195,9 +204,11 @@ public class GameController extends Controller {
     }
 
     /**
-     * Initialise un tableau static contenant une réprésentation du fichier texte contenant la carte.
+     * Initialise un tableau static contenant une réprésentation du fichier
+     * texte contenant la carte.
+     *
      * @param path_field chemin vers le fichier contenant la carte.
-     * @throws IOException 
+     * @throws IOException
      */
     public static void initialize_Game(String path_field) throws IOException {
         Maze.initMapArray(path_field);
@@ -205,13 +216,16 @@ public class GameController extends Controller {
 
     /**
      * Getter de largeur du tableau du terrain.
+     *
      * @return largeur du tableau.
      */
     public static int getMaze_Width() {
         return Maze.plateau[0].length;
     }
+
     /**
      * Getter de hauteur du tableau du terrain.
+     *
      * @return hauteur du tableau.
      */
     public static int getMaze_Heigth() {
@@ -220,6 +234,7 @@ public class GameController extends Controller {
 
     /**
      * Getter de contenu du tableau du terrain.
+     *
      * @param i Coordonnée i.
      * @param j Coordonnée i.
      * @return Information contenu dans la case [i][j].
@@ -229,7 +244,9 @@ public class GameController extends Controller {
     }
 
     /**
-     * Getter du nombre de voisin d'une case du tableau, un voisin étant toute case qui n'est pas un mur.
+     * Getter du nombre de voisin d'une case du tableau, un voisin étant toute
+     * case qui n'est pas un mur.
+     *
      * @param i Coordonnée i.
      * @param j Coordonnée j.
      * @param value valeur a tester pour considéré une case comme voisine.
@@ -240,7 +257,8 @@ public class GameController extends Controller {
     }
 
     /**
-     * Retourne la largeur du monstre.  
+     * Retourne la largeur du monstre.
+     *
      * @param i ID du monstre dans la liste
      * @return largeur du monstre en pixel
      */
@@ -253,7 +271,8 @@ public class GameController extends Controller {
     }
 
     /**
-     * Retourne la hauteur du monstre.  
+     * Retourne la hauteur du monstre.
+     *
      * @param i ID du monstre dans la liste
      * @return hauteur du monstre en pixel
      */
@@ -267,6 +286,7 @@ public class GameController extends Controller {
 
     /**
      * Actualise la position des monstres.
+     *
      * @param root StackPane contenant les monstres.
      * @return root avec les positions acutalisées.
      */
@@ -280,6 +300,7 @@ public class GameController extends Controller {
 
     /**
      * Getter de la position X du fantome
+     *
      * @param i ID du fantome
      * @return Coordonnée X du fantome
      */
@@ -289,6 +310,7 @@ public class GameController extends Controller {
 
     /**
      * Getter de la position Y du fantome
+     *
      * @param i ID du fantome
      * @return Coordonnée Y du fantome
      */
@@ -298,6 +320,7 @@ public class GameController extends Controller {
 
     /**
      * Getter de la Pane associer au monstre en parametre.
+     *
      * @param m Monstre.
      * @return Pane du Monstre
      */
@@ -347,6 +370,12 @@ public class GameController extends Controller {
         Model.setGRID_SIZE_X(game_width);
     }
 
+    /**
+     * Méthode qui défini comme enfant de "stack" les Panes des monstres
+     *
+     * @param stack Stackpane où intégré les monstres
+     * @return StackPane avec Pane de tout les monstres
+     */
     public StackPane implementPane(StackPane stack) {
         for (int i = 0; i < 5; i++) {
             stack.getChildren().add(p[i]);
@@ -354,10 +383,16 @@ public class GameController extends Controller {
         return stack;
     }
 
+    /**
+     * Déclenche l'ordre de mouvement pour le pacman
+     */
     public void pacmovement() {
         list.get(p[0]).movement();
     }
 
+    /**
+     * Déclenche l'ordre de mouvement pour le mode "Fear" des fantomes
+     */
     public void deadMovement() {
         for (int i = 1; i < 5; i++) {
             if (list.get(p[i]).afraid()) {
@@ -366,6 +401,10 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Déclenche l'ordre de mouvement pour tout les modes autre que "Fear" des
+     * fantomes
+     */
     public void movement() {
         for (int i = 1; i < 5; i++) {
             if (!(list.get(p[i]).afraid())) {
@@ -374,13 +413,21 @@ public class GameController extends Controller {
         }
     }
 
-    public void getMonsterPosition() {
+    /**
+     * Défini la position ( coordonnées X,Y )de toute les Panes monstres.
+     */
+    public void setMonsterPosition() {
         for (int i = 0; i < 5; i++) {
             p[i].setLayoutX(list.get(p[i]).x);
             p[i].setLayoutY(list.get(p[i]).y);
         }
     }
 
+    /**
+     * Fonction gerant la direction du pacman lors de l'appui d'une touche K.
+     *
+     * @param k code de la touche
+     */
     public void pacmanMovement(KeyCode k) {
         if (k == KeyCode.UP) {
             list.get(p[0]).newDirection = 1;
@@ -396,6 +443,12 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Fonction renvoyant un des sprites de la mort du pacman, en fonction d'un
+     * entier représentant le sprites a afficher.
+     *
+     * @param cmpt timing pour le choix des sprites.
+     */
     public void DeathImage(int cmpt) {
         Pane pPacman = getMonsterPane(list.get(p[0]));
         ImageView imgv = new ImageView();
@@ -407,6 +460,10 @@ public class GameController extends Controller {
         p[0].getChildren().add(imgv);
     }
 
+    /**
+     * Fonction utilisé pour rafraichir les sprites de tout les monstres. Gere
+     * également le changement d'état entre "Fear" ou "Eaten" et "Chase".
+     */
     public void updateImage() {
         if (!GameController.PacDead) {
             timerFear--;
@@ -427,19 +484,28 @@ public class GameController extends Controller {
                 p[i].getChildren().remove(0);
                 p[i].getChildren().add(imgv);
             }
-        } else {
-
         }
     }
 
+    /**
+     * Setter du nombre de vie restante
+     */
     public void setNbLifeLeft() {
         ((Pacman) list.get(p[0])).lifeLeft--;
     }
 
+    /**
+     * Getter du nombre de vie restante
+     *
+     * @return nombre de vie restante
+     */
     public int getNbLifeLeft() {
         return ((Pacman) list.get(p[0])).lifeLeft;
     }
 
+    /**
+     * Lancement du mode "Chase" pour les fantomes
+     */
     private void beginChase() {
         state = "chase";
         for (int i = 1; i < 5; i++) {
@@ -447,6 +513,10 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Lancement des méthodes behavior des monstres, ces méthodes définissent
+     * leur direction.
+     */
     public void ghostBehavior() {
         for (int i = 0; i < 5; i++) {
             if (!(list.get(p[i]).eaten())) {
@@ -455,10 +525,16 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Lance l'initialisation de la liste d'intersection.
+     */
     public void initialize_list() {
         ListOfIntersection.initialiseList();
     }
 
+    /**
+     * Lancement du mode "Fear" pour les fantomes.
+     */
     public void beginFear() {
         state = "fear";
         timerFear = 50;
@@ -467,6 +543,9 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Lancement des méthodes vérifiant le contact des fantomes avec le pacman
+     */
     public void findContact() {
         double x = list.get(p[0]).x + ((list.get(p[0]).width) / 2);
         double y = list.get(p[0]).y + ((list.get(p[0]).height) / 2);
@@ -477,6 +556,12 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Défini le résultat d'un contact entre un fantome et pacman, en fonction
+     * de l'état du dit fantome.
+     *
+     * @param i ID du fantome.
+     */
     private void contact(int i) {
         if ((list.get(p[i])).afraid()) {
             list.get(p[i]).startEaten();
@@ -495,6 +580,11 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Méthode gérant le mouvement du pacman à la souris.
+     *
+     * @param event Event relatif au clic souris.
+     */
     public void mouvementByMouse(MouseEvent event) {
         double mouseX = event.getX();
         double mouseY = event.getY();
@@ -517,6 +607,9 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Lancement du mode "Eaten" des fantomes.
+     */
     public void deadBehavior() {
         for (int i = 1; i < 5; i++) {
             if (list.get(p[i]).eaten()) {
@@ -525,6 +618,9 @@ public class GameController extends Controller {
         }
     }
 
+    /**
+     * Méthode gérant l'apparition de bonus sur la carte de manière aléatoire.
+     */
     public void createBonus() {
 
         if ((int) (Math.random() * 1000) % 100 == 0 && !bonusExiste) {
