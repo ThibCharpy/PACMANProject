@@ -3,6 +3,8 @@ package Model;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.util.LinkedList;
+
 public abstract class Monster extends Model {
 
     double speed;
@@ -17,6 +19,7 @@ public abstract class Monster extends Model {
     public double spawnx;
     public double spawny;
     public Node PrisonCenter = ListOfIntersection.getIntersectionAndClosest(9, 14);
+    public static LinkedList ChangeQueue;
 
     /**
      * Créer une instance de Monster qui représente une créature du jeu (ghost
@@ -48,7 +51,7 @@ public abstract class Monster extends Model {
     public abstract void interact();
 
     /**
-     * Permet de bouger le pacman en modifinat ses valeurs x et y
+     * Permet de bouger le pacman en modifiant ses valeurs x et y
      */
     public void movement() {
 
@@ -84,7 +87,7 @@ public abstract class Monster extends Model {
     }
 
     /**
-     * Permet de voir si un mouvement dans une direction est possible et stoppe
+     * Permet de voir si un mouvement dans une direction est possible et stop
      * le pacman si il rencontre un mur
      *
      * @return si oui ou non l'objet peut bouger
@@ -208,4 +211,39 @@ public abstract class Monster extends Model {
         this.newDirection = 5;
         this.direction = 0;
     }
+
+    /**
+     * Permet de bouger le pacman dans le mode VersusPaint en modifiant ses valeurs x et y
+     */
+    public void paintMovement(){
+        if (new_move_is_possible()) {
+            this.direction = this.newDirection;
+            this.newDirection = 5;
+        }
+
+        if (!move_is_possible()) {
+            this.direction = 0;
+            return;
+        }
+        switch (this.direction) {
+            case 1:
+                this.y = Math.abs((this.y - this.speed));
+                break;
+            case 2:
+                this.y = Math.abs(this.y + this.speed);
+                break;
+            case 3:
+                this.x = Math.abs(this.x - this.speed);
+                break;
+            case 4:
+                this.x = Math.abs(this.x + this.speed);
+                break;
+            default:
+                break;
+        }
+        hitbox.setX(x);
+        hitbox.setY(y);
+        paintInteract();
+    }
+    public abstract void paintInteract();
 }

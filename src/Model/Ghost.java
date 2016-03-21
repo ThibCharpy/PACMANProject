@@ -149,5 +149,5 @@ public abstract class Ghost extends Monster {
     public int mesureDistance(Node GhostPos, Node PacPos) {
         return (Math.abs(PacPos.noeud.getCoordX() - GhostPos.noeud.getCoordX()) + Math.abs(PacPos.noeud.getCoordY() - GhostPos.noeud.getCoordY()));
     }
-
+    public void paintInteract(){}
 }

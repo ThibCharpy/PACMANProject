@@ -1,6 +1,6 @@
 package Model;
 
-import Controller.GameController;
+import Controller.*;
 
 import java.util.Observable;
 
@@ -16,7 +16,8 @@ public class Model extends Observable {
     public final static double PREF_PIXEL = 13.75;
     public static double GRID_SIZE_X;
     public static double GRID_SIZE_Y;
-    public static GameController controller;
+    public static Controller controller;
+
 
     /**
      * Défini la taille X (largeur) de la grille de jeu.

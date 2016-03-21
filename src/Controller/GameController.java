@@ -506,7 +506,7 @@ public class GameController extends Controller {
     /**
      * Lancement du mode "Chase" pour les fantomes
      */
-    private void beginChase() {
+    protected void beginChase() {
         state = "chase";
         for (int i = 1; i < 5; i++) {
             list.get(p[i]).fromFearToChase();
@@ -562,7 +562,7 @@ public class GameController extends Controller {
      *
      * @param i ID du fantome.
      */
-    private void contact(int i) {
+    protected void contact(int i) {
         if ((list.get(p[i])).afraid()) {
             list.get(p[i]).startEaten();
             this.soundLibrary.audio_eat_ghost.play(1.2);

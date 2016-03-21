@@ -8,10 +8,12 @@ import java.util.LinkedList;
  */
 public class Pacman extends Monster {
 
-    public LinkedList ChangeQueue;
     public int lifeLeft;
     private Node LastVisited = ListOfIntersection.getIntersectionAndClosest(11, 14);
-
+    public String state = "idle";
+    int timerPower = 0;
+    public int pinkPoint=0;
+    public int yellowPoint=0;
     /**
      * Constructeur de la classe Pacman
      *
@@ -52,6 +54,41 @@ public class Pacman extends Monster {
 
     @Override
     public void fromFearToChase() {
+    }
+
+    /**
+     * Fonction gérant les intéracrions du pacman en mode VersusPaint
+     */
+    public void paintInteract() {
+        if (FindNumberOfGomme() != 0) {
+            timerPower --;
+            if (timerPower == 0){
+                state = "idle";
+            }
+            if (getInfoCase(x + (width / 2), y + (height / 2)) == 3) {
+                EatBigGomme(x, y);
+                paint();
+            }
+            if (getInfoCase(x + (width / 2), y + (height / 2)) == 2) {
+                paint();
+            }
+
+            if((getInfoCase(x + (width / 2), y + (height / 2)) == 8) && (state.equals("power"))){
+                paint();
+            }
+        } else {
+            GameController.restartNeeded = true;
+        }
+    }
+
+    /**
+     * Fonction créant une demande de changement de Sprites pour le mode VersusPaint, change un sprites "vide" ou égal a 0 ( fond noir ) en fond bleu égal a 7.
+     */
+    private void paint() {
+        setInfoCase(x + (width / 2), y + (height / 2), 7);
+        MapChangeRequest m= new MapChangeRequest(getMonster_Case_Y(y + (height / 2)/*Pos_Y*/), getMonster_Case_X(x + (width / 2)/*Pos_X*/), "/Sprites/paint_blue.png", "Gomme");
+        ChangeQueue.add(m);
+        controller.updateScore(10);
     }
 
     /**
@@ -153,8 +190,12 @@ public class Pacman extends Monster {
      */
     private int FindNumberOfGomme() {
         int cmpt = 0;
+        yellowPoint = 0;
+        pinkPoint = 0;
         for (int x = 0; x < Maze.plateau.length; x++) {
             for (int i = 0; i < Maze.plateau[0].length; i++) {
+                if( Maze.plateau[x][i] == 7) yellowPoint ++;
+                if( Maze.plateau[x][i] == 8) pinkPoint ++;
                 if (Maze.plateau[x][i] == 2 || Maze.plateau[x][i] == 3) {
                     cmpt++;
                 }
@@ -196,6 +237,8 @@ public class Pacman extends Monster {
             MapChangeRequest BiggommeEated = new MapChangeRequest(getMonster_Case_Y(y + (height / 2)), getMonster_Case_X(x + (width / 2)), "/Sprites/empty.png", "BigGomme");
             ChangeQueue.add(BiggommeEated);
             controller.beginFear();
+            timerPower = 600;
+            state = "power";
             controller.updateScore(25);
         }
     }
@@ -214,6 +257,8 @@ public class Pacman extends Monster {
             setInfoCase(x + (width / 2), y + (height / 2), 0);
             MapChangeRequest m = new MapChangeRequest(getMonster_Case_Y(y + (height / 2)), getMonster_Case_X(x + (width / 2)), "/Sprites/empty.png", "Bonus");
             ChangeQueue.add(m);
+            timerPower = 600;
+            state = "power";
             controller.updateScore(100);
         }
     }
@@ -222,7 +267,7 @@ public class Pacman extends Monster {
      * Override de la fonction présente dans Monster, pour empécher le pacman de
      * rentré dans la prison.
      *
-     * @return
+     * @return booleen représentant l'autorisation de mouvement.
      */
     @Override
     boolean move_is_possible() {

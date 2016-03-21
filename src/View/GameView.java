@@ -78,7 +78,7 @@ public class GameView extends View {
      */
     public GameView(String path, String map) {
         super();
-        c = new GameController(this);
+
         timeline_tab = new Timeline[6];
         btn_Resume = new Button("Resume");
         btn_Menu = new Button("Menu");
@@ -176,7 +176,7 @@ public class GameView extends View {
      */
     @Override
     public void start(Stage stage) {
-
+        c = new GameController(this);
         HomeView hv = new HomeView();
 
         btn_Resume.setMaxSize(btn_Width, btn_Height);

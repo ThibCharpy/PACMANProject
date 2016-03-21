@@ -50,15 +50,16 @@ public class HomeView extends View {
         double btn_Width = 250;
         double btn_Height = 475;
 
-        final View gv = new GameView("src/Model/score.txt", "/Sprites/terrain.txt");
-        final View sv = new ScoreView("src/Model/score.txt");
+        final View gv = new GameView("score.txt", "/Sprites/terrain.txt");
+        final View sv = new ScoreView("score.txt");
+        final View vv = new VersusPaintView("src/Model/score.txt");
         //final View sv = new CreateView();
 
         btn_Game.setMaxSize(btn_Width, btn_Height);
         btn_Game.setOnAction(event -> hCtrl.btn_Action(stage, gv));
 
         btn_Paint_Versus_Mode.setMaxSize(btn_Width, btn_Height);
-        btn_Paint_Versus_Mode.setOnAction(event -> System.out.println("Versus Paint Mode"));
+        btn_Paint_Versus_Mode.setOnAction(event -> hCtrl.btn_Action(stage, vv));
 
         btn_Score.setMaxSize(btn_Width, btn_Height);
         btn_Score.setOnAction(event -> hCtrl.btn_Action(stage, sv));
